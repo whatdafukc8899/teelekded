@@ -11,7 +11,14 @@
   gtag('config', 'G-3RZWEB2X5T');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ตีเลขเด็ด — teelekded.com</title>
+<title>ตีเลขเด็ด — ทำนายความฝัน หาเลขมงคล</title>
+<meta name="description" content="ทำนายความฝัน หาเลขมงคลจากความฝัน ฝันเห็นอะไรก็ตีเลขได้ — ตีเลขเด็ด teelekded.com">
+<meta name="keywords" content="ทำนายฝัน,เลขเด็ด,ฝันเห็นงู,หวยฝัน,ดูดวงฝัน,เลขมงคล,ตีเลขจากฝัน,ตีเลขเด็ด">
+<meta property="og:title" content="ตีเลขเด็ด — ทำนายความฝัน หาเลขมงคล">
+<meta property="og:description" content="ทำนายความฝัน หาเลขมงคลจากความฝัน ฝันเห็นอะไรก็ตีเลขได้">
+<meta property="og:image" content="https://www.teelekded.com/logo.png">
+<meta property="og:url" content="https://www.teelekded.com">
+<meta property="og:type" content="website">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#CC0000">
 <meta name="mobile-web-app-capable" content="yes">
@@ -807,49 +814,33 @@ function getTerms(item){
 }
 
 function searchDB(text) {
-  const raw = String(text || '').toLowerCase();
-  const compact = normalizeThaiText(raw);
+  if(!text) return [];
+  const raw = String(text).toLowerCase();
+  const found = [];
+  const seen = new Set();
 
-  // กันคำกว้างเดี่ยว ๆ ไม่ให้ลากผลผิด เช่น พิมพ์ "ตาย" แล้วไปเจอ "งูตาย"
-  const weakInputOnly = ['ตาย','ศพ'];
-  if(weakInputOnly.includes(compact)) return [];
+  // เรียงจากคำยาวสุดก่อน เพื่อจับ multi-word ก่อน
+  const sorted = [...DREAM_DB].sort((a,b) => String(b.k).length - String(a.k).length);
 
-  const inputWords = splitSearchWords(raw);
-  const scored = [];
-
-  DREAM_DB.forEach(item => {
-    let score = 0;
-    const terms = getTerms(item);
-
-    terms.forEach(t => {
-      if(!t.compact) return;
-      if(raw.includes(t.raw) && t.raw.length >= 2){ score += 120 + t.compact.length; }
-      if(compact.includes(t.compact)){ score += 100 + t.compact.length; }
-      if(t.compact.includes(compact) && compact.length >= 2){ score += 60 + compact.length; }
-
-      inputWords.forEach(w=>{
-        if(w.length < 2) return;
-        if(t.compact === w){ score += 80 + w.length; }
-        else if(t.compact.includes(w)){ score += 28 + w.length; }
-        else if(w.includes(t.compact) && t.compact.length >= 3){ score += 22 + t.compact.length; }
-      });
-    });
-
-    const cat = normalizeThaiText(item.cat || '');
-    if(cat && inputWords.some(w=>cat.includes(w) || w.includes(cat))) score += 10;
-    if(score > 0) scored.push({item, score});
-  });
-
-  scored.sort((a,b)=>{
-    if(b.score !== a.score) return b.score - a.score;
-    return String(a.item.k).length - String(b.item.k).length;
-  });
-
-  const found=[];
-  scored.forEach(s=>{
-    if(found.length >= 8) return;
-    if(!found.find(f=>f.k === s.item.k)) found.push(s.item);
-  });
+  for(const item of sorted){
+    // ตรวจ keyword หลัก
+    const kw = String(item.k || '').toLowerCase();
+    if(kw.length >= 2 && raw.includes(kw) && !seen.has(kw)){
+      found.push(item);
+      seen.add(kw);
+      continue;
+    }
+    // ตรวจ aliases (item.a)
+    const aliases = item.a || [];
+    for(const alias of aliases){
+      const a = String(alias || '').toLowerCase();
+      if(a.length >= 2 && raw.includes(a) && !seen.has(kw)){
+        found.push(item);
+        seen.add(kw);
+        break;
+      }
+    }
+  }
   return found;
 }
 
