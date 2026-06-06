@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Generate Icon</title></head>
+<body>
+<canvas id="c192" width="192" height="192" style="border:1px solid #ccc;margin:8px"></canvas>
+<canvas id="c512" width="512" height="512" style="border:1px solid #ccc;margin:8px"></canvas>
+<br>
+<button onclick="dl(192)">Download icon-192.png</button>
+<button onclick="dl(512)">Download icon-512.png</button>
+<script>
+function draw(canvas, size) {
+  const ctx = canvas.getContext('2d');
+  const s = size;
+
+  // Background
+  ctx.fillStyle = '#0D0D14';
+  ctx.fillRect(0, 0, s, s);
+
+  // Red bottom bar
+  ctx.fillStyle = '#CC0000';
+  ctx.fillRect(0, s * 0.78, s, s * 0.22);
+
+  // Lottery ticket body (white rounded rect)
+  const pad = s * 0.18;
+  const w = s - pad * 2;
+  const h = s * 0.68;
+  const r = s * 0.08;
+  ctx.fillStyle = '#FFFFFF';
+  ctx.beginPath();
+  ctx.moveTo(pad + r, pad * 0.6);
+  ctx.lineTo(pad + w - r, pad * 0.6);
+  ctx.arcTo(pad + w, pad * 0.6, pad + w, pad * 0.6 + r, r);
+  ctx.lineTo(pad + w, pad * 0.6 + h - r);
+  ctx.arcTo(pad + w, pad * 0.6 + h, pad + w - r, pad * 0.6 + h, r);
+  ctx.lineTo(pad + r, pad * 0.6 + h);
+  ctx.arcTo(pad, pad * 0.6 + h, pad, pad * 0.6 + h - r, r);
+  ctx.lineTo(pad, pad * 0.6 + r);
+  ctx.arcTo(pad, pad * 0.6, pad + r, pad * 0.6, r);
+  ctx.closePath();
+  ctx.fill();
+
+  // Red stripe on ticket
+  ctx.fillStyle = '#CC0000';
+  ctx.fillRect(pad, pad * 0.6, s * 0.06, h);
+
+  // Big number "27"
+  ctx.fillStyle = '#CC0000';
+  ctx.font = `bold ${s * 0.25}px "DM Sans", Arial, sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('27', s * 0.56, s * 0.36);
+
+  // Small number "49"
+  ctx.fillStyle = '#333';
+  ctx.font = `bold ${s * 0.13}px "DM Sans", Arial, sans-serif`;
+  ctx.fillText('49', s * 0.72, s * 0.42);
+
+  // Bottom bar text
+  ctx.fillStyle = '#FFFFFF';
+  ctx.font = `bold ${s * 0.1}px "DM Sans", Arial, sans-serif`;
+  ctx.fillText('TEELEKDED', s * 0.5, s * 0.895);
+}
+
+draw(document.getElementById('c192'), 192);
+draw(document.getElementById('c512'), 512);
+
+function dl(size) {
+  const canvas = document.getElementById('c' + size);
+  const a = document.createElement('a');
+  a.download = `icon-${size}.png`;
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+}
+</script>
+</body>
+</html>
