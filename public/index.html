@@ -1000,12 +1000,23 @@ async function analyzeDream(){
       d.innerHTML='<span class="db-kw">ไม่พบคำนี้ในตำรา ลองพิมพ์คำหลัก เช่น งู รถ บ้าน ทอง น้ำ คนแก่</span><div class="db-nums"></div>';
       grid.appendChild(d);
     }else{
-      keywords.forEach(k=>{
+      const showMax = 4;
+      keywords.slice(0, showMax).forEach(k=>{
         const d=document.createElement('div');d.className='db-row';
         const label = k.cat ? `${k.w} (${k.cat})` : k.w;
         d.innerHTML=`<span class="db-kw">${label}</span><div class="db-nums">${(k.nums||[]).slice(0,3).map(n=>`<div class="db-n">${n}</div>`).join('')}</div>`;
         grid.appendChild(d);
       });
+      if(keywords.length > showMax){
+        const more=document.createElement('div');more.className='db-row';
+        more.style.gridColumn='1 / -1';
+        more.style.textAlign='center';
+        more.style.color='rgba(255,255,255,0.3)';
+        more.style.fontSize='11px';
+        more.style.padding='4px 0';
+        more.textContent=`+${keywords.length - showMax} รายการที่เกี่ยวข้อง`;
+        grid.appendChild(more);
+      }
     }
 
     // HL
@@ -1263,142 +1274,47 @@ async function loadSheets() {
 }
 
 // ══════════════════════════════════════════
-// SHARE RESULT — generate 1080x1080 image
+// SHARE RESULT — Web Share API
 // ══════════════════════════════════════════
-function shareResult() {
-  const canvas = document.createElement('canvas');
-  canvas.width = 1080;
-  canvas.height = 1080;
-  const ctx = canvas.getContext('2d');
-  const S = 1080;
-
-  // ── Background ──
-  ctx.fillStyle = '#0D0D14';
-  ctx.fillRect(0, 0, S, S);
-
-  // ── Red top bar ──
-  ctx.fillStyle = '#CC0000';
-  ctx.fillRect(0, 0, S, 8);
-
-  // ── Logo area: lottery ticket shape ──
-  const ticketX = S/2 - 90, ticketY = 80, ticketW = 180, ticketH = 240, r = 16;
-  ctx.fillStyle = '#FFFFFF';
-  ctx.beginPath();
-  ctx.moveTo(ticketX+r, ticketY);
-  ctx.lineTo(ticketX+ticketW-r, ticketY);
-  ctx.arcTo(ticketX+ticketW, ticketY, ticketX+ticketW, ticketY+r, r);
-  ctx.lineTo(ticketX+ticketW, ticketY+ticketH-r);
-  ctx.arcTo(ticketX+ticketW, ticketY+ticketH, ticketX+ticketW-r, ticketY+ticketH, r);
-  ctx.lineTo(ticketX+r, ticketY+ticketH);
-  ctx.arcTo(ticketX, ticketY+ticketH, ticketX, ticketY+ticketH-r, r);
-  ctx.lineTo(ticketX, ticketY+r);
-  ctx.arcTo(ticketX, ticketY, ticketX+r, ticketY, r);
-  ctx.closePath();
-  ctx.fill();
-
-  // red stripe on ticket
-  ctx.fillStyle = '#CC0000';
-  ctx.fillRect(ticketX, ticketY, 20, ticketH);
-
-  // ticket number
-  ctx.fillStyle = '#CC0000';
-  ctx.font = 'bold 72px "DM Sans", Arial';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  const nums = (document.getElementById('hlNums')?.textContent || '').match(/\d+/g) || ['?'];
-  ctx.fillText(nums[0] || '?', ticketX + ticketW/2 + 10, ticketY + ticketH/2 - 10);
-
-  // TEELEKDED on ticket
-  ctx.fillStyle = '#CC0000';
-  ctx.font = 'bold 18px "DM Sans", Arial';
-  ctx.fillText('TEELEKDED', ticketX + ticketW/2 + 10, ticketY + ticketH - 28);
-
-  // ── Brand name ──
-  ctx.font = 'bold 52px "DM Sans", Arial';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'alphabetic';
-  ctx.fillStyle = '#FFFFFF';
-  ctx.fillText('TEE', S/2 - 80, 410);
-  ctx.fillStyle = '#CC0000';
-  ctx.fillText('LEKDED', S/2 + 60, 410);
-  ctx.fillStyle = '#666';
-  ctx.font = '22px "DM Sans", Arial';
-  ctx.fillText('.com', S/2 + 168, 410);
-
-  // ── Divider ──
-  ctx.strokeStyle = 'rgba(204,0,0,0.4)';
-  ctx.lineWidth = 1.5;
-  ctx.beginPath();
-  ctx.moveTo(80, 440); ctx.lineTo(S-80, 440);
-  ctx.stroke();
-
-  // ── Dream keyword ──
-  const dreamText = document.getElementById('dreamInput')?.value || '';
-  const shortDream = dreamText.length > 20 ? dreamText.slice(0,20)+'...' : dreamText;
-  ctx.fillStyle = 'rgba(255,255,255,0.5)';
-  ctx.font = '28px "Sarabun", Arial';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'alphabetic';
-  ctx.fillText('🌙 ฝันเห็น "' + shortDream + '"', S/2, 510);
-
-  // ── Meaning ──
+async function shareResult() {
+  const dream = document.getElementById('dreamInput')?.value || '';
+  const nums  = (document.getElementById('hlNums')?.textContent || '').match(/\d+/g) || [];
   const meaning = document.getElementById('meaningText')?.textContent || '';
-  const shortMeaning = meaning.length > 40 ? meaning.slice(0,40)+'...' : meaning;
-  ctx.fillStyle = '#FFFFFF';
-  ctx.font = '32px "Sarabun", Arial';
-  ctx.textAlign = 'center';
-  // word wrap simple
-  const words = shortMeaning;
-  ctx.fillText(words, S/2, 580);
 
-  // ── เลขมงคล label ──
-  ctx.fillStyle = 'rgba(255,255,255,0.4)';
-  ctx.font = '24px "Sarabun", Arial';
-  ctx.fillText('เลขมงคล', S/2, 650);
+  const shortDream   = dream.length > 30 ? dream.slice(0,30)+'…' : dream;
+  const shortMeaning = meaning.length > 60 ? meaning.slice(0,60)+'…' : meaning;
+  const numStr = nums.slice(0,5).join(' · ');
 
-  // ── Number chips ──
-  const allNums = (document.getElementById('hlNums')?.textContent || '').match(/\d+/g) || [];
-  const showNums = allNums.slice(0,5);
-  const chipW = 130, chipH = 80, chipGap = 20;
-  const totalW = showNums.length * chipW + (showNums.length-1) * chipGap;
-  let startX = S/2 - totalW/2;
-  showNums.forEach(n => {
-    ctx.fillStyle = '#CC0000';
-    ctx.beginPath();
-    ctx.roundRect(startX, 670, chipW, chipH, 8);
-    ctx.fill();
-    ctx.fillStyle = '#FFFFFF';
-    ctx.font = 'bold 36px "DM Sans", Arial';
-    ctx.textAlign = 'center';
-    ctx.fillText(n, startX + chipW/2, 670 + chipH/2 + 13);
-    startX += chipW + chipGap;
+  const shareText =
+`🌙 ฝันเห็น "${shortDream}"
+✨ ${shortMeaning}
+🎯 เลขมงคล: ${numStr}
+─────────────────
+ทำนายฝันได้ที่ teelekded.com`;
+
+  const shareData = {
+    title: 'ผลทำนายฝัน — TEELEKDED',
+    text: shareText,
+    url: 'https://teelekded.com'
+  };
+
+  if (navigator.share) {
+    try {
+      await navigator.share(shareData);
+    } catch(e) {
+      if (e.name !== 'AbortError') fallbackCopy(shareText);
+    }
+  } else {
+    fallbackCopy(shareText);
+  }
+}
+
+function fallbackCopy(text) {
+  navigator.clipboard?.writeText(text).then(() => {
+    showToast('📋 คัดลอกผลทำนายแล้ว! นำไปแชร์ได้เลย');
+  }).catch(() => {
+    showToast('กด Share แล้วนำข้อความไปแชร์ได้เลยครับ');
   });
-
-  // ── Bottom divider ──
-  ctx.strokeStyle = 'rgba(204,0,0,0.3)';
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(80, 790); ctx.lineTo(S-80, 790);
-  ctx.stroke();
-
-  // ── Footer ──
-  ctx.fillStyle = 'rgba(255,255,255,0.35)';
-  ctx.font = '26px "Sarabun", Arial';
-  ctx.textAlign = 'center';
-  ctx.fillText('ลองทำนายฝันของคุณที่', S/2, 860);
-  ctx.fillStyle = '#CC0000';
-  ctx.font = 'bold 32px "DM Sans", Arial';
-  ctx.fillText('teelekded.com', S/2, 910);
-
-  // ── Red bottom bar ──
-  ctx.fillStyle = '#CC0000';
-  ctx.fillRect(0, S-8, S, 8);
-
-  // ── Download ──
-  const link = document.createElement('a');
-  link.download = 'teelekded-result.png';
-  link.href = canvas.toDataURL('image/png');
-  link.click();
 }
 
 // โหลดตอนเปิดเว็บ
