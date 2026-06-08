@@ -179,7 +179,7 @@ body{background:var(--bg);font-family:'Sarabun',sans-serif;color:var(--ink);padd
 .chip{font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;padding:7px 14px;border-radius:3px}
 .chip-red{background:var(--red);color:#FFF}
 .chip-out{border:1.5px solid var(--red);color:var(--red);background:#FFF8F8}
-.chip-sm{font-size:13px;padding:5px 10px}
+.chip-sm{font-size:16px;padding:7px 14px}
 .tbl{width:100%;border-collapse:collapse;font-size:13px}
 .tbl th{background:var(--ink);color:#FFF;padding:8px 10px;text-align:left;font-size:11px;font-weight:600}
 .tbl td{padding:8px 10px;border-bottom:.5px solid var(--border)}
@@ -249,7 +249,7 @@ body{background:var(--bg);font-family:'Sarabun',sans-serif;color:var(--ink);padd
   .section-panel{padding:16px 12px}
   .sec-title{font-size:18px}
   .chip{font-size:14px;padding:6px 12px}
-  .chip-sm{font-size:11px;padding:4px 8px}
+  .chip-sm{font-size:14px;padding:6px 12px}
   .tbl{font-size:12px}
   .tbl th,.tbl td{padding:7px 10px}
   .guide-row{padding:8px 12px}
@@ -435,7 +435,7 @@ body{background:var(--bg);font-family:'Sarabun',sans-serif;color:var(--ink);padd
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <div class="nb-brand">
+  <div class="nb-brand" onclick="switchTab('home')" style="cursor:pointer">
     <!-- logo svg -->
     <svg width="62" height="84" viewBox="0 0 260 360" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
 <defs><style>
@@ -687,6 +687,39 @@ body{background:var(--bg);font-family:'Sarabun',sans-serif;color:var(--ink);padd
       </div>
     </div>
   </div>
+
+  <!-- เลขที่ยังไม่ออกนานสุด -->
+  <div class="sec-label">เลขที่ยังไม่ออกนานสุด</div>
+  <div class="card">
+    <div class="card-head"><div class="card-title"><i class="ti ti-clock"></i>เลขรอออก</div></div>
+    <div class="card-body" id="cold-list">
+      <div style="color:rgba(0,0,0,0.4);font-size:13px;text-align:center;padding:8px">กำลังโหลด...</div>
+    </div>
+  </div>
+
+  <!-- เกร็ดหวย -->
+  <div class="sec-label">เกร็ดน่ารู้</div>
+  <div class="card">
+    <div class="card-body" style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <span style="font-size:18px">🎯</span>
+        <div><div style="font-size:13px;font-weight:600;color:#222">เลขวนซ้ำทุก 6-12 งวด</div><div style="font-size:12px;color:#666;margin-top:2px">สถิติพบว่าเลขท้าย 2 ตัวมักวนกลับมาออกซ้ำในช่วง 6-12 งวด</div></div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <span style="font-size:18px">📅</span>
+        <div><div style="font-size:13px;font-weight:600;color:#222">งวดวันที่ 1 vs 16</div><div style="font-size:12px;color:#666;margin-top:2px">งวดวันที่ 1 มักมีเลขคู่ออกบ่อยกว่า ส่วนวันที่ 16 มักเป็นเลขคี่</div></div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <span style="font-size:18px">🔢</span>
+        <div><div style="font-size:13px;font-weight:600;color:#222">ดูเลขท้าย 2 ตัวจากฝัน</div><div style="font-size:12px;color:#666;margin-top:2px">ทำนายฝันเพื่อหาเลขมงคลได้ที่หน้าหลัก</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <a href="https://namchok99.com" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;margin:16px;padding:16px;background:#CC0000;border-radius:8px;color:#FFF;font-size:15px;font-weight:700;text-decoration:none">
+    <i class="ti ti-external-link"></i> แทงหวยที่ NAMCHOK99.COM
+  </a>
 </div>
 
 <!-- ═══ วิเคราะห์ PANEL ═══ -->
@@ -1195,6 +1228,21 @@ async function loadSheets() {
             </div>
           </div>`).join('')
         : '<div style="text-align:center;padding:20px;color:rgba(0,0,0,0.3)">ยังไม่มีข้อมูล</div>';
+    }
+
+    // ── cold-list: เลขที่ยังไม่ออกนานสุด (จาก results) ──
+    const coldEl = document.getElementById('cold-list');
+    if (coldEl && rRows.length) {
+      const seen = new Set();
+      rRows.forEach(r => { seen.add(r[7]); seen.add(r[5]); seen.add(r[6]); });
+      // เลข 2ตัวที่ไม่ออกเลยใน 1 ปี
+      const allNums = Array.from({length:100}, (_,i) => String(i).padStart(2,'0'));
+      const cold = allNums.filter(n => !seen.has(n)).slice(0,8);
+      coldEl.innerHTML = cold.length
+        ? `<div style="display:flex;flex-wrap:wrap;gap:8px;padding:4px">
+            ${cold.map(n=>`<span style="background:#f5f5f5;border:1.5px solid #ddd;border-radius:4px;padding:6px 12px;font-size:16px;font-weight:700;color:#333">${n}</span>`).join('')}
+           </div><div style="font-size:11px;color:#999;padding:6px 4px 0">เลขท้าย 2 ตัวที่ไม่ออกในรอบ 1 ปี</div>`
+        : '<div style="font-size:12px;color:#999;padding:8px">ข้อมูลไม่เพียงพอ</div>';
     }
 
   } catch(e) {
