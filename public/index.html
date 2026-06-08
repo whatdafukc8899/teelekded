@@ -710,16 +710,10 @@ body{background:var(--bg);font-family:'Sarabun',sans-serif;color:var(--ink);padd
 <!-- ═══ ผลหวย PANEL ═══ -->
 <div class="section-panel" id="panel-result" style="display:none">
   <div class="sec-title"><i class="ti ti-history"></i>ผลหวยย้อนหลัง</div>
-  <div class="sec-label">ผลหวยรัฐบาล</div>
+  <div class="sec-label">ผลหวยรัฐบาล 1 ปีย้อนหลัง</div>
   <div class="card">
     <div class="card-head"><div class="card-title"><i class="ti ti-history"></i>ผลล่าสุด</div></div>
-    <div class="card-body">
-      <div class="h-row"><div><div class="h-d">1 พ.ค. 68</div><div class="h-n">27 / 279</div></div><span class="h-w">ตรง ✓</span></div>
-      <div class="h-row"><div><div class="h-d">16 เม.ย. 68</div><div class="h-n">49 / 149</div></div><span class="h-w">ตรง ✓</span></div>
-      <div class="h-row"><div><div class="h-d">1 เม.ย. 68</div><div class="h-n">79 / 179</div></div><span class="h-near">ใกล้เคียง</span></div>
-      <div class="h-row"><div><div class="h-d">16 มี.ค. 68</div><div class="h-n">14 / 414</div></div><span class="h-w">ตรง ✓</span></div>
-      <div class="h-row"><div><div class="h-d">1 มี.ค. 68</div><div class="h-n">56 / 956</div></div><span class="h-w">ตรง ✓</span></div>
-    </div>
+    <div class="card-body" id="result-list"><div style="text-align:center;padding:20px;color:rgba(0,0,0,0.3)">กำลังโหลด...</div></div>
   </div>
   <div class="sec-label">เวลาออกหวยวันนี้</div>
   <div class="card">
@@ -1180,6 +1174,27 @@ async function loadSheets() {
             return `<div class="guide-row"><div><div class="g-name">${r[1]}</div><div class="g-time">${r[2]}</div></div><div class="g-nums">${hots}${secs}</div></div>`;
           }).join('')
         : '<div style="text-align:center;padding:16px;color:rgba(255,255,255,0.3)">ยังไม่มีข้อมูลวันนี้</div>';
+    }
+
+    // ── results (ผลหวยย้อนหลัง) ──
+    // columns: วันที่, งวด, รางวัลที่1, 3ตัวหน้า1, 3ตัวหน้า2, 3ตัวท้าย1, 3ตัวท้าย2, 2ตัวท้าย
+    const rRes = await fetch(csvUrl('results'));
+    const rRows = parseCSV(await rRes.text());
+    const resultEl = document.getElementById('result-list');
+    if (resultEl) {
+      resultEl.innerHTML = rRows.length
+        ? rRows.map(r => `
+          <div class="h-row">
+            <div>
+              <div class="h-d">${r[1]}</div>
+              <div class="h-n" style="font-size:13px">
+                รางวัลที่ 1: <b>${r[2]}</b> &nbsp;|&nbsp;
+                3ตัวท้าย: <b>${r[5]} · ${r[6]}</b> &nbsp;|&nbsp;
+                2ตัวท้าย: <b>${r[7]}</b>
+              </div>
+            </div>
+          </div>`).join('')
+        : '<div style="text-align:center;padding:20px;color:rgba(0,0,0,0.3)">ยังไม่มีข้อมูล</div>';
     }
 
   } catch(e) {
