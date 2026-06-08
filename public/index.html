@@ -1375,9 +1375,10 @@ function buildShareCanvas(dream, nums, meaning) {
   const dText = shortDream.length > 24 ? shortDream.slice(0,24)+'…' : shortDream;
   ctx.fillText(`"${dText}"`, S/2, 420);
 
-  // Meaning text — ชิดซ้าย ไม่มีกรอบ
+  // Meaning text — ชิดซ้าย padding 80px
   ctx.font='28px "Sarabun",Arial';
-  const mMaxW = S - 280;
+  const mPad = 80;
+  const mMaxW = S - mPad * 2;
   let mLine = '', mLines = [];
   shortMeaning.split('').forEach(ch => {
     const t = mLine + ch;
@@ -1386,8 +1387,9 @@ function buildShareCanvas(dream, nums, meaning) {
   });
   if(mLine) mLines.push(mLine);
   mLines = mLines.slice(0,3);
-  ctx.fillStyle='rgba(255,255,255,0.85)'; ctx.textBaseline='top'; ctx.textAlign='center';
-  mLines.forEach((l,i) => ctx.fillText(l, S/2, 460 + i*46));
+  ctx.fillStyle='rgba(255,255,255,0.85)'; ctx.textBaseline='top'; ctx.textAlign='left';
+  mLines.forEach((l,i) => ctx.fillText(l, mPad, 460 + i*46));
+  ctx.textAlign='center';
 
   // เลขมงคล
   ctx.textBaseline='middle'; ctx.textAlign='center';
