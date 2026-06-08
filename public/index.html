@@ -1352,19 +1352,20 @@ function buildShareCanvas(dream, nums, meaning) {
   const _totalChipW = _nCount*_chipW + (_nCount-1)*_chipGap;
   const leftX = Math.round(S/2 - _totalChipW/2);
 
-  // ── โลโก้ TEELEKDED (y=90) ──
+  // ── โลโก้ TEELEKDED บน ──
   ctx.textBaseline='middle';
   ctx.font='bold 96px "DM Sans",Arial,sans-serif';
   const teeW=ctx.measureText('TEE').width, lekW=ctx.measureText('LEK').width, dedW=ctx.measureText('DED').width;
-  let lx=S/2-(teeW+lekW+dedW+10)/2;
+  const logoLeftX = Math.round(S/2-(teeW+lekW+dedW+10)/2); // ตำแหน่ง T
+  let lx=logoLeftX;
   ctx.fillStyle='#FFFFFF'; ctx.textAlign='left'; ctx.fillText('TEE',lx,110);
   lx+=teeW+5; ctx.fillStyle='#CC0000'; ctx.fillText('LEK',lx,110);
   lx+=lekW+5; ctx.fillStyle='#FFFFFF'; ctx.fillText('DED',lx,110);
 
-  // sub + divider
-  ctx.textAlign='center';
+  // sub — ชิดซ้ายตรงตัว T
+  ctx.textAlign='left';
   ctx.font='22px "DM Sans",Arial'; ctx.fillStyle='rgba(255,255,255,0.35)';
-  ctx.fillText('ผลทำนายความฝัน', S/2, 168);
+  ctx.fillText('ผลทำนายความฝัน', logoLeftX, 168);
   ctx.strokeStyle='rgba(204,0,0,0.4)'; ctx.lineWidth=2;
   ctx.beginPath(); ctx.moveTo(100,192); ctx.lineTo(S-100,192); ctx.stroke();
 
@@ -1419,20 +1420,19 @@ function buildShareCanvas(dream, nums, meaning) {
   ctx.strokeStyle='rgba(204,0,0,0.25)'; ctx.lineWidth=1.5;
   ctx.beginPath(); ctx.moveTo(60,footerY); ctx.lineTo(S-60,footerY); ctx.stroke();
 
-  ctx.textBaseline='middle'; ctx.textAlign='center';
+  // ทำนายฝันออนไลน์ฟรี — ชิดซ้ายตรงตัว T
+  ctx.textBaseline='middle'; ctx.textAlign='left';
   ctx.font='22px "Sarabun",Arial'; ctx.fillStyle='rgba(255,255,255,0.3)';
-  ctx.fillText('ทำนายฝันออนไลน์ฟรี', S/2, footerY+40);
+  ctx.fillText('ทำนายฝันออนไลน์ฟรี', logoLeftX, footerY+38);
 
+  // TEELEKDED.COM — ชิดซ้ายตรงตัว T
   ctx.font='bold 40px "DM Sans",Arial';
-  const fteeW=ctx.measureText('TEE').width,flekW=ctx.measureText('LEK').width,fdedW=ctx.measureText('DED').width;
-  let fx=S/2-(fteeW+flekW+fdedW+8)/2;
-  ctx.fillStyle='#FFFFFF'; ctx.textAlign='left'; ctx.fillText('TEE',fx,footerY+90);
-  fx+=fteeW+4; ctx.fillStyle='#CC0000'; ctx.fillText('LEK',fx,footerY+90);
-  fx+=flekW+4; ctx.fillStyle='#FFFFFF'; ctx.fillText('DED',fx,footerY+90);
-
-  ctx.textAlign='center';
-  ctx.font='18px "Sarabun",Arial'; ctx.fillStyle='rgba(255,255,255,0.18)';
-  ctx.fillText('ระบบค้นตำรา 5,000+ คำ', S/2, footerY+130);
+  const fteeW=ctx.measureText('TEE').width, flekW=ctx.measureText('LEK').width, fdedW=ctx.measureText('DED').width;
+  let fx=logoLeftX;
+  ctx.fillStyle='#FFFFFF'; ctx.fillText('TEE',fx,footerY+88);
+  fx+=fteeW+4; ctx.fillStyle='#CC0000'; ctx.fillText('LEK',fx,footerY+88);
+  fx+=flekW+4; ctx.fillStyle='#FFFFFF'; ctx.fillText('DED',fx,footerY+88);
+  fx+=fdedW; ctx.fillStyle='rgba(255,255,255,0.5)'; ctx.fillText('.COM',fx,footerY+88);
 
   return canvas;
 }
