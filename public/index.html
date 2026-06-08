@@ -1368,10 +1368,13 @@ function buildShareCanvas(dream, nums, meaning) {
   ctx.strokeStyle='rgba(204,0,0,0.4)'; ctx.lineWidth=2;
   ctx.beginPath(); ctx.moveTo(100,295); ctx.lineTo(S-100,295); ctx.stroke();
 
-  // ขอบซ้ายตรงกับ chip ตัวเลข (5 ตัว: totalW=822, sx=540-411=129)
-  const leftX = 130;
+  // คำนวณ leftX จาก chip จริง
+  const _chipW=150, _chipGap=18;
+  const _nCount = Math.max(1, (nums||[]).slice(0,5).length);
+  const _totalChipW = _nCount*_chipW + (_nCount-1)*_chipGap;
+  const leftX = Math.round(S/2 - _totalChipW/2);
 
-  // Dream text — ชิดซ้าย
+  // ฝันเห็น + ชื่อฝัน — ชิดซ้าย
   ctx.textAlign='left'; ctx.textBaseline='middle';
   ctx.font='30px "Sarabun",Arial'; ctx.fillStyle='rgba(255,255,255,0.5)';
   ctx.fillText('ฝันเห็น', leftX, 340);
@@ -1379,7 +1382,7 @@ function buildShareCanvas(dream, nums, meaning) {
   const dText = shortDream.length > 20 ? shortDream.slice(0,20)+'…' : shortDream;
   ctx.fillText(`"${dText}"`, leftX, 400);
 
-  // Meaning text — ชิดซ้าย ตรงแนวเดียวกัน
+  // Meaning — ชิดซ้าย ตรงแนวเดียวกัน
   ctx.font='26px "Sarabun",Arial';
   const mMaxW = S - leftX - 60;
   let mLine = '', mLines = [];
