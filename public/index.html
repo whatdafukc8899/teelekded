@@ -1216,7 +1216,12 @@ async function loadSheets() {
     const resultEl = document.getElementById('result-list');
     if (resultEl) {
       resultEl.innerHTML = rRows.length
-        ? rRows.map(r => `
+        ? rRows.map((r, i) => i === 0 ? `
+          <div style="background:#CC0000;border-radius:6px;padding:14px;margin-bottom:10px">
+            <div style="font-size:11px;color:rgba(255,255,255,0.7);letter-spacing:.08em;margin-bottom:4px">🔴 งวดล่าสุด — ${r[1]}</div>
+            <div style="font-size:15px;font-weight:700;color:#FFF;margin-bottom:4px">รางวัลที่ 1: ${r[2]}</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.85)">3ตัวท้าย: ${r[5]} · ${r[6]} &nbsp;|&nbsp; 2ตัวท้าย: <b style="font-size:16px">${r[7]}</b></div>
+          </div>` : `
           <div class="h-row">
             <div>
               <div class="h-d">${r[1]}</div>
