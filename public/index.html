@@ -1345,24 +1345,38 @@ function buildShareCanvas(dream, nums, meaning) {
   // Red bars
   ctx.fillStyle='#CC0000'; ctx.fillRect(0,0,S,12); ctx.fillRect(0,S-12,S,12);
 
-  // Brand
+  // ── โลโก้ TEELEKDED (วาดด้วย canvas ไม่ใช้ emoji) ──
   ctx.textAlign='center'; ctx.textBaseline='middle';
-  ctx.font='bold 80px "DM Sans",Arial,sans-serif';
-  ctx.fillStyle='#FFFFFF'; ctx.fillText('TEE',S/2-110,100);
-  ctx.fillStyle='#CC0000'; ctx.fillText('LEK',S/2+10,100);
-  ctx.fillStyle='#FFFFFF'; ctx.fillText('DED',S/2+130,100);
-  ctx.font='22px "DM Sans",Arial'; ctx.fillStyle='rgba(255,255,255,0.35)';
-  ctx.fillText('ผลทำนายความฝัน', S/2, 155);
+
+  // วงกลมพื้นหลังโลโก้
+  ctx.beginPath(); ctx.arc(S/2, 200, 110, 0, Math.PI*2);
+  ctx.fillStyle='rgba(204,0,0,0.15)'; ctx.fill();
+  ctx.strokeStyle='rgba(204,0,0,0.5)'; ctx.lineWidth=3; ctx.stroke();
+
+  // ตัวอักษร TEE LEK DED ใน circle
+  ctx.font='bold 72px "DM Sans",Arial,sans-serif';
+  const teeW = ctx.measureText('TEE').width;
+  const lekW = ctx.measureText('LEK').width;
+  const dedW = ctx.measureText('DED').width;
+  const totalW = teeW + lekW + dedW + 8;
+  let lx = S/2 - totalW/2;
+  ctx.fillStyle='#FFFFFF'; ctx.textAlign='left'; ctx.fillText('TEE', lx, 200);
+  lx += teeW + 4;
+  ctx.fillStyle='#CC0000'; ctx.fillText('LEK', lx, 200);
+  lx += lekW + 4;
+  ctx.fillStyle='#FFFFFF'; ctx.fillText('DED', lx, 200);
+
+  // sub brand
+  ctx.textAlign='center';
+  ctx.font='20px "DM Sans",Arial'; ctx.fillStyle='rgba(255,255,255,0.4)';
+  ctx.fillText('ผลทำนายความฝัน', S/2, 258);
 
   // Divider
-  ctx.strokeStyle='rgba(204,0,0,0.5)'; ctx.lineWidth=2;
-  ctx.beginPath(); ctx.moveTo(60,185); ctx.lineTo(S-60,185); ctx.stroke();
-
-  // Moon
-  ctx.font='72px serif'; ctx.fillText('🌙', S/2, 270);
+  ctx.strokeStyle='rgba(204,0,0,0.4)'; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.moveTo(100,295); ctx.lineTo(S-100,295); ctx.stroke();
 
   // Dream text
-  ctx.font='36px "Sarabun",Arial'; ctx.fillStyle='rgba(255,255,255,0.55)';
+  ctx.font='34px "Sarabun",Arial'; ctx.fillStyle='rgba(255,255,255,0.5)';
   ctx.fillText('ฝันเห็น', S/2, 360);
   ctx.font='bold 44px "Sarabun",Arial'; ctx.fillStyle='#FFFFFF';
   const dText = shortDream.length > 24 ? shortDream.slice(0,24)+'…' : shortDream;
@@ -1403,12 +1417,19 @@ function buildShareCanvas(dream, nums, meaning) {
   ctx.strokeStyle='rgba(204,0,0,0.3)'; ctx.lineWidth=1.5;
   ctx.beginPath(); ctx.moveTo(60,790); ctx.lineTo(S-60,790); ctx.stroke();
   ctx.textBaseline='middle'; ctx.textAlign='center';
-  ctx.font='28px "Sarabun",Arial'; ctx.fillStyle='rgba(255,255,255,0.4)';
-  ctx.fillText('ทำนายฝันออนไลน์ฟรี', S/2, 860);
-  ctx.font='bold 38px "DM Sans",Arial'; ctx.fillStyle='#CC0000';
-  ctx.fillText('teelekded.com', S/2, 920);
-  ctx.font='22px "Sarabun",Arial'; ctx.fillStyle='rgba(255,255,255,0.2)';
-  ctx.fillText('ระบบค้นตำรา 5,000+ คำ', S/2, 970);
+  ctx.font='26px "Sarabun",Arial'; ctx.fillStyle='rgba(255,255,255,0.35)';
+  ctx.fillText('ทำนายฝันออนไลน์ฟรี', S/2, 855);
+  // โลโก้ TEE LEK DED footer
+  ctx.font='bold 42px "DM Sans",Arial';
+  const fteeW=ctx.measureText('TEE').width, flekW=ctx.measureText('LEK').width, fdedW=ctx.measureText('DED').width;
+  const ftotal=fteeW+flekW+fdedW+8;
+  let fx=S/2-ftotal/2;
+  ctx.fillStyle='#FFFFFF'; ctx.textAlign='left'; ctx.fillText('TEE',fx,910);
+  fx+=fteeW+4; ctx.fillStyle='#CC0000'; ctx.fillText('LEK',fx,910);
+  fx+=flekW+4; ctx.fillStyle='#FFFFFF'; ctx.fillText('DED',fx,910);
+  ctx.textAlign='center';
+  ctx.font='20px "Sarabun",Arial'; ctx.fillStyle='rgba(255,255,255,0.2)';
+  ctx.fillText('ระบบค้นตำรา 5,000+ คำ', S/2, 965);
   return canvas;
 }
 
