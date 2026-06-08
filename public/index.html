@@ -1296,7 +1296,7 @@ function prepareShareImage() {}
 
 async function shareResult() {
   const dream   = document.getElementById('dreamInput')?.value || '';
-  const nums    = (document.getElementById('hlNums')?.textContent || '').match(/\d+/g) || [];
+  const nums    = [...(document.getElementById('hlNums')?.querySelectorAll('.hl')||[])].map(el=>el.textContent.trim()).filter(Boolean);
   const meaning = document.getElementById('meaningText')?.textContent || '';
   const shortDream   = dream.length > 30 ? dream.slice(0,30)+'…' : dream;
   const shortMeaning = meaning.length > 60 ? meaning.slice(0,60)+'…' : meaning;
