@@ -1345,56 +1345,24 @@ function buildShareCanvas(dream, nums, meaning) {
   // Red bars
   ctx.fillStyle='#CC0000'; ctx.fillRect(0,0,S,12); ctx.fillRect(0,S-12,S,12);
 
-  // ── ตัวเลข random กระจาย (แทนวงกลม) ──
-  ctx.textBaseline='middle';
-  const rng = (min,max) => Math.floor(Math.random()*(max-min+1))+min;
-  const numStyles = [
-    {digits:1, size:52, alpha:0.9,  color:'#CC0000'},
-    {digits:1, size:40, alpha:0.5,  color:'#FFFFFF'},
-    {digits:2, size:60, alpha:0.85, color:'#CC0000'},
-    {digits:2, size:44, alpha:0.4,  color:'#FFFFFF'},
-    {digits:3, size:36, alpha:0.7,  color:'#CC0000'},
-    {digits:3, size:30, alpha:0.35, color:'#FFFFFF'},
-  ];
-  // grid 5x3 ในพื้นที่ y=90–280
-  const cols=5, rows=3, gx=120, gy=95, gw=S-240, gh=185;
-  let ni=0;
-  for(let r=0;r<rows;r++){
-    for(let c=0;c<cols;c++){
-      const st = numStyles[ni % numStyles.length]; ni++;
-      const x = gx + (c/(cols-1))*gw + rng(-18,18);
-      const y = gy + (r/(rows-1))*gh + rng(-12,12);
-      const maxN = Math.pow(10, st.digits) - 1;
-      const minN = Math.pow(10, st.digits-1);
-      const n = rng(minN, maxN);
-      ctx.font=`bold ${st.size}px "DM Sans",Arial`;
-      ctx.textAlign='center';
-      const hex = st.color==='#CC0000'
-        ? `rgba(204,0,0,${st.alpha})`
-        : `rgba(255,255,255,${st.alpha})`;
-      ctx.fillStyle=hex;
-      ctx.fillText(String(n), x, y);
-    }
-  }
-
-  // ── โลโก้ TEELEKDED บน ──
+  // ── โลโก้ TEELEKDED ──
   ctx.textAlign='center'; ctx.textBaseline='middle';
-  ctx.font='bold 72px "DM Sans",Arial,sans-serif';
+  ctx.font='bold 96px "DM Sans",Arial,sans-serif';
   const teeW = ctx.measureText('TEE').width;
   const lekW = ctx.measureText('LEK').width;
   const dedW = ctx.measureText('DED').width;
-  const totalW = teeW + lekW + dedW + 8;
+  const totalW = teeW + lekW + dedW + 10;
   let lx = S/2 - totalW/2;
-  ctx.fillStyle='#FFFFFF'; ctx.textAlign='left'; ctx.fillText('TEE', lx, 100);
-  lx += teeW + 4;
-  ctx.fillStyle='#CC0000'; ctx.fillText('LEK', lx, 100);
-  lx += lekW + 4;
-  ctx.fillStyle='#FFFFFF'; ctx.fillText('DED', lx, 100);
+  ctx.fillStyle='#FFFFFF'; ctx.textAlign='left'; ctx.fillText('TEE', lx, 200);
+  lx += teeW + 5;
+  ctx.fillStyle='#CC0000'; ctx.fillText('LEK', lx, 200);
+  lx += lekW + 5;
+  ctx.fillStyle='#FFFFFF'; ctx.fillText('DED', lx, 200);
 
   // sub brand
   ctx.textAlign='center';
-  ctx.font='20px "DM Sans",Arial'; ctx.fillStyle='rgba(255,255,255,0.4)';
-  ctx.fillText('ผลทำนายความฝัน', S/2, 155);
+  ctx.font='24px "DM Sans",Arial'; ctx.fillStyle='rgba(255,255,255,0.4)';
+  ctx.fillText('ผลทำนายความฝัน', S/2, 268);
 
   // Divider
   ctx.strokeStyle='rgba(204,0,0,0.4)'; ctx.lineWidth=2;
