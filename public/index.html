@@ -1375,25 +1375,20 @@ function buildShareCanvas(dream, nums, meaning) {
   const dText = shortDream.length > 24 ? shortDream.slice(0,24)+'…' : shortDream;
   ctx.fillText(`"${dText}"`, S/2, 420);
 
-  // Meaning box — วัดความสูงจริงก่อนวาด
+  // Meaning text — ชิดซ้าย ไม่มีกรอบ
   ctx.font='28px "Sarabun",Arial';
-  const mWords = shortMeaning.split('');
   const mMaxW = S - 160;
   let mLine = '', mLines = [];
-  mWords.forEach(ch => {
+  shortMeaning.split('').forEach(ch => {
     const t = mLine + ch;
     if(ctx.measureText(t).width > mMaxW && mLine){ mLines.push(mLine); mLine=ch; }
     else mLine = t;
   });
   if(mLine) mLines.push(mLine);
   mLines = mLines.slice(0,3);
-  const boxH = Math.max(100, mLines.length * 46 + 40);
-  ctx.fillStyle='rgba(204,0,0,0.12)';
-  roundRect(ctx,60,450,S-120,boxH,16); ctx.fill();
-  ctx.strokeStyle='rgba(204,0,0,0.4)'; ctx.lineWidth=1.5;
-  roundRect(ctx,60,450,S-120,boxH,16); ctx.stroke();
-  ctx.fillStyle='rgba(255,255,255,0.85)'; ctx.textBaseline='top';
-  mLines.forEach((l,i) => ctx.fillText(l, S/2, 472 + i*46));
+  ctx.fillStyle='rgba(255,255,255,0.85)'; ctx.textBaseline='top'; ctx.textAlign='left';
+  mLines.forEach((l,i) => ctx.fillText(l, 80, 460 + i*46));
+  ctx.textAlign='center';
 
   // เลขมงคล
   ctx.textBaseline='middle'; ctx.textAlign='center';
