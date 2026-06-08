@@ -1039,6 +1039,8 @@ async function analyzeDream(){
     document.getElementById('meaningText').textContent=meaning||'—';
     dots.classList.remove('show');body.style.display='block';
     reveal('r0',50);reveal('r1',80);reveal('r2',300);reveal('r3',500);reveal('r3b',600);reveal('r4',750);reveal('r5',950);
+    // Pre-generate share image ทันทีที่ผลออก (ก่อนกดแชร์ เพื่อรักษา user gesture)
+    setTimeout(()=>prepareShareImage(), 600);
   }catch(e){
     console.error(e);
     dots.classList.remove('show');body.style.display='block';
@@ -1274,17 +1276,31 @@ async function loadSheets() {
 }
 
 // ══════════════════════════════════════════
-// SHARE RESULT — Web Share API
+// SHARE RESULT — synchronous canvas → file → share
+// ไม่มี async ก่อน navigator.share() → iOS ไม่ตัด gesture
 // ══════════════════════════════════════════
-async function shareResult() {
-  const dream = document.getElementById('dreamInput')?.value || '';
-  const nums  = (document.getElementById('hlNums')?.textContent || '').match(/\d+/g) || [];
-  const meaning = document.getElementById('meaningText')?.textContent || '';
 
+// แปลง dataURL → File แบบ synchronous (ไม่ใช้ toBlob)
+function dataURLtoFile(dataURL, filename) {
+  const arr = dataURL.split(',');
+  const mime = arr[0].match(/:(.*?);/)[1];
+  const bstr = atob(arr[1]);
+  let n = bstr.length;
+  const u8 = new Uint8Array(n);
+  while(n--) u8[n] = bstr.charCodeAt(n);
+  return new File([u8], filename, {type: mime});
+}
+
+// ไม่ต้องใช้แล้ว แต่เก็บไว้ไม่ให้ error
+function prepareShareImage() {}
+
+async function shareResult() {
+  const dream   = document.getElementById('dreamInput')?.value || '';
+  const nums    = (document.getElementById('hlNums')?.textContent || '').match(/\d+/g) || [];
+  const meaning = document.getElementById('meaningText')?.textContent || '';
   const shortDream   = dream.length > 30 ? dream.slice(0,30)+'…' : dream;
   const shortMeaning = meaning.length > 60 ? meaning.slice(0,60)+'…' : meaning;
-  const numStr = nums.slice(0,5).join(' · ');
-
+  const numStr = nums.slice(0,5).join('  ');
   const shareText =
 `🌙 ฝันเห็น "${shortDream}"
 ✨ ${shortMeaning}
@@ -1292,29 +1308,138 @@ async function shareResult() {
 ─────────────────
 ทำนายฝันได้ที่ teelekded.com`;
 
-  const shareData = {
-    title: 'ผลทำนายฝัน — TEELEKDED',
-    text: shareText,
-    url: 'https://teelekded.com'
-  };
+  // ── build canvas + แปลงเป็น File แบบ synchronous ──
+  const canvas = buildShareCanvas(dream, nums, meaning);
+  const dataURL = canvas.toDataURL('image/png');   // synchronous
+  const file    = dataURLtoFile(dataURL, 'teelekded-result.png'); // synchronous
 
-  if (navigator.share) {
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  if(navigator.share && isMobile){
     try {
-      await navigator.share(shareData);
-    } catch(e) {
-      if (e.name !== 'AbortError') fallbackCopy(shareText);
+      await navigator.share({ title:'ผลทำนายฝัน — TEELEKDED', text:shareText, files:[file] });
+    } catch(e){
+      if(e.name === 'AbortError') return;
+      downloadImageFromDataURL(dataURL);
     }
   } else {
-    fallbackCopy(shareText);
+    // Desktop → download รูป
+    downloadImageFromDataURL(dataURL);
   }
 }
 
-function fallbackCopy(text) {
-  navigator.clipboard?.writeText(text).then(() => {
-    showToast('📋 คัดลอกผลทำนายแล้ว! นำไปแชร์ได้เลย');
-  }).catch(() => {
-    showToast('กด Share แล้วนำข้อความไปแชร์ได้เลยครับ');
-  });
+// ── build canvas และ return (ไม่ทำ async) ──
+function buildShareCanvas(dream, nums, meaning) {
+  const shortDream   = (dream||'').length > 30 ? (dream||'').slice(0,30)+'…' : (dream||'');
+  const shortMeaning = (meaning||'').length > 60 ? (meaning||'').slice(0,60)+'…' : (meaning||'');
+  const canvas = document.createElement('canvas');
+  canvas.width = 1080; canvas.height = 1080;
+  const ctx = canvas.getContext('2d');
+  const S = 1080;
+
+  // Background
+  const bg = ctx.createLinearGradient(0,0,0,S);
+  bg.addColorStop(0,'#0D0D14'); bg.addColorStop(1,'#110008');
+  ctx.fillStyle = bg; ctx.fillRect(0,0,S,S);
+
+  // Red bars
+  ctx.fillStyle='#CC0000'; ctx.fillRect(0,0,S,12); ctx.fillRect(0,S-12,S,12);
+
+  // Brand
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.font='bold 80px "DM Sans",Arial,sans-serif';
+  ctx.fillStyle='#FFFFFF'; ctx.fillText('TEE',S/2-110,100);
+  ctx.fillStyle='#CC0000'; ctx.fillText('LEK',S/2+10,100);
+  ctx.fillStyle='#FFFFFF'; ctx.fillText('DED',S/2+130,100);
+  ctx.font='22px "DM Sans",Arial'; ctx.fillStyle='rgba(255,255,255,0.35)';
+  ctx.fillText('ผลทำนายความฝัน', S/2, 155);
+
+  // Divider
+  ctx.strokeStyle='rgba(204,0,0,0.5)'; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.moveTo(60,185); ctx.lineTo(S-60,185); ctx.stroke();
+
+  // Moon
+  ctx.font='72px serif'; ctx.fillText('🌙', S/2, 270);
+
+  // Dream text
+  ctx.font='36px "Sarabun",Arial'; ctx.fillStyle='rgba(255,255,255,0.55)';
+  ctx.fillText('ฝันเห็น', S/2, 360);
+  ctx.font='bold 44px "Sarabun",Arial'; ctx.fillStyle='#FFFFFF';
+  const dText = shortDream.length > 24 ? shortDream.slice(0,24)+'…' : shortDream;
+  ctx.fillText(`"${dText}"`, S/2, 420);
+
+  // Meaning box
+  ctx.fillStyle='rgba(204,0,0,0.12)';
+  roundRect(ctx,60,455,S-120,130,16); ctx.fill();
+  ctx.strokeStyle='rgba(204,0,0,0.4)'; ctx.lineWidth=1.5;
+  roundRect(ctx,60,455,S-120,130,16); ctx.stroke();
+  ctx.font='30px "Sarabun",Arial'; ctx.fillStyle='rgba(255,255,255,0.85)';
+  ctx.textBaseline='top';
+  wrapText(ctx, shortMeaning, S/2, 480, S-160, 40);
+
+  // เลขมงคล
+  ctx.textBaseline='middle'; ctx.textAlign='center';
+  ctx.font='28px "Sarabun",Arial'; ctx.fillStyle='rgba(255,255,255,0.4)';
+  ctx.fillText('✦  เลขมงคล  ✦', S/2, 635);
+
+  const showNums = (nums||[]).slice(0,5);
+  if(showNums.length){
+    const chipW=150,chipH=90,chipGap=18;
+    const totalW=showNums.length*chipW+(showNums.length-1)*chipGap;
+    let sx=S/2-totalW/2;
+    showNums.forEach((n,i)=>{
+      const grad=ctx.createLinearGradient(sx,660,sx,750);
+      grad.addColorStop(0,'#DD0000'); grad.addColorStop(1,'#990000');
+      ctx.fillStyle=grad; roundRect(ctx,sx,660,chipW,chipH,12); ctx.fill();
+      if(i===0){ ctx.strokeStyle='rgba(255,200,0,0.7)'; ctx.lineWidth=2.5; roundRect(ctx,sx,660,chipW,chipH,12); ctx.stroke(); }
+      ctx.font=`bold ${n.length>2?'44':'54'}px "DM Sans",Arial`;
+      ctx.fillStyle='#FFFFFF'; ctx.textBaseline='middle'; ctx.textAlign='center';
+      ctx.fillText(n, sx+chipW/2, 660+chipH/2);
+      sx+=chipW+chipGap;
+    });
+  }
+
+  // Divider + footer
+  ctx.strokeStyle='rgba(204,0,0,0.3)'; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.moveTo(60,790); ctx.lineTo(S-60,790); ctx.stroke();
+  ctx.textBaseline='middle'; ctx.textAlign='center';
+  ctx.font='28px "Sarabun",Arial'; ctx.fillStyle='rgba(255,255,255,0.4)';
+  ctx.fillText('ทำนายฝันออนไลน์ฟรี', S/2, 860);
+  ctx.font='bold 38px "DM Sans",Arial'; ctx.fillStyle='#CC0000';
+  ctx.fillText('teelekded.com', S/2, 920);
+  ctx.font='22px "Sarabun",Arial'; ctx.fillStyle='rgba(255,255,255,0.2)';
+  ctx.fillText('ระบบค้นตำรา 5,000+ คำ', S/2, 970);
+  return canvas;
+}
+
+function downloadImageFromDataURL(dataURL){
+  const a = document.createElement('a');
+  a.download = 'teelekded-result.png';
+  a.href = dataURL;
+  a.click();
+  showToast('💾 บันทึกรูปแล้ว! นำไปแชร์ใน social ได้เลย');
+}
+
+function roundRect(ctx, x, y, w, h, r){
+  ctx.beginPath();
+  ctx.moveTo(x+r, y);
+  ctx.arcTo(x+w,y, x+w,y+h, r);
+  ctx.arcTo(x+w,y+h, x,y+h, r);
+  ctx.arcTo(x,y+h, x,y, r);
+  ctx.arcTo(x,y, x+w,y, r);
+  ctx.closePath();
+}
+
+function wrapText(ctx, text, cx, y, maxW, lineH){
+  const words = text.split('');
+  let line = '';
+  for(let i=0;i<words.length;i++){
+    const test = line + words[i];
+    if(ctx.measureText(test).width > maxW && line){
+      ctx.fillText(line, cx, y); y+=lineH; line=words[i];
+    } else { line=test; }
+  }
+  if(line) ctx.fillText(line, cx, y);
 }
 
 // โหลดตอนเปิดเว็บ
