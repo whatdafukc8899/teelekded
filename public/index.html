@@ -635,6 +635,14 @@ body{background:var(--bg);font-family:'Sarabun',sans-serif;color:var(--ink);padd
           <div class="dot"></div><div class="dot"></div><div class="dot"></div>
         </div>
         <div id="resultBody" style="display:none">
+          <div class="sr" id="r0" style="display:flex;gap:8px;margin-bottom:4px">
+            <button id="shareBtn" onclick="shareResult()" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:11px;background:rgba(204,0,0,0.15);border:1px solid rgba(204,0,0,0.4);border-radius:4px;color:#FFF;font-family:'Sarabun',sans-serif;font-size:14px;font-weight:600;cursor:pointer">
+              📸 แชร์ผลทำนาย
+            </button>
+            <button onclick="resetForm()" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:11px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:4px;color:rgba(255,255,255,0.6);font-family:'Sarabun',sans-serif;font-size:14px;font-weight:600;cursor:pointer">
+              ↺ ทำนายใหม่
+            </button>
+          </div>
           <div class="sr" id="r1">
             <div class="r-sec">ค้นพบในตำรา</div>
             <div class="db-grid" id="dbGrid"></div>
@@ -658,11 +666,7 @@ body{background:var(--bg);font-family:'Sarabun',sans-serif;color:var(--ink);padd
           </div>
           <div class="sr" id="r5">
             <div class="meaning-box"><p class="meaning-text" id="meaningText"></p></div>
-            <a class="cta-big" href="https://www.namchok.com" target="_blank">🎯 ตามฝันไป — ซื้อกับ Partner</a>
-            <button class="cta-share" id="shareBtn" onclick="shareResult()" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:4px;color:#FFF;font-family:'Sarabun',sans-serif;font-size:14px;font-weight:600;cursor:pointer;margin-top:8px">
-              📸 แชร์ผลทำนาย
-            </button>
-            <button class="cta-reset" onclick="resetForm()">↺ ทำนายความฝันใหม่</button>
+            <a class="cta-big" href="https://www.namchok99.com" target="_blank">🎯 ดูแนวทางต่อที่ NAMCHOK99.COM</a>
           </div>
         </div>
       </div>
@@ -967,7 +971,7 @@ async function analyzeDream(){
   const wrap=document.getElementById('resultWrap');
   const dots=document.getElementById('loadingDots');
   const body=document.getElementById('resultBody');
-  ['r1','r2','r3','r3b','r4','r5'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.remove('show')});
+  ['r0','r1','r2','r3','r3b','r4','r5'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.remove('show')});
   body.style.display='none';
   dots.classList.add('show');
   wrap.classList.add('open');
@@ -1023,7 +1027,7 @@ async function analyzeDream(){
 
     document.getElementById('meaningText').textContent=meaning||'—';
     dots.classList.remove('show');body.style.display='block';
-    reveal('r1',80);reveal('r2',300);reveal('r3',500);reveal('r3b',600);reveal('r4',750);reveal('r5',950);
+    reveal('r0',50);reveal('r1',80);reveal('r2',300);reveal('r3',500);reveal('r3b',600);reveal('r4',750);reveal('r5',950);
   }catch(e){
     console.error(e);
     dots.classList.remove('show');body.style.display='block';
