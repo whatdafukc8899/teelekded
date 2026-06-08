@@ -673,23 +673,17 @@ body{background:var(--bg);font-family:'Sarabun',sans-serif;color:var(--ink);padd
   <div class="sec-title"><i class="ti ti-flame"></i>เลขดังสัปดาห์นี้</div>
   <div class="sec-label">เลขที่คนใช้มากที่สุด</div>
   <div class="card">
-    <div class="card-head"><div class="card-title"><i class="ti ti-star"></i>Top 5 เลขดัง</div><span class="card-date">อัปเดต 06.00 น.</span></div>
-    <div class="card-body">
-      <div class="tr-row"><span class="t-rk">1</span><div class="t-nm">27 / 279<div class="t-bar"><div class="t-fill" style="width:100%"></div></div></div><span class="t-ct">2,341 คน</span></div>
-      <div class="tr-row"><span class="t-rk">2</span><div class="t-nm">49 / 149<div class="t-bar"><div class="t-fill" style="width:78%"></div></div></div><span class="t-ct">1,823 คน</span></div>
-      <div class="tr-row"><span class="t-rk">3</span><div class="t-nm">79 / 179<div class="t-bar"><div class="t-fill" style="width:55%"></div></div></div><span class="t-ct">1,284 คน</span></div>
-      <div class="tr-row"><span class="t-rk">4</span><div class="t-nm">56 / 956<div class="t-bar"><div class="t-fill" style="width:42%"></div></div></div><span class="t-ct">980 คน</span></div>
-      <div class="tr-row"><span class="t-rk">5</span><div class="t-nm">14 / 414<div class="t-bar"><div class="t-fill" style="width:30%"></div></div></div><span class="t-ct">712 คน</span></div>
-    </div>
+    <div class="card-head"><div class="card-title"><i class="ti ti-star"></i>Top 5 เลขดัง</div><span class="card-date" id="trending-updated">กำลังโหลด...</span></div>
+    <div class="card-body" id="trending-list"><div style="text-align:center;padding:20px;color:rgba(255,255,255,0.3)">กำลังโหลดข้อมูล...</div></div>
   </div>
   <div class="sec-label">เลขเด็ดแนะนำวันนี้</div>
   <div class="card">
-    <div class="card-head"><div class="card-title"><i class="ti ti-star"></i>15 พฤษภาคม 2568</div></div>
+    <div class="card-head"><div class="card-title"><i class="ti ti-star"></i><span id="picks-date">—</span></div></div>
     <div class="card-body">
       <div class="chip-row">
-        <div><div class="chip-g-lbl">2 ตัวบน</div><div class="chips"><span class="chip chip-red">27</span><span class="chip chip-red">49</span><span class="chip chip-out">79</span></div></div>
-        <div><div class="chip-g-lbl">2 ตัวล่าง</div><div class="chips"><span class="chip chip-red">29</span><span class="chip chip-red">72</span></div></div>
-        <div><div class="chip-g-lbl">3 ตัวบน</div><div class="chips"><span class="chip chip-red chip-sm">279</span><span class="chip chip-out chip-sm">497</span></div></div>
+        <div><div class="chip-g-lbl">2 ตัวบน</div><div class="chips" id="picks-2up"></div></div>
+        <div><div class="chip-g-lbl">2 ตัวล่าง</div><div class="chips" id="picks-2dn"></div></div>
+        <div><div class="chip-g-lbl">3 ตัวบน</div><div class="chips" id="picks-3up"></div></div>
       </div>
     </div>
   </div>
@@ -703,20 +697,13 @@ body{background:var(--bg);font-family:'Sarabun',sans-serif;color:var(--ink);padd
     <div class="card-head"><div class="card-title"><i class="ti ti-chart-bar"></i>เลขที่ออกบ่อยสุด</div></div>
     <table class="tbl">
       <tr><th>เลข</th><th>ออก</th><th>ล่าสุด</th><th>เทรนด์</th><th>แนะนำ</th></tr>
-      <tr><td><span class="hot">27</span></td><td>8 ครั้ง</td><td>1 พ.ค.</td><td><span class="badge b-up">↑ ขาขึ้น</span></td><td><span class="badge b-hot">⭐ เด็ด</span></td></tr>
-      <tr><td><span class="hot">49</span></td><td>7 ครั้ง</td><td>16 เม.ย.</td><td><span class="badge b-up">↑ ขาขึ้น</span></td><td><span class="badge b-hot">⭐ เด็ด</span></td></tr>
-      <tr><td><span class="hot">79</span></td><td>6 ครั้ง</td><td>1 เม.ย.</td><td><span class="badge b-neu">→ ทรงตัว</span></td><td><span class="badge b-neu">รอดู</span></td></tr>
-      <tr><td><span class="hot">14</span></td><td>5 ครั้ง</td><td>16 มี.ค.</td><td><span class="badge b-dn">↓ ขาลง</span></td><td><span class="badge b-dn">ข้าม</span></td></tr>
-      <tr><td><span class="hot">56</span></td><td>5 ครั้ง</td><td>1 พ.ค.</td><td><span class="badge b-up">↑ ขาขึ้น</span></td><td><span class="badge b-hot">⭐ เด็ด</span></td></tr>
+      <tbody id="analyze-tbody"><tr><td colspan="5" style="text-align:center;color:rgba(255,255,255,0.3);padding:16px">กำลังโหลด...</td></tr></tbody>
     </table>
   </div>
   <div class="sec-label">แนวทางใช้เลขวันนี้</div>
   <div class="card">
     <div class="card-head"><div class="card-title"><i class="ti ti-calendar"></i>เลือกตามประเภทที่เล่น</div></div>
-    <div class="guide-row"><div><div class="g-name">หวยรัฐบาล 1 มิ.ย.</div><div class="g-time">ออก 16.30 น.</div></div><div class="g-nums"><span class="gnn gnn-hot">27</span><span class="gnn gnn-hot">49</span><span class="gnn gnn-sec">79</span></div></div>
-    <div class="guide-row"><div><div class="g-name">ลาววันนี้</div><div class="g-time">ออก 20.00 น.</div></div><div class="g-nums"><span class="gnn gnn-hot">72</span><span class="gnn gnn-hot">29</span></div></div>
-    <div class="guide-row"><div><div class="g-name">ฮานอยวันนี้</div><div class="g-time">ออก 18.30 น.</div></div><div class="g-nums"><span class="gnn gnn-hot">94</span><span class="gnn gnn-sec">49</span></div></div>
-    <div class="guide-row"><div><div class="g-name">ยี่กีรอบเร็ว</div><div class="g-time">ทุก 15 นาที</div></div><div class="g-nums"><span class="gnn gnn-hot">2</span><span class="gnn gnn-hot">7</span><span class="gnn gnn-sec">9</span></div></div>
+    <div id="guide-list"><div style="text-align:center;padding:16px;color:rgba(255,255,255,0.3)">กำลังโหลด...</div></div>
   </div>
 </div>
 
@@ -1073,6 +1060,135 @@ function dismissSplash() {
   el.classList.add('hide');
   setTimeout(() => el.classList.add('gone'), 500);
 }
+
+// ══════════════════════════════════════════
+// GOOGLE SHEETS INTEGRATION
+// วิธีตั้งค่า:
+//   1. สร้าง Google Sheet ตาม template
+//   2. File → Share → Publish to web → เลือก Entire Document → CSV → Publish
+//   3. Copy Sheet ID จาก URL แล้วใส่ใน SHEET_ID ด้านล่าง
+// ══════════════════════════════════════════
+const SHEET_ID = '1tHROjy4NPo-znXBhMxCCCyR531r4RgKpRBiMitQdYBg'; // ← ใส่ ID ของ Sheet คุณ
+
+function csvUrl(sheetName) {
+  return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheetName)}`;
+}
+
+function parseCSV(text) {
+  return text.trim().split('\n').slice(1).map(line => {
+    const cols = [];
+    let cur = '', inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (ch === '"') { inQ = !inQ; }
+      else if (ch === ',' && !inQ) { cols.push(cur.trim()); cur = ''; }
+      else { cur += ch; }
+    }
+    cols.push(cur.trim());
+    return cols;
+  }).filter(r => r[0]);
+}
+
+// คืนค่า "YYYY-MM-DD" ของวันนี้ (เวลาไทย UTC+7)
+function todayTH() {
+  const d = new Date(Date.now() + 7*3600*1000);
+  return d.toISOString().slice(0,10);
+}
+
+// ตรวจว่าเป็นวันงวด (วันที่ 1 หรือ 16)
+function isLottoDay(dateStr) {
+  const day = parseInt(dateStr.split('-')[2]);
+  return day === 1 || day === 16;
+}
+
+// แปลง YYYY-MM-DD เป็น "1 มิ.ย. 2568"
+function formatDateTH(dateStr) {
+  if (!dateStr) return '';
+  const months = ['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+  const [y,m,d] = dateStr.split('-').map(Number);
+  return `${d} ${months[m-1]} ${y+543}`;
+}
+
+async function loadSheets() {
+  if (SHEET_ID === 'YOUR_SHEET_ID_HERE') return;
+
+  const today = todayTH(); // เช่น "2026-06-08"
+  const lottoDay = isLottoDay(today);
+
+  try {
+    // ── trending: กรองเฉพาะวันนี้ ──
+    // columns: วันที่(YYYY-MM-DD), เลข, จำนวนคน, อัปเดต
+    const tRes = await fetch(csvUrl('trending'));
+    const tRows = parseCSV(await tRes.text()).filter(r => r[0] === today);
+
+    const updatedEl = document.getElementById('trending-updated');
+    const listEl = document.getElementById('trending-list');
+
+    // badge วันงวด
+    const lottoBadge = lottoDay
+      ? `<span style="background:#CC0000;color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:8px">🔥 วันงวด!</span>`
+      : '';
+
+    if (tRows.length === 0) {
+      listEl.innerHTML = '<div style="text-align:center;padding:20px;color:rgba(255,255,255,0.3)">ยังไม่มีข้อมูลวันนี้</div>';
+      if (updatedEl) updatedEl.innerHTML = formatDateTH(today) + lottoBadge;
+    } else {
+      const maxCount = Math.max(...tRows.map(r => parseInt(r[2]) || 0));
+      listEl.innerHTML = tRows.slice(0,5).map((r, i) => {
+        const pct = maxCount ? Math.round((parseInt(r[2])||0) / maxCount * 100) : 0;
+        return `<div class="tr-row"><span class="t-rk">${i+1}</span><div class="t-nm">${r[1]}<div class="t-bar"><div class="t-fill" style="width:${pct}%"></div></div></div><span class="t-ct">${Number(r[2]).toLocaleString()} คน</span></div>`;
+      }).join('');
+      if (updatedEl) updatedEl.innerHTML = (tRows[0][3] ? 'อัปเดต ' + tRows[0][3] : formatDateTH(today)) + lottoBadge;
+    }
+
+    // ── picks: กรองเฉพาะวันนี้ ──
+    // columns: วันที่(YYYY-MM-DD), ประเภท(2up/2dn/3up), เลข, hot(1/0)
+    const pRes = await fetch(csvUrl('picks'));
+    const pRows = parseCSV(await pRes.text()).filter(r => r[0] === today);
+    const dateEl = document.getElementById('picks-date');
+    if (dateEl) dateEl.innerHTML = formatDateTH(today) + lottoBadge;
+    ['2up','2dn','3up'].forEach(type => {
+      const el = document.getElementById('picks-' + type);
+      if (!el) return;
+      const rows = pRows.filter(r => r[1] === type);
+      el.innerHTML = rows.length
+        ? rows.map(r => `<span class="chip ${r[3]==='1'?'chip-red':'chip-out'} ${type==='3up'?'chip-sm':''}">${r[2]}</span>`).join('')
+        : '<span style="color:rgba(255,255,255,0.3);font-size:12px">—</span>';
+    });
+
+    // ── analyze: ไม่กรองวัน (สถิติรวม) ──
+    // columns: เลข, ออกกี่ครั้ง, ล่าสุด, เทรนด์(up/neu/dn), แนะนำ(hot/neu/dn)
+    const aRes = await fetch(csvUrl('analyze'));
+    const aRows = parseCSV(await aRes.text());
+    const trendMap = { up: '<span class="badge b-up">↑ ขาขึ้น</span>', neu: '<span class="badge b-neu">→ ทรงตัว</span>', dn: '<span class="badge b-dn">↓ ขาลง</span>' };
+    const recMap   = { hot: '<span class="badge b-hot">⭐ เด็ด</span>', neu: '<span class="badge b-neu">รอดู</span>', dn: '<span class="badge b-dn">ข้าม</span>' };
+    const tbody = document.getElementById('analyze-tbody');
+    if (tbody) tbody.innerHTML = aRows.map(r =>
+      `<tr><td><span class="hot">${r[0]}</span></td><td>${r[1]} ครั้ง</td><td>${r[2]}</td><td>${trendMap[r[3]]||r[3]}</td><td>${recMap[r[4]]||r[4]}</td></tr>`
+    ).join('');
+
+    // ── guide: กรองเฉพาะวันนี้ ──
+    // columns: วันที่(YYYY-MM-DD), ชื่อหวย, เวลา, เลขหลัก(คั่น|), เลขรอง(คั่น|)
+    const gRes = await fetch(csvUrl('guide'));
+    const gRows = parseCSV(await gRes.text()).filter(r => r[0] === today);
+    const guideEl = document.getElementById('guide-list');
+    if (guideEl) {
+      guideEl.innerHTML = gRows.length
+        ? gRows.map(r => {
+            const hots = (r[3]||'').split('|').filter(Boolean).map(n=>`<span class="gnn gnn-hot">${n}</span>`).join('');
+            const secs = (r[4]||'').split('|').filter(Boolean).map(n=>`<span class="gnn gnn-sec">${n}</span>`).join('');
+            return `<div class="guide-row"><div><div class="g-name">${r[1]}</div><div class="g-time">${r[2]}</div></div><div class="g-nums">${hots}${secs}</div></div>`;
+          }).join('')
+        : '<div style="text-align:center;padding:16px;color:rgba(255,255,255,0.3)">ยังไม่มีข้อมูลวันนี้</div>';
+    }
+
+  } catch(e) {
+    console.warn('Sheets load failed:', e);
+  }
+}
+
+// โหลดตอนเปิดเว็บ
+loadSheets();
 </script>
 </body>
 </html>
