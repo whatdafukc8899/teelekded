@@ -1453,6 +1453,13 @@ function roundRect(ctx, x, y, w, h, r){
   ctx.closePath();
 }
 
+// ── URL Hash → auto switch tab ──
+window.addEventListener('load', () => {
+  const map = { '#analyze':'analyze', '#result':'result', '#stat':'stat', '#trending':'trending' };
+  const tab = map[location.hash];
+  if(tab) switchTab(tab);
+});
+
 function wrapText(ctx, text, cx, y, maxW, lineH, maxLines){
   const chars = text.split('');
   const lines = [];
