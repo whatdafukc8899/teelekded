@@ -1375,14 +1375,14 @@ function buildShareCanvas(dream, nums, meaning) {
   const dText = shortDream.length > 24 ? shortDream.slice(0,24)+'…' : shortDream;
   ctx.fillText(`"${dText}"`, S/2, 420);
 
-  // Meaning box
+  // Meaning box — สูง 180px รองรับ 3 บรรทัด
   ctx.fillStyle='rgba(204,0,0,0.12)';
-  roundRect(ctx,60,455,S-120,130,16); ctx.fill();
+  roundRect(ctx,60,450,S-120,180,16); ctx.fill();
   ctx.strokeStyle='rgba(204,0,0,0.4)'; ctx.lineWidth=1.5;
-  roundRect(ctx,60,455,S-120,130,16); ctx.stroke();
+  roundRect(ctx,60,450,S-120,180,16); ctx.stroke();
   ctx.font='30px "Sarabun",Arial'; ctx.fillStyle='rgba(255,255,255,0.85)';
   ctx.textBaseline='top';
-  wrapText(ctx, shortMeaning, S/2, 480, S-160, 40);
+  wrapText(ctx, shortMeaning, S/2, 472, S-160, 46, 3);
 
   // เลขมงคล
   ctx.textBaseline='middle'; ctx.textAlign='center';
@@ -1444,16 +1444,23 @@ function roundRect(ctx, x, y, w, h, r){
   ctx.closePath();
 }
 
-function wrapText(ctx, text, cx, y, maxW, lineH){
-  const words = text.split('');
+function wrapText(ctx, text, cx, y, maxW, lineH, maxLines){
+  const chars = text.split('');
+  const lines = [];
   let line = '';
-  for(let i=0;i<words.length;i++){
-    const test = line + words[i];
+  for(let i=0;i<chars.length;i++){
+    const test = line + chars[i];
     if(ctx.measureText(test).width > maxW && line){
-      ctx.fillText(line, cx, y); y+=lineH; line=words[i];
-    } else { line=test; }
+      lines.push(line); line = chars[i];
+    } else { line = test; }
   }
-  if(line) ctx.fillText(line, cx, y);
+  if(line) lines.push(line);
+  const limit = maxLines || 99;
+  const draw = lines.slice(0, limit);
+  // แสดงผลให้อยู่กึ่งกลาง vertical ของ box
+  const totalH = draw.length * lineH;
+  let cy = y;
+  draw.forEach(l => { ctx.fillText(l, cx, cy); cy += lineH; });
 }
 
 // โหลดตอนเปิดเว็บ
