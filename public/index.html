@@ -749,7 +749,7 @@ body{background:#F5F5F5;font-family:'Sarabun',sans-serif;color:var(--ink);paddin
   <div class="sec-title"><i class="ti ti-chart-bar"></i>วิเคราะห์สถิติ</div>
   <div class="sec-label">สถิติย้อนหลัง 6 เดือน — สลากกินแบ่งรัฐบาล</div>
   <div class="card">
-    <div class="card-head"><div class="card-title"><i class="ti ti-chart-bar"></i>เลขที่ออกบ่อยสุด</div></div>
+    <div class="card-head"><div class="card-title"><i class="ti ti-chart-bar"></i>เลขที่น่าจะออก (ไม่ออกนาน)</div></div>
     <table class="tbl">
       <tr><th>เลข</th><th>ออก</th><th>ล่าสุด</th><th>เทรนด์</th><th>แนะนำ</th></tr>
       <tbody id="analyze-tbody"><tr><td colspan="5" style="text-align:center;color:rgba(0,0,0,0.3);padding:16px">กำลังโหลด...</td></tr></tbody>
@@ -1218,12 +1218,12 @@ async function loadSheets() {
         : '<span style="color:rgba(0,0,0,0.3);font-size:12px">—</span>';
     });
 
-    // ── analyze: ไม่กรองวัน (สถิติรวม) ──
+    // ── analyze: เรียงจากเลขที่ไม่ออกนานที่สุด (cold numbers) ──
     // columns: เลข, ออกกี่ครั้ง, ล่าสุด, เทรนด์(up/neu/dn), แนะนำ(hot/neu/dn)
     const aRes = await fetch(csvUrl('analyze'));
-    const aRows = parseCSV(await aRes.text());
-    const trendMap = { up: '<span class="badge b-up">↑ ขาขึ้น</span>', neu: '<span class="badge b-neu">→ ทรงตัว</span>', dn: '<span class="badge b-dn">↓ ขาลง</span>' };
-    const recMap   = { hot: '<span class="badge b-hot">⭐ เด็ด</span>', neu: '<span class="badge b-neu">รอดู</span>', dn: '<span class="badge b-dn">ข้าม</span>' };
+    const aRows = parseCSV(await aRes.text()).slice().reverse();
+    const trendMap = { up: '<span class="badge b-dn">↑ ออกบ่อย</span>', neu: '<span class="badge b-neu">→ ปานกลาง</span>', dn: '<span class="badge b-up">↓ ออกน้อย</span>' };
+    const recMap   = { hot: '<span class="badge b-dn">ข้าม</span>', neu: '<span class="badge b-neu">รอดู</span>', dn: '<span class="badge b-hot">⭐ น่าออก</span>' };
     const tbody = document.getElementById('analyze-tbody');
     if (tbody) tbody.innerHTML = aRows.map(r =>
       `<tr><td><span class="hot">${r[0]}</span></td><td>${r[1]} ครั้ง</td><td>${r[2]}</td><td>${trendMap[r[3]]||r[3]}</td><td>${recMap[r[4]]||r[4]}</td></tr>`
