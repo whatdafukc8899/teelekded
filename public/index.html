@@ -1470,7 +1470,7 @@ function roundRect(ctx, x, y, w, h, r){
 
 // ── URL Hash → auto switch tab ──
 window.addEventListener('load', () => {
-  const map = { '#analyze':'analyze', '#result':'result', '#trending':'trending' };
+  const map = { '#home':'home', '#analyze':'analyze', '#result':'result', '#trending':'trending' };
   const tab = map[location.hash];
   if(tab) switchTab(tab);
 });
