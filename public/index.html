@@ -31,7 +31,7 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--red:#CC0000;--ink:#1A1A1A;--muted:#6B6B6B;--bg:#FAFAF7;--surface:#FFF;--border:#E8E4DC;--night:#FFFFFF}
-body{background:#F5F5F5;font-family:'Sarabun',sans-serif;color:var(--ink);padding-bottom:80px;min-height:100vh}
+body{background:#F5F5F5;font-family:'Sarabun',sans-serif;color:var(--ink);padding-bottom:80px;min-height:100vh;max-width:480px;margin:0 auto}
 
 /* ── TICKET ANIMATIONS ── */
 .tc-anim{animation:tf 3s ease-in-out infinite;transform-origin:center bottom}
@@ -152,7 +152,7 @@ body{background:#F5F5F5;font-family:'Sarabun',sans-serif;color:var(--ink);paddin
 .sr.show{opacity:1;transform:translateY(0)}
 
 /* ── BOTTOM ICON MENU ── */
-.bottom-nav{background:#FFFFFF;border-top:1px solid rgba(204,0,0,.15);display:flex;justify-content:space-around;padding:10px 0 12px;position:fixed;bottom:0;left:0;right:0;z-index:50;box-shadow:0 -1px 4px rgba(0,0,0,.06)}
+.bottom-nav{background:#FFFFFF;border-top:1px solid rgba(204,0,0,.15);display:flex;justify-content:space-around;padding:10px 0 12px;position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;z-index:50;box-shadow:0 -1px 4px rgba(0,0,0,.06)}
 .bn-item{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 16px;border-radius:8px;touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:background .15s;border:none;background:transparent}
 .bn-item.active .bn-icon{color:var(--red)!important}
 .bn-item.active .bn-label{color:var(--red)!important}
