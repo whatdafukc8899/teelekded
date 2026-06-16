@@ -596,19 +596,6 @@ body{background-color:#FAFAFA;background-image:radial-gradient(circle,rgba(204,0
       </button>
     </div>
 
-    <!-- DREAM INPUT -->
-    <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(204,0,0,.6);margin-bottom:8px;display:flex;align-items:center;gap:5px"><span style="width:4px;height:4px;border-radius:50%;background:var(--red);display:inline-block"></span>ทำนายจากความฝัน</div>
-    <div class="dream-card">
-      <div class="dream-lbl"><i class="ti ti-moon"></i>เล่าความฝันของคุณ</div>
-      <textarea class="dream-input" id="dreamInput" placeholder="เช่น ฝันเห็นงูสีดำเลื้อยเข้าบ้าน แล้วมีคนแก่ยืนอยู่หน้าประตู..." rows="2" maxlength="300"></textarea>
-      <div class="dream-foot">
-        <span class="dream-hint" id="charHint">0 / 300</span>
-        <button class="dream-btn" id="analyzeBtn" onclick="analyzeDream()">
-          ✦ วิเคราะห์เลข
-        </button>
-      </div>
-    </div>
-
     <!-- SEO TEXT -->
     <div style="padding:14px 0 10px;border-top:.5px solid rgba(0,0,0,.08);margin-top:8px">
       <div style="font-family:'Sarabun',sans-serif;font-size:13px;font-weight:600;color:#CC0000;margin-bottom:6px;letter-spacing:.02em">วิเคราะห์เลขรายวัน · ตีเลขเด็ด</div>
@@ -666,6 +653,21 @@ body{background-color:#FAFAFA;background-image:radial-gradient(circle,rgba(204,0
         <div>
           <div style="font-size:12px;font-weight:700;color:#888;line-height:1.4">เลขดังรายสัปดาห์ สรุปงวดล่าสุด</div>
           <div style="font-size:10px;color:#BBB;margin-top:2px">เร็วๆ นี้</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DREAM INPUT -->
+    <div style="margin-top:18px">
+      <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(204,0,0,.6);margin-bottom:8px;display:flex;align-items:center;gap:5px"><span style="width:4px;height:4px;border-radius:50%;background:var(--red);display:inline-block"></span>ทำนายจากความฝัน</div>
+      <div class="dream-card">
+        <div class="dream-lbl"><i class="ti ti-moon"></i>เล่าความฝันของคุณ</div>
+        <textarea class="dream-input" id="dreamInput" placeholder="เช่น ฝันเห็นงูสีดำเลื้อยเข้าบ้าน แล้วมีคนแก่ยืนอยู่หน้าประตู..." rows="2" maxlength="300"></textarea>
+        <div class="dream-foot">
+          <span class="dream-hint" id="charHint">0 / 300</span>
+          <button class="dream-btn" id="analyzeBtn" onclick="analyzeDream()">
+            ✦ วิเคราะห์เลข
+          </button>
         </div>
       </div>
     </div>
