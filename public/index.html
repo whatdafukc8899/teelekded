@@ -577,16 +577,25 @@ body{background:#F5F5F5;font-family:'Sarabun',sans-serif;color:var(--ink);paddin
       </div>
     </div>
 
-    <h1 class="hero-title">เล่าฝัน → ได้<span class="red">เลขเด็ด</span></h1>
-    <p class="hero-sub">ระบบค้นตำรา 5,000 คำ + วิเคราะห์ → เลขออกใน 5 วินาที</p>
+    <h1 class="hero-title">วิเคราะห์เลข<span class="red">รายวัน</span></h1>
+    <p class="hero-sub">สถิติสลากย้อนหลัง + เลขดัง + ตีเลขจากฝัน ครบในที่เดียว</p>
 
-    <div class="cnt-row">
-      <div class="cnt-item"><div class="cnt-num" id="cnt">48,291</div><div class="cnt-lbl">คำทำนายแล้ว</div></div>
-      <div class="cnt-item"><div class="cnt-num">5,000+</div><div class="cnt-lbl">คำในตำรา</div></div>
-      <div class="cnt-item"><div class="cnt-num">94%</div><div class="cnt-lbl">ความพึงพอใจ</div></div>
+    <!-- STATS SHORTCUT -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+      <button onclick="switchTab('trending')" style="background:#FFF5F5;border:1px solid rgba(204,0,0,.2);border-radius:12px;padding:12px;text-align:left;cursor:pointer">
+        <div style="font-size:10px;color:var(--red);letter-spacing:.08em;font-weight:700;margin-bottom:4px">🔥 เลขดังวันนี้</div>
+        <div class="home-picks-preview" id="home-picks-preview" style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:#1A1A1A">—</div>
+        <div style="font-size:9px;color:#888;margin-top:2px">ดูทั้งหมด →</div>
+      </button>
+      <button onclick="switchTab('analyze')" style="background:#FFF5F5;border:1px solid rgba(204,0,0,.2);border-radius:12px;padding:12px;text-align:left;cursor:pointer">
+        <div style="font-size:10px;color:var(--red);letter-spacing:.08em;font-weight:700;margin-bottom:4px">⭐ เลขน่าจะออก</div>
+        <div id="home-cold-preview" style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:#1A1A1A">—</div>
+        <div style="font-size:9px;color:#888;margin-top:2px">วิเคราะห์สถิติ →</div>
+      </button>
     </div>
 
     <!-- DREAM INPUT -->
+    <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(204,0,0,.6);margin-bottom:8px;display:flex;align-items:center;gap:5px"><span style="width:4px;height:4px;border-radius:50%;background:var(--red);display:inline-block"></span>ทำนายจากความฝัน</div>
     <div class="dream-card">
       <div class="dream-lbl"><i class="ti ti-moon"></i>เล่าความฝันของคุณ</div>
       <textarea class="dream-input" id="dreamInput" placeholder="เช่น ฝันเห็นงูสีดำเลื้อยเข้าบ้าน แล้วมีคนแก่ยืนอยู่หน้าประตู..." rows="2" maxlength="300"></textarea>
@@ -595,34 +604,6 @@ body{background:#F5F5F5;font-family:'Sarabun',sans-serif;color:var(--ink);paddin
         <button class="dream-btn" id="analyzeBtn" onclick="analyzeDream()">
           ✦ วิเคราะห์เลข
         </button>
-      </div>
-    </div>
-
-    <!-- TRUST SIGNALS -->
-    <div style="display:flex;justify-content:center;gap:24px;padding:14px 0 4px;border-top:.5px solid rgba(204,0,0,.1);margin-top:4px">
-      <div style="text-align:center"><div style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:var(--red)">48,341</div><div style="font-size:9px;color:#888;letter-spacing:.06em">คำทำนายแล้ว</div></div>
-      <div style="width:.5px;background:rgba(0,0,0,.1)"></div>
-      <div style="text-align:center"><div style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:var(--red)">4.9★</div><div style="font-size:9px;color:#888;letter-spacing:.06em">ความพึงพอใจ</div></div>
-      <div style="width:.5px;background:rgba(0,0,0,.1)"></div>
-      <div style="text-align:center"><div style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:var(--red)">24/7</div><div style="font-size:9px;color:#888;letter-spacing:.06em">ใช้งานได้ตลอด</div></div>
-    </div>
-
-    <!-- HOW TO -->
-    <div style="padding:16px 0 4px">
-      <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(204,0,0,.6);margin-bottom:10px;display:flex;align-items:center;gap:5px"><span style="width:4px;height:4px;border-radius:50%;background:var(--red);display:inline-block"></span>วิธีเล่าความฝัน</div>
-      <div style="display:flex;flex-direction:column;gap:7px">
-        <div style="display:flex;align-items:flex-start;gap:10px;background:#FFF5F5;border:.5px solid rgba(204,0,0,.12);border-radius:12px;padding:10px 12px">
-          <i class="ti ti-moon-stars" style="font-size:18px;color:var(--red);flex-shrink:0;margin-top:1px"></i>
-          <div><div style="font-size:13px;font-weight:600;color:#1A1A1A;margin-bottom:2px">เล่าให้ละเอียด</div><div style="font-size:11px;color:#666;line-height:1.5">ระบุสี ขนาด สถานที่ เช่น "งูดำขนาดใหญ่เลื้อยเข้าบ้าน"</div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:10px;background:#FFF5F5;border:.5px solid rgba(204,0,0,.12);border-radius:12px;padding:10px 12px">
-          <i class="ti ti-heart" style="font-size:18px;color:var(--red);flex-shrink:0;margin-top:1px"></i>
-          <div><div style="font-size:13px;font-weight:600;color:#1A1A1A;margin-bottom:2px">บอกความรู้สึก</div><div style="font-size:11px;color:#666;line-height:1.5">กลัว ดีใจ หรือสงบ ช่วยให้ตีความแม่นยำขึ้น</div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:10px;background:#FFF5F5;border:.5px solid rgba(204,0,0,.12);border-radius:12px;padding:10px 12px">
-          <i class="ti ti-users" style="font-size:18px;color:var(--red);flex-shrink:0;margin-top:1px"></i>
-          <div><div style="font-size:13px;font-weight:600;color:#1A1A1A;margin-bottom:2px">ระบุคนในฝัน</div><div style="font-size:11px;color:#666;line-height:1.5">คนแก่ เด็ก พระ แต่ละคนมีความหมายต่างกัน</div></div>
-        </div>
       </div>
     </div>
 
@@ -1217,6 +1198,12 @@ async function loadSheets() {
         ? rows.map(r => `<span class="chip ${r[3]==='1'?'chip-red':'chip-out'} ${type==='3up'?'chip-sm':''}">${r[2]}</span>`).join('')
         : '<span style="color:rgba(0,0,0,0.3);font-size:12px">—</span>';
     });
+    // ── home preview: เลขดังวันนี้ ──
+    const homePicksEl = document.getElementById('home-picks-preview');
+    if (homePicksEl) {
+      const up2 = pRows.filter(r => r[1]==='2up').slice(0,3).map(r=>r[2]);
+      homePicksEl.textContent = up2.length ? up2.join(' · ') : '—';
+    }
 
     // ── analyze: เรียงจากเลขที่ไม่ออกนานที่สุด (cold numbers) ──
     // columns: เลข, ออกกี่ครั้ง, ล่าสุด, เทรนด์(up/neu/dn), แนะนำ(hot/neu/dn)
@@ -1228,6 +1215,12 @@ async function loadSheets() {
     if (tbody) tbody.innerHTML = aRows.map(r =>
       `<tr><td><span class="hot">${r[0]}</span></td><td>${r[1]} ครั้ง</td><td>${r[2]}</td><td>${trendMap[r[3]]||r[3]}</td><td>${recMap[r[4]]||r[4]}</td></tr>`
     ).join('');
+    // ── home preview: เลขน่าจะออก ──
+    const homeColdEl = document.getElementById('home-cold-preview');
+    if (homeColdEl) {
+      const coldNums = aRows.filter(r => r[4]==='dn').slice(0,3).map(r=>r[0]);
+      homeColdEl.textContent = coldNums.length ? coldNums.join(' · ') : '—';
+    }
 
     // ── guide: กรองเฉพาะวันนี้ ──
     // columns: วันที่(YYYY-MM-DD), ชื่อหวย, เวลา, เลขหลัก(คั่น|), เลขรอง(คั่น|)
