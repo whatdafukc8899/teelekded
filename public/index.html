@@ -707,7 +707,7 @@ body{background-color:#FAFAFA;background-image:radial-gradient(circle,rgba(204,0
       </div>
       <div style="font-size:10px;color:#BBB;margin-bottom:10px">เลขจากอินฟลู — ไม่ใช่คำแนะนำการลงทุน</div>
       <!-- scroll row -->
-      <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none">
+      <div id="social-scroll" style="display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab;user-select:none">
         <div style="min-width:0;flex-shrink:0;flex:0 0 auto"><!-- spacer --></div>
 
         <!-- แม่น้ำหนึ่ง -->
@@ -1723,6 +1723,26 @@ function wrapText(ctx, text, cx, y, maxW, lineH, maxLines){
 
 // โหลดตอนเปิดเว็บ
 loadSheets();
+
+// drag-to-scroll สำหรับ social picks
+(function(){
+  var el = document.getElementById('social-scroll');
+  if(!el) return;
+  var isDown = false, startX, scrollLeft;
+  el.addEventListener('mousedown', function(e){
+    isDown = true; el.style.cursor='grabbing';
+    startX = e.pageX - el.offsetLeft;
+    scrollLeft = el.scrollLeft;
+  });
+  document.addEventListener('mouseup', function(){ isDown = false; el.style.cursor='grab'; });
+  el.addEventListener('mouseleave', function(){ isDown = false; el.style.cursor='grab'; });
+  el.addEventListener('mousemove', function(e){
+    if(!isDown) return;
+    e.preventDefault();
+    var x = e.pageX - el.offsetLeft;
+    el.scrollLeft = scrollLeft - (x - startX) * 1.2;
+  });
+})();
 </script>
 </body>
 </html>
