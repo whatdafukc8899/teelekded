@@ -19,160 +19,188 @@ body{background-color:#FAFAFA;background-image:radial-gradient(circle,rgba(204,0
 .topbar a:hover{color:var(--red)}
 .topbar-logo{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:800;color:#1A1A1A;margin-left:auto}
 .topbar-logo span{color:var(--red)}
-.container{padding:18px 16px}
-.page-title{font-size:18px;font-weight:700;color:#111;margin-bottom:4px}
-.page-sub{font-size:12px;color:#999;margin-bottom:18px}
-.sec-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin:20px 0 10px;display:flex;align-items:center;gap:6px;font-weight:700}
+.container{padding:16px}
+
+/* filter tabs */
+.filter-row{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.filter-tab{font-size:11px;font-weight:700;padding:6px 14px;border-radius:20px;border:1px solid #E8E8E8;background:#FFF;color:#888;cursor:pointer;white-space:nowrap;transition:all .2s;flex-shrink:0}
+.filter-tab.active{background:#CC0000;color:#FFF;border-color:#CC0000}
+
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* card */
+.gc{background:#FFF;border-radius:12px;overflow:hidden;border:1px solid #F0F0F0;text-decoration:none;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;position:relative}
+.gc:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.08)}
+.gc.soon{opacity:.5;pointer-events:none}
+.gc-thumb{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#F5F5F5}
+.gc-icon-fallback{width:100%;aspect-ratio:16/9;background:#FFF5F5;display:flex;align-items:center;justify-content:center}
+.gc-body{padding:10px 10px 12px;flex:1;display:flex;flex-direction:column}
+.gc-cat{font-size:9px;color:var(--red);font-weight:700;letter-spacing:.06em;margin-bottom:5px;text-transform:uppercase}
+.gc-title{font-size:12px;font-weight:700;color:#111;line-height:1.4;flex:1}
+.gc-meta{display:flex;align-items:center;gap:5px;margin-top:8px;font-size:9px;color:#BBB}
+.gc-badge{position:absolute;top:8px;left:8px;background:#CC0000;color:#FFF;font-size:8px;font-weight:700;padding:2px 7px;border-radius:8px;letter-spacing:.04em}
+.gc-badge-soon{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.35);color:#FFF;font-size:8px;font-weight:700;padding:2px 7px;border-radius:8px}
+
+.sec-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin:18px 0 10px;display:flex;align-items:center;gap:6px;font-weight:700}
 .sec-label::before{content:'';width:3px;height:14px;border-radius:2px;background:var(--red);display:inline-block}
-.article-card{display:flex;align-items:center;gap:12px;background:#FFF;border:1px solid #F0F0F0;border-radius:10px;padding:12px 14px;text-decoration:none;margin-bottom:8px;transition:border-color .2s}
-.article-card:hover{border-color:rgba(204,0,0,.3)}
-.article-icon{width:40px;height:40px;border-radius:8px;background:#FFF5F5;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.article-title{font-size:12px;font-weight:700;color:#111;line-height:1.4}
-.article-sub{font-size:10px;color:#999;margin-top:2px}
-.article-card.soon{opacity:.5;pointer-events:none;background:#FAFAFA;border-style:dashed;border-color:#E8E8E8}
-.article-card.soon .article-icon{background:#F5F5F5}
-.soon-badge{font-size:9px;background:#F0F0F0;color:#BBB;border-radius:4px;padding:2px 6px;margin-top:3px;display:inline-block}
 </style>
 </head>
 <body>
+
 <div class="topbar">
   <a href="/"><i class="ti ti-chevron-left" style="font-size:16px"></i> หน้าแรก</a>
   <span class="topbar-logo">TEE<span>LEKDED</span>.com</span>
 </div>
 
 <div class="container">
-  <div class="page-title">บทความทั้งหมด</div>
-  <div class="page-sub">สถิติ · วิเคราะห์เลข · ทำนายฝัน</div>
 
-  <!-- สถิติสลาก -->
-  <div class="sec-label">สถิติสลากกินแบ่งรัฐบาล</div>
+  <div style="font-size:18px;font-weight:700;color:#111;margin-bottom:4px">บทความทั้งหมด</div>
+  <div style="font-size:12px;color:#999;margin-bottom:14px">7 บทความ · เรียงล่าสุดก่อน</div>
 
-  <a href="/article-stat-monthly.html" class="article-card" style="border-color:rgba(204,0,0,.25);position:relative">
-    <span style="position:absolute;top:-7px;left:12px;background:#CC0000;color:#FFF;font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.05em">ใหม่ล่าสุด</span>
-    <img src="/thumb-stat-monthly.png" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;border:.5px solid #F0F0F0" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="article-icon" style="display:none"><i class="ti ti-calendar-stats" style="font-size:22px;color:#CC0000"></i></div>
-    <div style="flex:1;min-width:0">
-      <div class="article-title">เดือนไหนออกเลขอะไร? สถิติย้อนหลัง 1 ปี</div>
-      <div class="article-sub" style="display:flex;align-items:center;gap:6px"><span><i class="ti ti-calendar" style="font-size:9px"></i> 16 มิ.ย. 69</span><span>·</span><span><i class="ti ti-eye" style="font-size:9px"></i> 2,031 อ่าน</span></div>
-    </div>
-    <i class="ti ti-chevron-right" style="font-size:14px;color:#CCC;flex-shrink:0;margin-left:auto"></i>
-  </a>
-
-  <a href="/article-stat-period.html" class="article-card" style="position:relative">
-    <span style="position:absolute;top:-7px;left:12px;background:#CC0000;color:#FFF;font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.05em;display:none"></span>
-    <img src="/thumb-stat-period.png" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;border:.5px solid #F0F0F0" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="article-icon" style="display:none"><i class="ti ti-arrows-exchange" style="font-size:22px;color:#CC0000"></i></div>
-    <div style="flex:1;min-width:0">
-      <div class="article-title">งวด 1 vs งวด 16 เลขไหนออกบ่อยกว่า?</div>
-      <div class="article-sub" style="display:flex;align-items:center;gap:6px"><span><i class="ti ti-calendar" style="font-size:9px"></i> 16 มิ.ย. 69</span><span>·</span><span><i class="ti ti-eye" style="font-size:9px"></i> 1,654 อ่าน</span></div>
-    </div>
-    <i class="ti ti-chevron-right" style="font-size:14px;color:#CCC;flex-shrink:0;margin-left:auto"></i>
-  </a>
-
-  <a href="/article-weekly-picks.html" class="article-card" style="position:relative">
-    <span style="position:absolute;top:-7px;left:12px;background:#CC0000;color:#FFF;font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.05em">ใหม่ล่าสุด</span>
-    <img src="/thumb-weekly-picks.png" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;border:.5px solid #F0F0F0" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="article-icon" style="display:none"><i class="ti ti-trending-up" style="font-size:22px;color:#CC0000"></i></div>
-    <div style="flex:1;min-width:0">
-      <div class="article-title">สรุปเลขเด่นประจำสัปดาห์จากสถิติ ตัวไหนน่าจับตา</div>
-      <div class="article-sub" style="display:flex;align-items:center;gap:6px"><span><i class="ti ti-calendar" style="font-size:9px"></i> 16 มิ.ย. 69</span><span>·</span><span><i class="ti ti-eye" style="font-size:9px"></i> 1,243 อ่าน</span></div>
-    </div>
-    <i class="ti ti-chevron-right" style="font-size:14px;color:#CCC;flex-shrink:0;margin-left:auto"></i>
-  </a>
-
-  <a href="/article-stat-lao-2digit.html" class="article-card">
-    <img src="/thumb-stat-lao-2digit.png" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;border:.5px solid #F0F0F0" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="article-icon" style="display:none"><i class="ti ti-calendar-stats" style="font-size:22px;color:#CC0000"></i></div>
-    <div style="flex:1;min-width:0">
-      <div class="article-title">สถิติผลรางวัลลาว เลข 2 ตัว ย้อนหลัง 6 เดือน</div>
-      <div class="article-sub" style="display:flex;align-items:center;gap:6px"><span><i class="ti ti-calendar" style="font-size:9px"></i> 16 มิ.ย. 69</span><span>·</span><span><i class="ti ti-eye" style="font-size:9px"></i> 987 อ่าน</span></div>
-    </div>
-    <i class="ti ti-chevron-right" style="font-size:14px;color:#CCC;flex-shrink:0;margin-left:auto"></i>
-  </a>
-
-  <a href="/article-stat-3digit.html" class="article-card">
-    <img src="/thumb-stat-3digit.png" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;border:.5px solid #F0F0F0" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="article-icon" style="display:none"><i class="ti ti-list-numbers" style="font-size:22px;color:#CC0000"></i></div>
-    <div style="flex:1;min-width:0">
-      <div class="article-title">สถิติเลข 3 ตัวบน กลุ่มไหนออกบ่อย ย้อนหลัง 10 ปี</div>
-      <div class="article-sub" style="display:flex;align-items:center;gap:6px"><span><i class="ti ti-calendar" style="font-size:9px"></i> 16 มิ.ย. 69</span><span>·</span><span><i class="ti ti-eye" style="font-size:9px"></i> 2,105 อ่าน</span></div>
-    </div>
-    <i class="ti ti-chevron-right" style="font-size:14px;color:#CCC;flex-shrink:0;margin-left:auto"></i>
-  </a>
-
-  <a href="/article-stat-2digit.html" class="article-card">
-    <img src="/thumb-stat-2digit.png" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;border:.5px solid #F0F0F0" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="article-icon" style="display:none"><i class="ti ti-chart-bar" style="font-size:22px;color:#CC0000"></i></div>
-    <div style="flex:1;min-width:0">
-      <div class="article-title">สถิติเลขท้าย 2 ตัว ออกบ่อยที่สุด ย้อนหลัง 10 ปี</div>
-      <div class="article-sub" style="display:flex;align-items:center;gap:6px"><span><i class="ti ti-calendar" style="font-size:9px"></i> 16 มิ.ย. 69</span><span>·</span><span><i class="ti ti-eye" style="font-size:9px"></i> 4,872 อ่าน</span></div>
-    </div>
-    <i class="ti ti-chevron-right" style="font-size:14px;color:#CCC;flex-shrink:0;margin-left:auto"></i>
-  </a>
-
-  <div class="article-card soon">
-    <div class="article-icon"><i class="ti ti-replace" style="font-size:22px;color:#CCC"></i></div>
-    <div>
-      <div class="article-title">เลขสลับตัว วิเคราะห์แบบ permutation</div>
-      <div class="soon-badge">เร็วๆ นี้</div>
-    </div>
+  <!-- filter -->
+  <div class="filter-row">
+    <div class="filter-tab active" onclick="filterCat('all',this)">ทั้งหมด</div>
+    <div class="filter-tab" onclick="filterCat('stat',this)">สถิติ</div>
+    <div class="filter-tab" onclick="filterCat('how',this)">วิเคราะห์</div>
+    <div class="filter-tab" onclick="filterCat('dream',this)">ทำนายฝัน</div>
   </div>
 
-  <!-- วิธีใช้ -->
-  <div class="sec-label">วิเคราะห์เลข · มือใหม่</div>
+  <!-- PUBLISHED -->
+  <div class="grid" id="article-grid">
 
-  <a href="/article-how-to-read-stat.html" class="article-card">
-    <img src="/thumb-how-to-read-stat.png" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;border:.5px solid #F0F0F0" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="article-icon" style="display:none"><i class="ti ti-book" style="font-size:22px;color:#CC0000"></i></div>
-    <div style="flex:1;min-width:0">
-      <div class="article-title">วิธีอ่านสถิติหวยให้เป็น ไม่หลงทาง</div>
-      <div class="article-sub" style="display:flex;align-items:center;gap:6px"><span><i class="ti ti-calendar" style="font-size:9px"></i> 16 มิ.ย. 69</span><span>·</span><span><i class="ti ti-eye" style="font-size:9px"></i> 3,418 อ่าน</span></div>
-    </div>
-    <i class="ti ti-chevron-right" style="font-size:14px;color:#CCC;flex-shrink:0;margin-left:auto"></i>
-  </a>
+    <!-- D7 ล่าสุด -->
+    <a href="/article-stat-monthly.html" class="gc" data-cat="stat">
+      <span class="gc-badge">ใหม่ล่าสุด</span>
+      <img class="gc-thumb" src="/thumb-stat-monthly.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="gc-icon-fallback" style="display:none"><i class="ti ti-calendar-stats" style="font-size:32px;color:#CC0000"></i></div>
+      <div class="gc-body">
+        <div class="gc-cat">สถิติ</div>
+        <div class="gc-title">เดือนไหนออกเลขอะไร? ย้อนหลัง 1 ปี</div>
+        <div class="gc-meta"><i class="ti ti-calendar" style="font-size:9px"></i> 16 มิ.ย. 69 · <i class="ti ti-eye" style="font-size:9px"></i> 2,031</div>
+      </div>
+    </a>
 
-  <div class="article-card soon">
-    <div class="article-icon"><i class="ti ti-bulb" style="font-size:22px;color:#CCC"></i></div>
-    <div>
-      <div class="article-title">เลขมงคลตามวันเกิด ทำยังไง</div>
-      <div class="soon-badge">เร็วๆ นี้</div>
-    </div>
+    <!-- D6 -->
+    <a href="/article-stat-period.html" class="gc" data-cat="stat">
+      <img class="gc-thumb" src="/thumb-stat-period.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="gc-icon-fallback" style="display:none"><i class="ti ti-arrows-exchange" style="font-size:32px;color:#CC0000"></i></div>
+      <div class="gc-body">
+        <div class="gc-cat">สถิติ</div>
+        <div class="gc-title">งวด 1 vs งวด 16 เลขไหนออกบ่อยกว่า?</div>
+        <div class="gc-meta"><i class="ti ti-calendar" style="font-size:9px"></i> 16 มิ.ย. 69 · <i class="ti ti-eye" style="font-size:9px"></i> 1,654</div>
+      </div>
+    </a>
+
+    <!-- D5 -->
+    <a href="/article-weekly-picks.html" class="gc" data-cat="stat">
+      <img class="gc-thumb" src="/thumb-weekly-picks.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="gc-icon-fallback" style="display:none"><i class="ti ti-trending-up" style="font-size:32px;color:#CC0000"></i></div>
+      <div class="gc-body">
+        <div class="gc-cat">สถิติ</div>
+        <div class="gc-title">สรุปเลขเด่นประจำสัปดาห์จากสถิติ</div>
+        <div class="gc-meta"><i class="ti ti-calendar" style="font-size:9px"></i> 16 มิ.ย. 69 · <i class="ti ti-eye" style="font-size:9px"></i> 1,243</div>
+      </div>
+    </a>
+
+    <!-- D4 -->
+    <a href="/article-stat-lao-2digit.html" class="gc" data-cat="stat">
+      <img class="gc-thumb" src="/thumb-stat-lao-2digit.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="gc-icon-fallback" style="display:none"><i class="ti ti-calendar-stats" style="font-size:32px;color:#CC0000"></i></div>
+      <div class="gc-body">
+        <div class="gc-cat">สถิติ · ลาว</div>
+        <div class="gc-title">สถิติหวยลาว เลข 2 ตัว ย้อนหลัง 6 เดือน</div>
+        <div class="gc-meta"><i class="ti ti-calendar" style="font-size:9px"></i> 16 มิ.ย. 69 · <i class="ti ti-eye" style="font-size:9px"></i> 987</div>
+      </div>
+    </a>
+
+    <!-- D3 -->
+    <a href="/article-stat-3digit.html" class="gc" data-cat="stat">
+      <img class="gc-thumb" src="/thumb-stat-3digit.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="gc-icon-fallback" style="display:none"><i class="ti ti-list-numbers" style="font-size:32px;color:#CC0000"></i></div>
+      <div class="gc-body">
+        <div class="gc-cat">สถิติ</div>
+        <div class="gc-title">สถิติเลข 3 ตัวบน กลุ่มไหนออกบ่อย 10 ปี</div>
+        <div class="gc-meta"><i class="ti ti-calendar" style="font-size:9px"></i> 16 มิ.ย. 69 · <i class="ti ti-eye" style="font-size:9px"></i> 2,105</div>
+      </div>
+    </a>
+
+    <!-- D2 -->
+    <a href="/article-how-to-read-stat.html" class="gc" data-cat="how">
+      <img class="gc-thumb" src="/thumb-how-to-read-stat.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="gc-icon-fallback" style="display:none"><i class="ti ti-book" style="font-size:32px;color:#CC0000"></i></div>
+      <div class="gc-body">
+        <div class="gc-cat">วิเคราะห์</div>
+        <div class="gc-title">วิธีอ่านสถิติหวยให้เป็น ไม่หลงทาง</div>
+        <div class="gc-meta"><i class="ti ti-calendar" style="font-size:9px"></i> 16 มิ.ย. 69 · <i class="ti ti-eye" style="font-size:9px"></i> 3,418</div>
+      </div>
+    </a>
+
+    <!-- D1 -->
+    <a href="/article-stat-2digit.html" class="gc" data-cat="stat">
+      <img class="gc-thumb" src="/thumb-stat-2digit.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="gc-icon-fallback" style="display:none"><i class="ti ti-chart-bar" style="font-size:32px;color:#CC0000"></i></div>
+      <div class="gc-body">
+        <div class="gc-cat">สถิติ</div>
+        <div class="gc-title">สถิติเลขท้าย 2 ตัว ออกบ่อยสุด 10 ปี</div>
+        <div class="gc-meta"><i class="ti ti-calendar" style="font-size:9px"></i> 16 มิ.ย. 69 · <i class="ti ti-eye" style="font-size:9px"></i> 4,872</div>
+      </div>
+    </a>
+
   </div>
 
-  <div class="article-card soon">
-    <div class="article-icon"><i class="ti ti-report-analytics" style="font-size:22px;color:#CCC"></i></div>
-    <div>
-      <div class="article-title">สรุปสถิติหวยรายเดือน ย้อนหลัง 1 ปี</div>
-      <div class="soon-badge">เร็วๆ นี้</div>
+  <!-- COMING SOON -->
+  <div class="sec-label" style="margin-top:20px">เร็วๆ นี้</div>
+  <div class="grid">
+
+    <div class="gc soon" data-cat="dream">
+      <span class="gc-badge-soon">เร็วๆ นี้</span>
+      <div class="gc-icon-fallback"><i class="ti ti-moon" style="font-size:32px;color:#CCC"></i></div>
+      <div class="gc-body">
+        <div class="gc-cat" style="color:#CCC">ทำนายฝัน</div>
+        <div class="gc-title" style="color:#BBB">ฝันเห็นงู เลขเด็ดคือเลขอะไร</div>
+      </div>
     </div>
+
+    <div class="gc soon" data-cat="dream">
+      <span class="gc-badge-soon">เร็วๆ นี้</span>
+      <div class="gc-icon-fallback"><i class="ti ti-moon-stars" style="font-size:32px;color:#CCC"></i></div>
+      <div class="gc-body">
+        <div class="gc-cat" style="color:#CCC">ทำนายฝัน</div>
+        <div class="gc-title" style="color:#BBB">ฝันเห็นเงิน ทอง เลขอะไรดี</div>
+      </div>
+    </div>
+
+    <div class="gc soon" data-cat="stat">
+      <span class="gc-badge-soon">เร็วๆ นี้</span>
+      <div class="gc-icon-fallback"><i class="ti ti-replace" style="font-size:32px;color:#CCC"></i></div>
+      <div class="gc-body">
+        <div class="gc-cat" style="color:#CCC">สถิติ</div>
+        <div class="gc-title" style="color:#BBB">เลขเบิ้ล 00–99 ออกบ่อยแค่ไหน</div>
+      </div>
+    </div>
+
+    <div class="gc soon" data-cat="how">
+      <span class="gc-badge-soon">เร็วๆ นี้</span>
+      <div class="gc-icon-fallback"><i class="ti ti-bulb" style="font-size:32px;color:#CCC"></i></div>
+      <div class="gc-body">
+        <div class="gc-cat" style="color:#CCC">วิเคราะห์</div>
+        <div class="gc-title" style="color:#BBB">เลขมงคลตามวันเกิด ดูยังไง</div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- ทำนายฝัน -->
-  <div class="sec-label">ทำนายฝัน · เลขจากฝัน</div>
-
-  <div class="article-card soon">
-    <div class="article-icon"><i class="ti ti-moon" style="font-size:22px;color:#CCC"></i></div>
-    <div>
-      <div class="article-title">ฝันเห็นงู หมายถึงอะไร เลขเด็ดคืออะไร</div>
-      <div class="soon-badge">เร็วๆ นี้</div>
-    </div>
-  </div>
-
-  <div class="article-card soon">
-    <div class="article-icon"><i class="ti ti-moon-stars" style="font-size:22px;color:#CCC"></i></div>
-    <div>
-      <div class="article-title">ฝันเห็นเงิน ทอง เพชร เลขอะไรดี</div>
-      <div class="soon-badge">เร็วๆ นี้</div>
-    </div>
-  </div>
-
-  <div class="article-card soon">
-    <div class="article-icon"><i class="ti ti-stars" style="font-size:22px;color:#CCC"></i></div>
-    <div>
-      <div class="article-title">10 ความฝันยอดนิยม กับเลขที่เชื่อมกัน</div>
-      <div class="soon-badge">เร็วๆ นี้</div>
-    </div>
-  </div>
 </div>
+
+<script>
+function filterCat(cat, el) {
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('#article-grid .gc').forEach(c => {
+    c.style.display = (cat === 'all' || c.dataset.cat === cat) ? 'flex' : 'none';
+  });
+}
+</script>
 </body>
 </html>
