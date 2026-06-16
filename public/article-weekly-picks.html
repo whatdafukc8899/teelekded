@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RZWEB2X5T"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3RZWEB2X5T');</script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>สรุปเลขเด่นประจำสัปดาห์จากสถิติ ตัวไหนน่าจับตา — ตีเลขเด็ด</title>
+<meta name="description" content="วิธีสรุปเลขเด่นรายสัปดาห์จากสถิติสลาก เลขร้อน เลขเย็น เลขรอออก และวิธีคิดที่ใช้ได้จริงทุกงวด พร้อมตัวอย่างการวิเคราะห์">
+<meta name="keywords" content="เลขเด่นสัปดาห์นี้,สรุปเลขเด็ด,เลขน่าจับตา,วิเคราะห์เลขรายสัปดาห์,เลขดังประจำสัปดาห์,สถิติสลาก">
+<meta property="og:title" content="สรุปเลขเด่นประจำสัปดาห์จากสถิติ ตัวไหนน่าจับตา">
+<meta property="og:description" content="วิธีคิดและวิธีสรุปเลขเด่นรายสัปดาห์จากสถิติสลากจริง พร้อมตัวอย่างที่ใช้ได้ทุกงวด">
+<meta property="og:url" content="https://www.teelekded.com/article-weekly-picks.html">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/png" href="/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=DM+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#CC0000;--soft:#FFF5F5}
+body{background-color:#FAFAFA;background-image:radial-gradient(circle,rgba(204,0,0,.06) 1px,transparent 1px);background-size:20px 20px;font-family:'Sarabun',sans-serif;color:#1A1A1A;max-width:480px;margin:0 auto;min-height:100vh}
+.topbar{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid #F0F0F0;position:sticky;top:0;background:#FFF;z-index:10}
+.topbar a{color:#555;text-decoration:none;font-size:13px;display:flex;align-items:center;gap:4px}
+.topbar a:hover{color:var(--red)}
+.topbar-logo{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:800;color:#1A1A1A;margin-left:auto}
+.topbar-logo span{color:var(--red)}
+.hero-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.container{padding:18px 16px 80px}
+.breadcrumb{font-size:10px;color:#999;margin-bottom:14px;display:flex;align-items:center;gap:5px}
+.breadcrumb a{color:#999;text-decoration:none}
+.breadcrumb a:hover{color:var(--red)}
+h1{font-size:19px;font-weight:700;color:#111;line-height:1.4;margin-bottom:8px}
+.meta{font-size:10px;color:#999;margin-bottom:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.intro{font-size:13px;color:#555;line-height:1.9;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #F0F0F0}
+.sec-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin:20px 0 10px;display:flex;align-items:center;gap:6px;font-weight:700}
+.sec-label::before{content:'';width:3px;height:14px;border-radius:2px;background:var(--red);display:inline-block}
+.info-box{background:#FFF;border:1px solid #F0F0F0;border-left:3px solid var(--red);border-radius:10px;padding:14px;margin-bottom:12px}
+.info-title{font-size:12px;font-weight:700;color:#111;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.info-body{font-size:12px;color:#666;line-height:1.9}
+.highlight{background:var(--soft);border:1px solid rgba(204,0,0,.2);border-radius:10px;padding:14px;margin-bottom:14px}
+.highlight-title{font-size:12px;font-weight:700;color:var(--red);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+/* picks grid */
+.picks-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.pick-card{background:#FFF;border:1px solid #F0F0F0;border-radius:10px;padding:12px;text-align:center}
+.pick-card.hot{border-color:rgba(204,0,0,.3);background:var(--soft)}
+.pick-num{font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;color:var(--red);line-height:1}
+.pick-label{font-size:10px;color:#999;margin-top:4px}
+.pick-reason{font-size:10px;color:#CC0000;margin-top:4px;font-weight:600}
+/* step */
+.step-box{background:#FFF;border:1px solid #F0F0F0;border-radius:10px;padding:14px;margin-bottom:10px;display:flex;gap:12px}
+.step-num{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:800;color:var(--red);flex-shrink:0;line-height:1;width:24px}
+.step-body{font-size:12px;color:#555;line-height:1.9}
+.step-title{font-size:13px;font-weight:700;color:#111;margin-bottom:4px}
+/* score table */
+.score-table{width:100%;border-collapse:collapse;background:#FFF;border-radius:10px;overflow:hidden;border:1px solid #F0F0F0;margin-bottom:14px}
+.score-table th{background:var(--red);color:#FFF;padding:9px 10px;text-align:left;font-size:10px;letter-spacing:.08em;font-weight:700}
+.score-table td{padding:10px;border-bottom:1px solid #F5F5F5;font-size:12px;color:#333;vertical-align:middle}
+.score-table tr:last-child td{border-bottom:none}
+.score-table tr:hover td{background:#FFF5F5}
+.num-pill{font-family:'DM Sans',sans-serif;font-weight:800;font-size:15px;background:var(--red);color:#FFF;border-radius:8px;padding:4px 10px;display:inline-block}
+.score-bar{height:6px;border-radius:3px;background:var(--red);display:inline-block;vertical-align:middle}
+.badge{font-size:9px;padding:2px 7px;border-radius:10px;font-weight:700;display:inline-block}
+.badge.hot{background:var(--red);color:#FFF}
+.badge.warm{background:#FF6600;color:#FFF}
+.badge.cold{background:#F0F0F0;color:#888}
+.cta-box{background:var(--red);border-radius:12px;padding:16px;text-align:center;margin-top:24px}
+.cta-title{font-size:14px;font-weight:700;color:#FFF;margin-bottom:6px}
+.cta-sub{font-size:11px;color:rgba(255,255,255,.8);margin-bottom:12px}
+.cta-btn{display:inline-block;background:#FFF;color:var(--red);font-size:13px;font-weight:700;padding:10px 28px;border-radius:8px;text-decoration:none}
+.related-title{font-size:11px;font-weight:700;color:#999;letter-spacing:.1em;text-transform:uppercase;margin:24px 0 10px}
+.related-card{background:#FFF;border:1px solid #F0F0F0;border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:8px}
+.related-card:hover{border-color:rgba(204,0,0,.3)}
+.related-text{font-size:12px;font-weight:600;color:#111;line-height:1.4}
+.related-sub{font-size:10px;color:#999;margin-top:2px}
+.disclaimer{font-size:10px;color:#BBB;line-height:1.7;margin-top:20px;padding:10px 12px;border:1px solid #EEE;border-radius:6px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="/"><i class="ti ti-chevron-left" style="font-size:16px"></i> หน้าแรก</a>
+  <span class="topbar-logo">TEE<span>LEKDED</span>.com</span>
+</div>
+
+<img src="/thumb-weekly-picks.png" class="hero-img" alt="สรุปเลขเด่นประจำสัปดาห์" onerror="this.style.display='none'">
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">หน้าแรก</a>
+    <i class="ti ti-chevron-right" style="font-size:10px"></i>
+    <span>วิเคราะห์เลข</span>
+    <i class="ti ti-chevron-right" style="font-size:10px"></i>
+    <span>เลขเด่นสัปดาห์นี้</span>
+  </div>
+
+  <h1>สรุปเลขเด่นประจำสัปดาห์จากสถิติ ตัวไหนน่าจับตา</h1>
+  <div class="meta">
+    <span><i class="ti ti-calendar" style="font-size:11px"></i> มิถุนายน 2569</span>
+    <span><i class="ti ti-clock" style="font-size:11px"></i> อ่าน 5 นาที</span>
+    <span><i class="ti ti-refresh" style="font-size:11px"></i> อัปเดตทุกสัปดาห์</span>
+  </div>
+
+  <div class="intro">
+    ทุกต้นสัปดาห์ก่อนงวดออก เราจะรวบรวมเลขที่ "น่าจับตา" จากสถิติย้อนหลัง โดยดูจาก 3 มิติ ได้แก่ <strong>เลขร้อน</strong> ที่กำลังมาแรง <strong>เลขเย็น</strong> ที่รอนานแล้ว และ <strong>แพตเทิร์น</strong> ที่เคยเกิดซ้ำในช่วงเวลาใกล้เคียงกัน
+  </div>
+
+  <!-- เลขเด่นสัปดาห์นี้ -->
+  <div class="sec-label">เลขเด่นสัปดาห์นี้ (ตัวอย่าง)</div>
+  <div class="picks-grid">
+    <div class="pick-card hot">
+      <div class="pick-num">09</div>
+      <div class="pick-reason">เลขร้อน</div>
+      <div class="pick-label">ออกบ่อยสุดในกลุ่ม<br>หลักหน่วย 9</div>
+    </div>
+    <div class="pick-card hot">
+      <div class="pick-num">89</div>
+      <div class="pick-reason">เลขซ้ำบ่อย</div>
+      <div class="pick-label">ออกซ้ำ 3 งวด<br>ในรอบ 6 เดือน</div>
+    </div>
+    <div class="pick-card">
+      <div class="pick-num">31</div>
+      <div class="pick-reason">เลขรอออก</div>
+      <div class="pick-label">ห่างมากกว่า<br>2 ปีแล้ว</div>
+    </div>
+    <div class="pick-card">
+      <div class="pick-num">62</div>
+      <div class="pick-reason">เลขเย็น</div>
+      <div class="pick-label">ยังไม่ออกใน<br>กลุ่ม 60–69</div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-title"><i class="ti ti-alert-circle" style="font-size:13px;color:var(--red)"></i> หมายเหตุ</div>
+    <div class="info-body">ตัวเลขข้างต้นเป็น <strong>ตัวอย่างการวิเคราะห์</strong> เพื่อแสดงวิธีคิด ไม่ใช่การการันตีผลงวดถัดไป บทความนี้จะอัปเดตใหม่ทุกต้นสัปดาห์ก่อนงวดออก</div>
+  </div>
+
+  <!-- วิธีคิด -->
+  <div class="sec-label">วิธีคิดในการสรุปเลขเด่น</div>
+
+  <div class="step-box">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <div class="step-title">ดู "เลขร้อน" 3 งวดล่าสุด</div>
+      เลขที่ออกในงวดที่ผ่านมา 3 งวดติดต่อกันหรือ 2 ใน 3 งวด ถือว่า "ร้อน" — อาจพักก็ได้ แต่บางแพตเทิร์นวิ่งต่อได้อีก 1–2 งวด
+    </div>
+  </div>
+
+  <div class="step-box">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <div class="step-title">หา "เลขรอนาน" ที่ gap สูง</div>
+      เลขที่ไม่ออกมากกว่า 24 งวด (1 ปี) เป็น candidate — ยิ่งห่างนานยิ่งน่าสนใจ แต่ต้องดูควบคู่กับมิติอื่นด้วย
+    </div>
+  </div>
+
+  <div class="step-box">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <div class="step-title">ดูแพตเทิร์นรายเดือน</div>
+      บางเลขออกซ้ำในเดือนเดียวกันของปีก่อน เช่น เลข 89 ที่ออกใน ม.ค.–มี.ค.–พ.ค. ทุก 2 เดือน แบบนี้ถือว่ามี "จังหวะ" ที่จับได้
+    </div>
+  </div>
+
+  <div class="step-box">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <div class="step-title">กรองด้วยหลักหน่วย</div>
+      ถ้าหลักหน่วยใดกำลังแรงในช่วงนี้ ให้เลือกเลขในกลุ่มหลักหน่วยนั้น เช่น ถ้าหลักหน่วย 9 แรง ก็โฟกัสที่ 09, 19, 29, 39...
+    </div>
+  </div>
+
+  <div class="step-box">
+    <div class="step-num">5</div>
+    <div class="step-body">
+      <div class="step-title">คัดเหลือ 4–6 ตัว</div>
+      ผ่าน 4 มิติแล้ว คัดเลขที่ผ่านเงื่อนไขได้มากที่สุดเหลือ 4–6 ตัว เพื่อไม่ให้กระจายเกินไปจนหมดความหมาย
+    </div>
+  </div>
+
+  <!-- ตาราง score -->
+  <div class="sec-label">ตัวอย่างตาราง Score เลขเด่น</div>
+  <table class="score-table">
+    <tr><th>เลข</th><th>ร้อน</th><th>รอนาน</th><th>แพตเทิร์น</th><th>รวม</th></tr>
+    <tr>
+      <td><span class="num-pill">09</span></td>
+      <td>✓✓</td>
+      <td>—</td>
+      <td>✓</td>
+      <td><span class="badge hot">สูง</span></td>
+    </tr>
+    <tr>
+      <td><span class="num-pill">89</span></td>
+      <td>✓✓</td>
+      <td>—</td>
+      <td>✓✓</td>
+      <td><span class="badge hot">สูง</span></td>
+    </tr>
+    <tr>
+      <td><span class="num-pill">31</span></td>
+      <td>—</td>
+      <td>✓✓</td>
+      <td>✓</td>
+      <td><span class="badge warm">กลาง</span></td>
+    </tr>
+    <tr>
+      <td><span class="num-pill">62</span></td>
+      <td>—</td>
+      <td>✓✓</td>
+      <td>—</td>
+      <td><span class="badge warm">กลาง</span></td>
+    </tr>
+    <tr>
+      <td><span class="num-pill">47</span></td>
+      <td>—</td>
+      <td>✓</td>
+      <td>—</td>
+      <td><span class="badge cold">ต่ำ</span></td>
+    </tr>
+  </table>
+
+  <!-- ข้อสังเกต -->
+  <div class="sec-label">ข้อสังเกตที่นักวิเคราะห์ใช้จริง</div>
+
+  <div class="info-box">
+    <div class="info-title"><i class="ti ti-chart-line" style="font-size:13px;color:var(--red)"></i> เลขที่ผ่านมากกว่า 2 เงื่อนไข = น่าจับตาสุด</div>
+    <div class="info-body">
+      เลขที่ทั้งร้อนและมีแพตเทิร์นซ้ำในเดือนเดียวกัน มีน้ำหนักมากกว่าเลขที่ผ่านแค่เงื่อนไขเดียว เช่น เลข 09 ที่ทั้งร้อนและมีแพตเทิร์นรายเดือน ให้น้ำหนักสูงกว่าเลขที่แค่ "รอนาน"
+    </div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-title"><i class="ti ti-repeat" style="font-size:13px;color:var(--red)"></i> เลขที่ออกงวดก่อน มักพักก่อน 1 งวด</div>
+    <div class="info-body">
+      จากสถิติย้อนหลัง เลขที่ออกงวดล่าสุดมีอัตราการออกซ้ำในงวดถัดมาเพียง 12% — หมายความว่าถ้าเลขออกไปแล้ว โอกาสออกซ้ำงวดหน้าทันทีค่อนข้างต่ำ ควรรอ 1–2 งวดก่อน
+    </div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-title"><i class="ti ti-calendar-week" style="font-size:13px;color:var(--red)"></i> สัปดาห์ไหนควรระวัง</div>
+    <div class="info-body">
+      งวดที่ตรงกับต้นเดือน (1 ของเดือน) มักมี "เลขเปลี่ยนกลุ่ม" บ่อยกว่างวดกลางเดือน — แพตเทิร์นที่ต้นเดือนที่แล้วออก อาจวนกลับมาในต้นเดือนถัดไปได้
+    </div>
+  </div>
+
+  <div class="highlight">
+    <div class="highlight-title"><i class="ti ti-target" style="font-size:13px"></i> สรุปวิธีใช้บทความนี้</div>
+    <div class="info-body" style="color:#555">
+      1. ดูเลขเด่นสัปดาห์นี้ที่ด้านบน<br>
+      2. เช็คว่าผ่านกี่เงื่อนไขใน Score Table<br>
+      3. ให้น้ำหนักเลขที่ผ่านมากกว่า 2 มิติ<br>
+      4. ใช้คู่กับ <a href="/" style="color:var(--red);font-weight:700">ระบบวิเคราะห์สถิติสด</a> เพื่อความแม่นยำ
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <div class="cta-title">ดูสถิติสดและเลขดังอัปเดตทุกงวด</div>
+    <div class="cta-sub">วิเคราะห์เลขร้อน-เย็น พร้อมข้อมูลใหม่ทุกงวด</div>
+    <a href="/" class="cta-btn">📊 เข้าสู่ระบบวิเคราะห์</a>
+  </div>
+
+  <div class="related-title">บทความที่เกี่ยวข้อง</div>
+  <a href="/article-stat-2digit.html" class="related-card">
+    <i class="ti ti-chart-bar" style="font-size:22px;color:var(--red);flex-shrink:0"></i>
+    <div>
+      <div class="related-text">สถิติเลขท้าย 2 ตัว ออกบ่อยสุด ย้อนหลัง 10 ปี</div>
+      <div class="related-sub">ฐานข้อมูลสำหรับวิเคราะห์เลขเด่น</div>
+    </div>
+  </a>
+  <a href="/article-how-to-read-stat.html" class="related-card">
+    <i class="ti ti-book" style="font-size:22px;color:var(--red);flex-shrink:0"></i>
+    <div>
+      <div class="related-text">วิธีอ่านสถิติหวยให้เป็น ไม่หลงทาง</div>
+      <div class="related-sub">ปูพื้นฐานก่อนวิเคราะห์เลขเด่น</div>
+    </div>
+  </a>
+
+  <div class="disclaimer">
+    ⚠️ บทความนี้เป็นการวิเคราะห์สถิติและแสดงวิธีคิดเท่านั้น ตัวเลขที่ยกตัวอย่างไม่ใช่การการันตีผลลัพธ์ การตัดสินใจใดๆ เป็นความรับผิดชอบของผู้อ่านเอง
+  </div>
+</div>
+</body>
+</html>
