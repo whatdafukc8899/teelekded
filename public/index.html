@@ -1725,11 +1725,11 @@ function roundRect(ctx, x, y, w, h, r){
   ctx.closePath();
 }
 
-// ── URL Hash → auto switch tab ──
+// ── URL Hash → auto switch tab (skip splash) ──
 window.addEventListener('load', () => {
   const map = { '#home':'home', '#analyze':'analyze', '#result':'result', '#trending':'trending' };
   const tab = map[location.hash];
-  if(tab) switchTab(tab);
+  if(tab){ dismissSplash(); switchTab(tab); }
 });
 
 function wrapText(ctx, text, cx, y, maxW, lineH, maxLines){
