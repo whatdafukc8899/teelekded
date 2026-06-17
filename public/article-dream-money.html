@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--red:#A07000;--gold:#A07000}
+:root{--red:#CC0000;--soft:#FFF5F5}
 body{background:#FAFAFA;font-family:'Sarabun',sans-serif;color:#1A1A1A;max-width:480px;margin:0 auto;padding-bottom:60px}
 .topbar{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid #F0F0F0;position:sticky;top:0;background:#FFF;z-index:10}
 .topbar a{color:#555;text-decoration:none;font-size:13px;display:flex;align-items:center;gap:4px}
@@ -20,7 +20,7 @@ body{background:#FAFAFA;font-family:'Sarabun',sans-serif;color:#1A1A1A;max-width
 .topbar-logo{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:800;color:#1A1A1A;margin-left:auto}
 .topbar-logo span{color:var(--red)}
 .hero-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
-.hero{background:linear-gradient(135deg,#A07000 0%,#5A3D00 100%);color:#FFF;padding:24px 20px 20px}
+.hero{background:linear-gradient(135deg,#CC0000 0%,#990000 100%);color:#FFF;padding:24px 20px 20px}
 .hero-tag{font-size:9px;background:rgba(255,255,255,.2);border-radius:20px;padding:3px 10px;display:inline-block;margin-bottom:10px;letter-spacing:.08em}
 .hero-title{font-size:20px;font-weight:700;line-height:1.3}
 .hero-sub{font-size:11px;opacity:.75;margin-top:6px}
@@ -28,37 +28,37 @@ body{background:#FAFAFA;font-family:'Sarabun',sans-serif;color:#1A1A1A;max-width
 .container{padding:18px 16px}
 .sec-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin:20px 0 10px;display:flex;align-items:center;gap:6px;font-weight:700}
 .sec-label::before{content:'';width:3px;height:14px;border-radius:2px;background:var(--red);display:inline-block}
-.insight-box{background:#FFF;border:1px solid #F0E8C0;border-left:3px solid var(--gold);border-radius:10px;padding:14px;margin-bottom:10px}
+.insight-box{background:#FFF;border:1px solid #F0E0E0;border-left:3px solid var(--red);border-radius:10px;padding:14px;margin-bottom:10px}
 .insight-title{font-size:12px;font-weight:700;color:#111;margin-bottom:6px;display:flex;align-items:center;gap:6px}
 .insight-body{font-size:11px;color:#555;line-height:1.7}
-.summary-box{background:linear-gradient(135deg,#FFFBF0,#FFF);border:1px solid rgba(160,112,0,.25);border-radius:12px;padding:16px;margin-top:4px}
-.summary-title{font-size:12px;font-weight:700;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:6px}
-.summary-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px dashed #F0E8C0;font-size:12px}
+.summary-box{background:linear-gradient(135deg,#FFF5F5,#FFF);border:1px solid rgba(204,0,0,.15);border-radius:12px;padding:16px;margin-top:4px}
+.summary-title{font-size:12px;font-weight:700;color:var(--red);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.summary-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px dashed #F5F5F5;font-size:12px}
 .summary-row:last-child{border-bottom:none}
 .summary-key{color:#444}
 .summary-val{font-weight:700;color:#111;font-family:'DM Sans',sans-serif}
 .disclaimer{font-size:10px;color:#CCC;text-align:center;margin-top:20px;line-height:1.6}
 
 /* type cards */
-.type-card{background:#FFF;border:1px solid #F5EDCC;border-radius:12px;padding:14px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
+.type-card{background:#FFF;border:1px solid #F5F5F5;border-radius:12px;padding:14px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
 .type-emoji{font-size:28px;line-height:1;flex-shrink:0;margin-top:2px}
 .type-title{font-size:13px;font-weight:700;color:#111;margin-bottom:4px}
 .type-body{font-size:11px;color:#555;line-height:1.6;margin-bottom:8px}
 .type-nums{display:flex;gap:5px;flex-wrap:wrap}
 .num-pill{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:800;border-radius:6px;padding:3px 9px}
-.pill-gold{background:#FFFBF0;color:#A07000}
-.pill-red{background:#FFFBF0;color:#A07000}
+.pill-gold{background:#FFF5F5;color:#CC0000}
+.pill-red{background:#FFF5F5;color:#CC0000}
 
 /* meaning grid */
 .meaning-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
-.meaning-card{background:#FFF;border-radius:10px;padding:12px;border:1px solid #F5EDCC;text-align:center}
+.meaning-card{background:#FFF;border-radius:10px;padding:12px;border:1px solid #F5F5F5;text-align:center}
 .meaning-icon{font-size:22px;margin-bottom:6px}
 .meaning-title{font-size:11px;font-weight:700;color:#111;margin-bottom:3px}
 .meaning-sub{font-size:10px;color:#888;line-height:1.5}
 
 /* hot numbers */
 .hot-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
-.hot-num{font-family:'DM Sans',sans-serif;font-size:22px;font-weight:800;background:linear-gradient(135deg,#C89A00,#A07000);color:#FFF;border-radius:10px;width:52px;height:52px;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.hot-num{font-family:'DM Sans',sans-serif;font-size:22px;font-weight:800;background:linear-gradient(135deg,#E82020,#CC0000);color:#FFF;border-radius:10px;width:52px;height:52px;display:flex;align-items:center;justify-content:center;flex-direction:column}
 .hot-num-sub{font-size:8px;font-family:'Sarabun',sans-serif;opacity:.8;font-weight:400;margin-top:1px}
 </style>
 </head>
@@ -85,7 +85,7 @@ body{background:#FAFAFA;font-family:'Sarabun',sans-serif;color:#1A1A1A;max-width
 <div class="container">
 
   <div class="insight-box" style="margin-top:0">
-    <div class="insight-title"><i class="ti ti-bulb" style="color:#A07000;font-size:14px"></i> ฝันเห็นเงินทอง — ดีแน่นอน?</div>
+    <div class="insight-title"><i class="ti ti-bulb" style="color:#CC0000;font-size:14px"></i> ฝันเห็นเงินทอง — ดีแน่นอน?</div>
     <div class="insight-body">ในความเชื่อไทย ฝันเห็นเงินทองส่วนใหญ่ถือว่า <strong>เป็นมงคล</strong> บอกถึงโชคลาภที่กำลังจะมา แต่มีบางกรณีที่ต้องระวัง เช่น <strong>ฝันหาเงินไม่เจอ</strong> หรือ <strong>เงินหายไป</strong></div>
   </div>
 
@@ -206,7 +206,7 @@ body{background:#FAFAFA;font-family:'Sarabun',sans-serif;color:#1A1A1A;max-width
     <div class="summary-title"><i class="ti ti-sparkles" style="font-size:14px"></i> เลขแนะนำจากเงิน-ทองในฝัน</div>
     <div class="summary-row">
       <span class="summary-key">เลข 2 ตัวยอดนิยม</span>
-      <span class="summary-val" style="color:#A07000">15 · 51 · 89 · 98</span>
+      <span class="summary-val" style="color:#CC0000">15 · 51 · 89 · 98</span>
     </div>
     <div class="summary-row">
       <span class="summary-key">ทองคำ / ทองแท่ง</span>
@@ -229,7 +229,7 @@ body{background:#FAFAFA;font-family:'Sarabun',sans-serif;color:#1A1A1A;max-width
   <!-- RELATED -->
   <div class="sec-label" style="margin-top:24px">บทความที่เกี่ยวข้อง</div>
   <a href="/article-dream-snake.html" style="display:flex;align-items:center;gap:12px;background:#FFF;border:1px solid #F0F0F0;border-radius:10px;padding:12px 14px;text-decoration:none;margin-bottom:8px">
-    <div style="width:40px;height:40px;border-radius:8px;background:#F0FAF4;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti ti-moon" style="font-size:18px;color:#1A6B3C"></i></div>
+    <div style="width:40px;height:40px;border-radius:8px;background:#FFF5F5;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti ti-moon" style="font-size:18px;color:#CC0000"></i></div>
     <div>
       <div style="font-size:12px;font-weight:700;color:#111">ฝันเห็นงู หมายถึงอะไร เลขอะไรดี?</div>
       <div style="font-size:10px;color:#999;margin-top:2px">ทำนายฝันยอดนิยม</div>
@@ -237,7 +237,7 @@ body{background:#FAFAFA;font-family:'Sarabun',sans-serif;color:#1A1A1A;max-width
     <i class="ti ti-chevron-right" style="font-size:14px;color:#CCC;margin-left:auto;flex-shrink:0"></i>
   </a>
   <a href="/article-lucky-birthday.html" style="display:flex;align-items:center;gap:12px;background:#FFF;border:1px solid #F0F0F0;border-radius:10px;padding:12px 14px;text-decoration:none">
-    <div style="width:40px;height:40px;border-radius:8px;background:#F8F0FF;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti ti-cake" style="font-size:18px;color:#7B2FBE"></i></div>
+    <div style="width:40px;height:40px;border-radius:8px;background:#FFF5F5;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti ti-cake" style="font-size:18px;color:#CC0000"></i></div>
     <div>
       <div style="font-size:12px;font-weight:700;color:#111">เลขมงคลตามวันเกิด คำนวณยังไง?</div>
       <div style="font-size:10px;color:#999;margin-top:2px">เลขชีวิต + เลขประจำวัน</div>
