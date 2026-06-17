@@ -937,6 +937,33 @@ body{background-color:#FAFAFA;background-image:radial-gradient(circle,rgba(204,0
 
 <!-- ═══ เลขดัง PANEL ═══ -->
 <div class="section-panel" id="panel-trending" style="display:none">
+
+  <!-- LIVE SECTION — ใส่ YouTube Live URL ด้านล่าง ถ้าไม่ live ให้ใส่ "" -->
+  <script>const LIVE_URL = "";</script>
+  <div id="live-section" style="display:none;margin-bottom:16px">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+      <span style="background:#CC0000;color:#FFF;font-size:9px;font-weight:800;padding:3px 8px;border-radius:20px;letter-spacing:.08em;animation:liveblink 1.2s infinite">● LIVE</span>
+      <span style="font-size:13px;font-weight:700;color:#111">TEELEKDED Live</span>
+    </div>
+    <div style="border-radius:12px;overflow:hidden;background:#000;aspect-ratio:16/9;width:100%">
+      <iframe id="live-iframe" width="100%" height="100%" frameborder="0" allowfullscreen allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" style="display:block"></iframe>
+    </div>
+  </div>
+  <style>@keyframes liveblink{0%,100%{opacity:1}50%{opacity:.4}}</style>
+  <script>
+  (function(){
+    if(!LIVE_URL) return;
+    const url = LIVE_URL.trim();
+    let embedSrc = '';
+    const yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|live\/))([A-Za-z0-9_-]{11})/);
+    if(yt) embedSrc = 'https://www.youtube.com/embed/' + yt[1] + '?autoplay=0';
+    if(embedSrc){
+      document.getElementById('live-iframe').src = embedSrc;
+      document.getElementById('live-section').style.display = 'block';
+    }
+  })();
+  </script>
+
   <div class="sec-title"><i class="ti ti-flame"></i>เลขดังสัปดาห์นี้</div>
   <div class="sec-label">เลขที่คนใช้มากที่สุด</div>
   <div class="card">
