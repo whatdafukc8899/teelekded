@@ -12,6 +12,12 @@
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="/logo.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#CC0000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TEELEKDED">
+<link rel="apple-touch-icon" href="/logo.png">
 <link rel="apple-touch-icon" href="/logo.png">
 <title>ตีเลขเด็ด — วิเคราะห์สถิติสลาก เลขดัง เลขรอออก รายวัน</title>
 <meta name="description" content="วิเคราะห์สถิติสลากกินแบ่งรัฐบาล เลขดังประจำสัปดาห์ เลขที่น่าจะออก ผลรางวัลย้อนหลัง และตีเลขจากความฝัน ครบในที่เดียว — teelekded.com">
@@ -1757,6 +1763,9 @@ window.addEventListener('load', () => {
   const map = { '#home':'home', '#analyze':'analyze', '#result':'result', '#trending':'trending' };
   const tab = map[location.hash];
   if(tab){ dismissSplash(); switchTab(tab); }
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  }
 });
 
 function wrapText(ctx, text, cx, y, maxW, lineH, maxLines){
