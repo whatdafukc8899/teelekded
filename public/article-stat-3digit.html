@@ -320,6 +320,30 @@ h1{font-size:19px;font-weight:700;color:#111;line-height:1.4;margin-bottom:8px}
       <div class="related-sub">ปูพื้นฐานการวิเคราะห์สถิติแบบถูกต้อง</div>
     </div>
   </a>
+  <!-- SHARE -->
+  <div style="margin-top:24px;padding:16px;background:#FFF;border:1px solid #F0F0F0;border-radius:14px;text-align:center">
+    <div style="font-size:11px;color:#999;margin-bottom:10px">ถ้าบทความนี้มีประโยชน์ แชร์ให้เพื่อนด้วยนะ</div>
+    <button onclick="shareArticle()" style="background:#CC0000;color:#FFF;border:none;border-radius:10px;padding:10px 24px;font-size:13px;font-weight:700;font-family:'Sarabun',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:7px">
+      <i class="ti ti-share" style="font-size:15px"></i> แชร์บทความนี้
+    </button>
+    <div id="share-copied" style="display:none;font-size:11px;color:#CC0000;margin-top:8px;font-weight:700">✓ คัดลอก link แล้ว!</div>
+  </div>
+  <script>
+  function shareArticle(){
+    const url = location.href;
+    const title = document.title;
+    if(navigator.share){
+      navigator.share({title:title, url:url});
+    } else {
+      navigator.clipboard.writeText(url).then(()=>{
+        const el = document.getElementById('share-copied');
+        el.style.display = 'block';
+        setTimeout(()=>el.style.display='none', 2500);
+      });
+    }
+  }
+  </script>
+
 
   <div class="disclaimer">
     ⚠️ ข้อมูลในบทความนี้เป็นการวิเคราะห์สถิติย้อนหลังเพื่อประกอบการตัดสินใจเท่านั้น ไม่ใช่การรับประกันผลลัพธ์ การเล่นสลากควรทำอย่างมีสติและในขอบเขตที่รับได้
