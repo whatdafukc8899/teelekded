@@ -672,6 +672,17 @@ body{background-color:#FAFAFA;background-image:radial-gradient(circle,rgba(204,0
 
     <h1 class="hero-title">วิเคราะห์เลข<span class="red">รายวัน</span></h1>
     <p class="hero-sub">สถิติสลากย้อนหลัง + เลขดัง + ตีเลขจากฝัน ครบในที่เดียว</p>
+    <div id="home-date" style="font-size:11px;color:#CC0000;font-weight:700;margin-top:6px;margin-bottom:2px;letter-spacing:.04em"></div>
+    <script>
+    (function(){
+      const d = new Date();
+      const th = ['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+      const day = d.getDate();
+      const mon = th[d.getMonth()];
+      const yr = d.getFullYear() + 543;
+      document.getElementById('home-date').textContent = 'อัพเดตวันที่ ' + day + ' ' + mon + ' ' + yr;
+    })();
+    </script>
 
     <!-- STATS SHORTCUT -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
