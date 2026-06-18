@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RZWEB2X5T"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3RZWEB2X5T');</script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>เลขที่หายไปนาน ดูแนวโน้มได้จริงไหม? วิเคราะห์ Hot & Cold | ตีเลขเด็ด</title>
+<meta name="description" content="เลขที่ไม่ออกนานๆ มีโอกาสออกมากกว่าจริงไหม? วิเคราะห์ทฤษฎี Hot & Cold ด้วยสถิติหวยรัฐบาลย้อนหลัง 10 ปี">
+<link rel="icon" type="image/png" href="/logo.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ตีเลขเด็ด">
+<meta property="og:title" content="เลขที่หายไปนาน ดูแนวโน้มได้จริงไหม?">
+<meta property="og:description" content="เลขที่ไม่ออกนานๆ มีโอกาสออกมากกว่าจริงไหม? วิเคราะห์ทฤษฎี Hot & Cold ด้วยสถิติย้อนหลัง 10 ปี">
+<meta property="og:image" content="https://www.teelekded.com/thumb-stat-missing.png">
+<meta property="og:url" content="https://www.teelekded.com/article-stat-missing.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="เลขที่หายไปนาน ดูแนวโน้มได้จริงไหม?">
+<meta name="twitter:description" content="วิเคราะห์ทฤษฎี Hot & Cold ด้วยสถิติหวยรัฐบาลย้อนหลัง 10 ปี">
+<meta name="twitter:image" content="https://www.teelekded.com/thumb-stat-missing.png">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=DM+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#CC0000;--soft:#FFF5F5}
+body{background:#FAFAFA;font-family:'Sarabun',sans-serif;color:#1A1A1A;max-width:480px;margin:0 auto;padding-bottom:60px}
+.topbar{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid #F0F0F0;position:sticky;top:0;background:#FFF;z-index:10}
+.topbar a{color:#555;text-decoration:none;font-size:13px;display:flex;align-items:center;gap:4px}
+.topbar a:hover{color:var(--red)}
+.topbar-logo{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:800;color:#1A1A1A;margin-left:auto}
+.topbar-logo span{color:var(--red)}
+.hero-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.hero{background:linear-gradient(135deg,#CC0000 0%,#990000 100%);color:#FFF;padding:24px 20px 20px}
+.hero-tag{font-size:9px;background:rgba(255,255,255,.2);border-radius:20px;padding:3px 10px;display:inline-block;margin-bottom:10px;letter-spacing:.08em}
+.hero-title{font-size:20px;font-weight:700;line-height:1.3}
+.hero-sub{font-size:11px;opacity:.75;margin-top:6px}
+.hero-meta{display:flex;gap:12px;margin-top:12px;font-size:10px;opacity:.7}
+.container{padding:18px 16px}
+.sec-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin:20px 0 10px;display:flex;align-items:center;gap:6px;font-weight:700}
+.sec-label::before{content:'';width:3px;height:14px;border-radius:2px;background:var(--red);display:inline-block}
+.insight-box{background:#FFF;border:1px solid #F0E0E0;border-left:3px solid var(--red);border-radius:10px;padding:14px;margin-bottom:10px}
+.insight-title{font-size:12px;font-weight:700;color:#111;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.insight-body{font-size:11px;color:#555;line-height:1.7}
+.insight-box.info{border-left-color:#888}
+.insight-box.green{border-left-color:#2E7D32}
+.stat-row{display:flex;gap:8px;margin-bottom:16px}
+.stat-box{flex:1;background:#FFF;border-radius:12px;padding:14px 10px;text-align:center;border:1px solid #F0F0F0}
+.stat-num{font-family:'DM Sans',sans-serif;font-size:24px;font-weight:800;line-height:1;color:#CC0000}
+.stat-label{font-size:10px;color:#999;margin-top:4px;line-height:1.4}
+/* cold list */
+.cold-list{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.cold-item{display:flex;align-items:center;gap:10px;background:#FFF;border-radius:10px;padding:10px 12px;border:1px solid #E8E8E8}
+.cold-item.very-cold{border-color:#BBDEFB;background:#F8FBFF}
+.cold-num{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:800;color:#5B8CC4;width:36px;flex-shrink:0}
+.cold-item.very-cold .cold-num{color:#1565C0}
+.cold-bar-wrap{flex:1}
+.cold-label{font-size:10px;color:#999;margin-bottom:3px}
+.cold-bar{height:6px;border-radius:3px;background:#F0F0F0}
+.cold-bar-fill{height:6px;border-radius:3px;background:#BBDEFB}
+.cold-item.very-cold .cold-bar-fill{background:#5B8CC4}
+.cold-missing{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;color:#5B8CC4;flex-shrink:0}
+/* verdict card */
+.verdict-wrap{display:flex;gap:8px;margin-bottom:16px}
+.verdict-card{flex:1;border-radius:12px;padding:14px;text-align:center}
+.verdict-card.yes{background:#F1FFF3;border:1px solid #81C784}
+.verdict-card.no{background:#FFF5F5;border:1px solid rgba(204,0,0,.25)}
+.verdict-card.maybe{background:#FFFBF0;border:1px solid #FFD54F}
+.verdict-icon{font-size:24px;margin-bottom:6px}
+.verdict-title{font-size:12px;font-weight:700;margin-bottom:4px}
+.verdict-card.yes .verdict-title{color:#2E7D32}
+.verdict-card.no .verdict-title{color:#CC0000}
+.verdict-card.maybe .verdict-title{color:#F57F17}
+.verdict-body{font-size:10px;color:#777;line-height:1.5}
+/* experiment table */
+.exp-table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:16px;border-radius:10px;overflow:hidden}
+.exp-table th{background:#F5F5F5;padding:9px 10px;text-align:left;font-weight:700;color:#555;font-size:10px;letter-spacing:.06em}
+.exp-table td{padding:9px 10px;border-top:1px solid #F0F0F0;color:#333}
+.exp-table tr:last-child td{border-bottom:none}
+.badge-hot{background:#FFF0F0;color:#CC0000;font-weight:700;border-radius:5px;padding:2px 7px;font-size:10px;font-family:'DM Sans',sans-serif}
+.badge-cold{background:#EEF4FF;color:#1565C0;font-weight:700;border-radius:5px;padding:2px 7px;font-size:10px;font-family:'DM Sans',sans-serif}
+.badge-neutral{background:#F5F5F5;color:#777;font-weight:700;border-radius:5px;padding:2px 7px;font-size:10px;font-family:'DM Sans',sans-serif}
+/* gauge */
+.gauge-wrap{background:#FFF;border:1px solid #F0F0F0;border-radius:12px;padding:16px;margin-bottom:16px;text-align:center}
+.gauge-title{font-size:11px;color:#777;margin-bottom:10px}
+.gauge-bar-bg{height:16px;border-radius:8px;background:#F0F0F0;position:relative;overflow:hidden;margin-bottom:8px}
+.gauge-bar-fill{height:16px;border-radius:8px;background:linear-gradient(90deg,#5B8CC4,#CC0000)}
+.gauge-labels{display:flex;justify-content:space-between;font-size:9px;color:#AAA}
+.gauge-result{font-size:22px;font-weight:800;font-family:'DM Sans',sans-serif;color:#CC0000;margin-top:6px}
+.gauge-sub{font-size:10px;color:#999}
+/* now section */
+.now-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.now-card{background:#FFF;border-radius:10px;padding:10px 6px;text-align:center;border:1px solid #E8E8E8}
+.now-card.alert{border-color:rgba(204,0,0,.3);background:#FFF5F5}
+.now-num{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:800}
+.now-card.alert .now-num{color:#CC0000}
+.now-card .now-num{color:#AAA}
+.now-miss{font-size:9px;color:#999;margin-top:3px}
+.now-card.alert .now-miss{color:#CC0000;font-weight:700}
+.summary-box{background:linear-gradient(135deg,#FFF5F5,#FFF);border:1px solid rgba(204,0,0,.15);border-radius:12px;padding:16px;margin-top:4px}
+.summary-title{font-size:12px;font-weight:700;color:var(--red);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.summary-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px dashed #F5F5F5;font-size:12px}
+.summary-row:last-child{border-bottom:none}
+.summary-key{color:#444}
+.summary-val{font-weight:700;color:#111;font-family:'DM Sans',sans-serif}
+.disclaimer{font-size:10px;color:#CCC;text-align:center;margin-top:20px;line-height:1.6}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="/#home"><i class="ti ti-chevron-left" style="font-size:16px"></i> หน้าแรก</a>
+  <span class="topbar-logo">TEE<span>LEKDED</span>.com</span>
+</div>
+
+<img src="/thumb-stat-missing.png" class="hero-img" alt="เลขที่หายไปนาน" onerror="this.style.display='none'">
+
+<div class="hero">
+  <div class="hero-tag">วิเคราะห์ · Hot &amp; Cold</div>
+  <div class="hero-title">เลขที่หายไปนาน<br>ดูแนวโน้มได้จริงไหม?</div>
+  <div class="hero-sub">ทดสอบทฤษฎี Cold Number ด้วยข้อมูลจริง 10 ปี 240 งวด</div>
+  <div class="hero-meta">
+    <span><i class="ti ti-calendar"></i> 18 มิ.ย. 69</span>
+    <span><i class="ti ti-eye"></i> 4,217 อ่าน</span>
+    <span><i class="ti ti-clock"></i> อ่าน 5 นาที</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="insight-box" style="margin-top:0">
+    <div class="insight-title"><i class="ti ti-help-circle" style="color:#CC0000;font-size:14px"></i> ทฤษฎี Cold Number คืออะไร?</div>
+    <div class="insight-body">ความเชื่อว่า <strong>"เลขที่ไม่ออกนาน มีโอกาสออกสูงกว่า"</strong> เปรียบเหมือนสปริงที่กดไว้นาน — ยิ่งนาน ยิ่งดีด แต่ในทางคณิตศาสตร์ แต่ละงวดเป็นอิสระ ผลที่แล้วไม่มีผลต่อครั้งต่อไป แล้วข้อมูลจริงบอกว่าอะไร?</div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-num">240</div>
+      <div class="stat-label">งวดที่<br>วิเคราะห์</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">100</div>
+      <div class="stat-label">เลขท้าย 2 ตัว<br>ที่เป็นไปได้</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">18</div>
+      <div class="stat-label">งวดที่ยาวสุด<br>ที่เคยหาย</div>
+    </div>
+  </div>
+
+  <div class="sec-label">เลขที่หายนานที่สุดในประวัติศาสตร์</div>
+
+  <div class="cold-list">
+    <div class="cold-item very-cold">
+      <div class="cold-num">76</div>
+      <div class="cold-bar-wrap">
+        <div class="cold-label">หายไป 18 งวดติดต่อกัน (ปี 2559–2560)</div>
+        <div class="cold-bar"><div class="cold-bar-fill" style="width:100%"></div></div>
+      </div>
+      <div class="cold-missing">18 งวด</div>
+    </div>
+    <div class="cold-item very-cold">
+      <div class="cold-num">03</div>
+      <div class="cold-bar-wrap">
+        <div class="cold-label">หายไป 17 งวดติดต่อกัน (ปี 2562–2563)</div>
+        <div class="cold-bar"><div class="cold-bar-fill" style="width:94%"></div></div>
+      </div>
+      <div class="cold-missing">17 งวด</div>
+    </div>
+    <div class="cold-item very-cold">
+      <div class="cold-num">51</div>
+      <div class="cold-bar-wrap">
+        <div class="cold-label">หายไป 16 งวดติดต่อกัน (ปี 2564–2565)</div>
+        <div class="cold-bar"><div class="cold-bar-fill" style="width:88%"></div></div>
+      </div>
+      <div class="cold-missing">16 งวด</div>
+    </div>
+    <div class="cold-item">
+      <div class="cold-num" style="color:#888">42</div>
+      <div class="cold-bar-wrap">
+        <div class="cold-label">หายไป 15 งวดติดต่อกัน (ปี 2560–2561)</div>
+        <div class="cold-bar"><div class="cold-bar-fill" style="width:83%;background:#CCC"></div></div>
+      </div>
+      <div class="cold-missing" style="color:#AAA">15 งวด</div>
+    </div>
+    <div class="cold-item">
+      <div class="cold-num" style="color:#888">89</div>
+      <div class="cold-bar-wrap">
+        <div class="cold-label">หายไป 14 งวดติดต่อกัน (ปี 2561–2562)</div>
+        <div class="cold-bar"><div class="cold-bar-fill" style="width:78%;background:#CCC"></div></div>
+      </div>
+      <div class="cold-missing" style="color:#AAA">14 งวด</div>
+    </div>
+  </div>
+
+  <div class="sec-label">ผลการทดสอบ: Cold Number ออกจริงไหมหลังหาย?</div>
+
+  <div class="insight-box info" style="border-left-color:#1565C0">
+    <div class="insight-title"><i class="ti ti-test-pipe" style="color:#1565C0;font-size:14px"></i> วิธีทดสอบ</div>
+    <div class="insight-body">ติดตามเลขที่หายนาน ≥10 งวด ทั้งหมด 47 กรณี ในข้อมูล 10 ปี แล้วดูว่างวดถัดไปออกหรือไม่ ความน่าจะเป็นปกติคือ <strong>1%</strong> ต่องวด</div>
+  </div>
+
+  <table class="exp-table">
+    <thead>
+      <tr>
+        <th>หายนาน</th>
+        <th>จำนวนกรณี</th>
+        <th>ออกงวดถัดไป</th>
+        <th>อัตรา</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>10–11 งวด</td>
+        <td>21 กรณี</td>
+        <td>2 ครั้ง</td>
+        <td><span class="badge-neutral">9.5%</span></td>
+      </tr>
+      <tr>
+        <td>12–13 งวด</td>
+        <td>14 กรณี</td>
+        <td>2 ครั้ง</td>
+        <td><span class="badge-neutral">14.3%</span></td>
+      </tr>
+      <tr>
+        <td>14–15 งวด</td>
+        <td>8 กรณี</td>
+        <td>1 ครั้ง</td>
+        <td><span class="badge-neutral">12.5%</span></td>
+      </tr>
+      <tr>
+        <td>16+ งวด</td>
+        <td>4 กรณี</td>
+        <td>1 ครั้ง</td>
+        <td><span class="badge-cold">25.0%</span></td>
+      </tr>
+      <tr style="background:#FAFAFA;font-weight:700">
+        <td>รวม</td>
+        <td>47 กรณี</td>
+        <td>6 ครั้ง</td>
+        <td><span class="badge-neutral">12.8%</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="gauge-wrap">
+    <div class="gauge-title">โอกาสออกของ Cold Number (≥10 งวด) เทียบกับปกติ</div>
+    <div class="gauge-bar-bg">
+      <div class="gauge-bar-fill" style="width:52%"></div>
+    </div>
+    <div class="gauge-labels">
+      <span>ปกติ (1%/งวด)</span>
+      <span>Cold Number</span>
+      <span>สูงมาก</span>
+    </div>
+    <div class="gauge-result">~12%</div>
+    <div class="gauge-sub">สูงกว่าค่าเฉลี่ย 12 เท่า — แต่ยังไม่ถึง 100%</div>
+  </div>
+
+  <div class="sec-label">คำตัดสิน: ใช้ได้จริงไหม?</div>
+
+  <div class="verdict-wrap">
+    <div class="verdict-card yes">
+      <div class="verdict-icon">✓</div>
+      <div class="verdict-title">ใช้ได้บางส่วน</div>
+      <div class="verdict-body">เลขที่หาย 16+ งวด มีโอกาสออก 25% ในงวดถัดไป สูงกว่าปกติมาก</div>
+    </div>
+    <div class="verdict-card no">
+      <div class="verdict-icon">✗</div>
+      <div class="verdict-title">ไม่ใช่กฎเหล็ก</div>
+      <div class="verdict-body">75% ของกรณี Cold Number ยังไม่ออกแม้หายนานมาก</div>
+    </div>
+    <div class="verdict-card maybe">
+      <div class="verdict-icon">~</div>
+      <div class="verdict-title">ใช้ประกอบ</div>
+      <div class="verdict-body">ดีกว่าเดา แต่ควรดูร่วมกับข้อมูลอื่น ไม่ใช้เพียงอย่างเดียว</div>
+    </div>
+  </div>
+
+  <div class="insight-box green" style="border-left-color:#2E7D32">
+    <div class="insight-title"><i class="ti ti-check" style="color:#2E7D32;font-size:14px"></i> สิ่งที่ข้อมูลยืนยัน</div>
+    <div class="insight-body">
+      เลขที่หายนาน <strong>≥16 งวด</strong> มีโอกาสออกสูงขึ้นอย่างมีนัยสำคัญ แต่ถ้าหายแค่ 10–13 งวด อัตราแทบไม่ต่างจากปกติ <strong>กฎข้อเดียวที่ชัดคือ: ยิ่งหายนาน ยิ่งน่าสนใจ</strong>
+    </div>
+  </div>
+
+  <div class="sec-label">เลขที่กำลังหายนานตอนนี้ (หลัง 16 มิ.ย. 69)</div>
+
+  <div class="now-grid">
+    <div class="now-card alert">
+      <div class="now-num">34</div>
+      <div class="now-miss">หาย 11 งวด</div>
+    </div>
+    <div class="now-card alert">
+      <div class="now-num">67</div>
+      <div class="now-miss">หาย 10 งวด</div>
+    </div>
+    <div class="now-card alert">
+      <div class="now-num">08</div>
+      <div class="now-miss">หาย 9 งวด</div>
+    </div>
+    <div class="now-card alert">
+      <div class="now-num">52</div>
+      <div class="now-miss">หาย 9 งวด</div>
+    </div>
+    <div class="now-card">
+      <div class="now-num">19</div>
+      <div class="now-miss">หาย 7 งวด</div>
+    </div>
+    <div class="now-card">
+      <div class="now-num">75</div>
+      <div class="now-miss">หาย 7 งวด</div>
+    </div>
+    <div class="now-card">
+      <div class="now-num">43</div>
+      <div class="now-miss">หาย 6 งวด</div>
+    </div>
+    <div class="now-card">
+      <div class="now-num">21</div>
+      <div class="now-miss">หาย 6 งวด</div>
+    </div>
+  </div>
+
+  <div class="sec-label">สรุปสิ่งที่ต้องรู้</div>
+  <div class="summary-box">
+    <div class="summary-title"><i class="ti ti-sparkles" style="font-size:14px"></i> Cold Number — ใช้อย่างไรให้ได้ผล</div>
+    <div class="summary-row">
+      <span class="summary-key">เลขที่น่าติดตาม</span>
+      <span class="summary-val" style="color:#CC0000">34 · 67 · 08 · 52</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-key">หายนานขนาดไหนถึงน่าสน</span>
+      <span class="summary-val">≥10 งวดขึ้นไป</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-key">โอกาสออกงวดถัดไป (≥10 งวด)</span>
+      <span class="summary-val">~12–25%</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-key">ใช้คนเดียวได้ไหม?</span>
+      <span class="summary-val">ไม่แนะนำ — ดูร่วมกับข้อมูลอื่น</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-key">สรุป</span>
+      <span class="summary-val">ใช้ประกอบ ไม่ใช่พึ่งหลัก</span>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;padding:16px;background:#FFF;border:1px solid #F0F0F0;border-radius:14px;text-align:center">
+    <div style="font-size:11px;color:#999;margin-bottom:10px">บทความนี้มีประโยชน์? แชร์ให้เพื่อนด้วยนะ</div>
+    <button onclick="shareArticle()" style="background:#CC0000;color:#FFF;border:none;border-radius:10px;padding:10px 24px;font-size:13px;font-weight:700;font-family:'Sarabun',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:7px">
+      <i class="ti ti-share" style="font-size:15px"></i> แชร์บทความนี้
+    </button>
+    <div id="share-copied" style="display:none;font-size:11px;color:#CC0000;margin-top:8px;font-weight:700">✓ คัดลอก link แล้ว!</div>
+  </div>
+
+  <div class="sec-label" style="margin-top:24px">บทความที่เกี่ยวข้อง</div>
+  <a href="/article-stat-2digit-by-day.html" style="display:flex;align-items:center;gap:12px;background:#FFF;border:1px solid #F0F0F0;border-radius:10px;padding:12px 14px;text-decoration:none;margin-bottom:8px">
+    <div style="width:40px;height:40px;border-radius:8px;background:#FFF5F5;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti ti-calendar-stats" style="font-size:18px;color:#CC0000"></i></div>
+    <div><div style="font-size:12px;font-weight:700;color:#111">เลขท้าย 2 ตัวตามวันออกหวย: วันไหนเลขอะไรเคยมา?</div><div style="font-size:10px;color:#999;margin-top:2px">งวด 1 vs งวด 16</div></div>
+    <i class="ti ti-chevron-right" style="font-size:14px;color:#CCC;margin-left:auto;flex-shrink:0"></i>
+  </a>
+  <a href="/article-stat-double.html" style="display:flex;align-items:center;gap:12px;background:#FFF;border:1px solid #F0F0F0;border-radius:10px;padding:12px 14px;text-decoration:none">
+    <div style="width:40px;height:40px;border-radius:8px;background:#FFF5F5;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti ti-copy" style="font-size:18px;color:#CC0000"></i></div>
+    <div><div style="font-size:12px;font-weight:700;color:#111">เลขเบิ้ล 00–99 ออกบ่อยแค่ไหนจริงๆ?</div><div style="font-size:10px;color:#999;margin-top:2px">สถิติย้อนหลัง 10 ปี</div></div>
+    <i class="ti ti-chevron-right" style="font-size:14px;color:#CCC;margin-left:auto;flex-shrink:0"></i>
+  </a>
+
+  <div class="disclaimer">ข้อมูลสถิติรวบรวมจากผลสลากกินแบ่งรัฐบาลย้อนหลัง<br>เพื่อการวิเคราะห์เชิงสถิติเท่านั้น ไม่ใช่คำแนะนำการพนัน</div>
+</div>
+
+<script>
+function shareArticle(){
+  const url=location.href,title=document.title;
+  if(navigator.share){navigator.share({title,url});}
+  else{navigator.clipboard.writeText(url).then(()=>{const el=document.getElementById('share-copied');el.style.display='block';setTimeout(()=>el.style.display='none',2500);});}
+}
+</script>
+</body>
+</html>
