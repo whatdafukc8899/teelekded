@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RZWEB2X5T"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3RZWEB2X5T');</script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>เลขเด็ดตามวันในสัปดาห์ เลขคำลังประจำวัน จันทร์-อาทิตย์ — ตีเลขเด็ด</title>
+<meta name="description" content="เลขเด็ดตามวันในสัปดาห์ เลขคำลังวันจันทร์ถึงอาทิตย์ สีมงคลและเลขแนะนำประจำวัน ตามตำราโหราศาสตร์ไทย พร้อมเลข 2 ตัว 3 ตัว">
+<meta name="keywords" content="เลขเด็ดตามวัน,เลขคำลังประจำวัน,เลขมงคลวันจันทร์,เลขประจำวันอังคาร,ซื้อหวยวันไหนดี,เลขเสี่ยงดวงตามวัน,เลขคำลังวันอาทิตย์">
+<meta property="og:title" content="เลขเด็ดตามวันในสัปดาห์ ซื้อวันไหนดี?">
+<meta property="og:description" content="เลขคำลังและเลขมงคลประจำแต่ละวัน จันทร์ถึงอาทิตย์ ตามตำราโหราศาสตร์ไทย">
+<meta property="og:image" content="https://www.teelekded.com/thumb-lucky-day.png">
+<meta property="og:url" content="https://www.teelekded.com/article-lucky-day.html">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/png" href="/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=DM+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#CC0000;--red2:#E53935;--dark:#0D0D14;--text:#1A1A2E;--muted:#555566}
+body{background:#F5F5F7;font-family:'Sarabun',sans-serif;color:var(--text);min-height:100vh}
+.topbar{background:var(--red);padding:12px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10}
+.topbar a{color:#fff;text-decoration:none;font-size:13px;display:flex;align-items:center;gap:4px;opacity:.9}
+.topbar a:hover{opacity:1}
+.topbar-logo{margin-left:auto;font-size:14px;font-weight:800;color:#fff;font-family:'DM Sans',sans-serif;letter-spacing:.02em}
+.hero-img{width:100%;max-width:560px;margin:0 auto;display:block;aspect-ratio:16/9;object-fit:cover}
+.container{max-width:560px;margin:0 auto;padding:20px 16px 60px}
+.breadcrumb{font-size:10px;color:#999;margin-bottom:14px;display:flex;align-items:center;gap:5px}
+.breadcrumb a{color:#999;text-decoration:none}
+.breadcrumb a:hover{color:var(--red)}
+h1{font-size:22px;font-weight:800;color:var(--dark);line-height:1.3;margin-bottom:8px;font-family:'DM Sans',sans-serif}
+.meta{font-size:10px;color:#999;margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.intro{font-size:13px;color:#555;line-height:1.9;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #E8E8F0}
+/* Today */
+.today-card{background:var(--red);border-radius:12px;padding:14px 16px;margin-bottom:20px;display:flex;align-items:center;gap:12px;color:#fff}
+.today-label{font-size:10px;font-weight:700;letter-spacing:.1em;opacity:.8;margin-bottom:2px}
+.today-day{font-size:17px;font-weight:800;font-family:'DM Sans',sans-serif}
+.today-nums{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:800;margin-left:auto;letter-spacing:.05em}
+/* Day tabs */
+.day-tabs{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:18px}
+.day-tab{border:none;border-radius:8px;padding:8px 2px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:11px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:3px;background:#fff;color:#999;border:1.5px solid #E8E8F0;transition:all .2s}
+.day-tab .dot{width:8px;height:8px;border-radius:50%;margin-top:2px}
+.day-tab.active,.day-tab:hover{border-color:var(--red);color:var(--red)}
+.day-tab.active{background:#FFF5F5}
+.day-tab.today-mark{border-color:rgba(204,0,0,.4)}
+/* Sections */
+.day-section{display:none;animation:fadeIn .25s ease}
+.day-section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+/* Hero card */
+.day-hero{border-radius:14px;padding:18px;margin-bottom:16px;color:#fff;display:flex;align-items:center;gap:14px}
+.hero-icon{font-size:38px;flex-shrink:0}
+.hero-name{font-size:20px;font-weight:800;font-family:'DM Sans',sans-serif}
+.hero-sub{font-size:11px;opacity:.85;margin-top:3px}
+.hero-nums{font-family:'DM Sans',sans-serif;font-size:24px;font-weight:800;margin-top:6px;letter-spacing:.04em}
+/* Meaning cards */
+.meaning-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.meaning-card{background:#fff;border-radius:10px;padding:12px 14px;border:1px solid #E8E8F0}
+.meaning-label{font-size:9px;letter-spacing:.1em;color:#999;text-transform:uppercase;margin-bottom:5px;font-weight:700}
+.meaning-val{font-size:13px;font-weight:700;color:var(--dark)}
+.color-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:5px;vertical-align:middle}
+/* Hot row */
+.hot-label{font-size:10px;font-weight:700;color:var(--red);letter-spacing:.08em;text-transform:uppercase;margin:14px 0 8px;display:flex;align-items:center;gap:6px}
+.hot-label::before{content:'';display:inline-block;width:3px;height:14px;background:var(--red);border-radius:2px}
+.pill-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.pill{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;padding:5px 14px;border-radius:8px;background:#fff;border:1.5px solid #DDD;color:#555}
+.pill.hot{background:var(--red);color:#fff;border-color:var(--red)}
+.pill.med{border-color:var(--red);color:var(--red)}
+/* Tip */
+.tip-box{background:#fff;border-radius:10px;padding:14px;margin-bottom:14px;border-left:3px solid var(--red)}
+.tip-title{font-size:12px;font-weight:700;color:var(--red);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.tip-body{font-size:12px;color:#555;line-height:1.9}
+/* Summary */
+.sum-card{background:#fff;border-radius:12px;overflow:hidden;margin-bottom:20px;border:1px solid #E8E8F0}
+.sum-head{background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:10px 14px;letter-spacing:.08em;text-transform:uppercase;font-family:'DM Sans',sans-serif}
+.sum-row{display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid #F0F0F5;gap:10px}
+.sum-row:last-child{border-bottom:none}
+.sum-day{font-size:12px;font-weight:600;color:var(--dark);width:90px;flex-shrink:0;display:flex;align-items:center;gap:6px}
+.sum-nums{font-family:'DM Sans',sans-serif;font-weight:700;color:var(--red);font-size:13px;flex:1}
+.sum-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+/* CTA */
+.cta-box{background:var(--red);border-radius:12px;padding:20px;text-align:center;margin-top:28px}
+.cta-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:6px;font-family:'DM Sans',sans-serif}
+.cta-sub{font-size:12px;color:rgba(255,255,255,.8);margin-bottom:14px}
+.cta-btn{display:inline-block;background:#fff;color:var(--red);font-size:13px;font-weight:700;padding:10px 28px;border-radius:8px;text-decoration:none;font-family:'Sarabun',sans-serif}
+.related-title{font-size:11px;font-weight:700;color:#999;letter-spacing:.1em;text-transform:uppercase;margin:28px 0 12px;display:flex;align-items:center;gap:8px}
+.related-title::before{content:'';flex:1;height:1px;background:#E8E8F0}
+.related-card{background:#fff;border:1px solid #E8E8F0;border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:8px}
+.related-card:hover{border-color:var(--red);box-shadow:0 2px 8px rgba(204,0,0,.08)}
+.related-text{font-size:13px;font-weight:700;color:var(--dark);line-height:1.4}
+.related-sub{font-size:10px;color:#999;margin-top:2px}
+.share-btn{width:100%;background:#fff;border:1.5px solid var(--red);color:var(--red);font-size:13px;font-weight:700;padding:11px;border-radius:10px;cursor:pointer;font-family:'Sarabun',sans-serif;margin-top:16px;display:flex;align-items:center;justify-content:center;gap:6px}
+.disclaimer{font-size:10px;color:#bbb;line-height:1.7;margin-top:20px;padding:10px 12px;background:#fff;border-radius:6px;border:1px solid #F0F0F5}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="/articles.html"><i class="ti ti-chevron-left" style="font-size:16px"></i> บทความ</a>
+  <span class="topbar-logo">TEELEKDED</span>
+</div>
+
+<img src="/thumb-lucky-day.png" class="hero-img" alt="เลขเด็ดตามวัน" onerror="this.style.display='none'">
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">หน้าแรก</a>
+    <i class="ti ti-chevron-right" style="font-size:10px"></i>
+    <a href="/articles.html">บทความ</a>
+    <i class="ti ti-chevron-right" style="font-size:10px"></i>
+    <span>เลขเด็ดตามวัน</span>
+  </div>
+
+  <h1>เลขเด็ดตามวันในสัปดาห์</h1>
+  <div class="meta">
+    <span><i class="ti ti-calendar" style="font-size:11px"></i> มิถุนายน 2569</span>
+    <span><i class="ti ti-clock" style="font-size:11px"></i> อ่าน 4 นาที</span>
+    <span style="background:#FFF0F0;color:var(--red);padding:2px 8px;border-radius:4px;font-weight:700">เลขมงคล</span>
+  </div>
+
+  <div class="intro">
+    ตำราโหราศาสตร์ไทยโบราณระบุว่าแต่ละวันในสัปดาห์ถูกปกครองโดย <strong>ดาวนพเคราะห์</strong> ที่แตกต่างกัน ส่งผลให้แต่ละวันมีพลังงานและตัวเลขที่ "สั่นพ้อง" กันเป็นพิเศษ รู้จักเลขประจำวัน = เข้าใจจังหวะของฟ้าดิน
+  </div>
+
+  <!-- Today -->
+  <div class="today-card">
+    <div>
+      <div class="today-label">วันนี้</div>
+      <div class="today-day" id="todayName">—</div>
+    </div>
+    <div class="today-nums" id="todayNums">—</div>
+  </div>
+
+  <!-- Day tabs -->
+  <div class="day-tabs">
+    <button class="day-tab" id="btn-0" onclick="switchDay(0,this)"><span>อา</span><div class="dot" style="background:#CC0000"></div></button>
+    <button class="day-tab" id="btn-1" onclick="switchDay(1,this)"><span>จ</span><div class="dot" style="background:#FFD700"></div></button>
+    <button class="day-tab" id="btn-2" onclick="switchDay(2,this)"><span>อ</span><div class="dot" style="background:#CC2266"></div></button>
+    <button class="day-tab" id="btn-3" onclick="switchDay(3,this)"><span>พ</span><div class="dot" style="background:#00AA44"></div></button>
+    <button class="day-tab" id="btn-4" onclick="switchDay(4,this)"><span>พฤ</span><div class="dot" style="background:#FF8800"></div></button>
+    <button class="day-tab" id="btn-5" onclick="switchDay(5,this)"><span>ศ</span><div class="dot" style="background:#0088CC"></div></button>
+    <button class="day-tab" id="btn-6" onclick="switchDay(6,this)"><span>ส</span><div class="dot" style="background:#6633AA"></div></button>
+  </div>
+
+  <!-- ═══ อาทิตย์ ═══ -->
+  <div class="day-section" id="sec-0">
+    <div class="day-hero" style="background:linear-gradient(135deg,#CC0000,#E53935)">
+      <div class="hero-icon">☀️</div>
+      <div>
+        <div class="hero-name">วันอาทิตย์</div>
+        <div class="hero-sub">พระอาทิตย์ · สีแดง · เลขคำลัง 1</div>
+        <div class="hero-nums">1 · 10 · 19 · 91</div>
+      </div>
+    </div>
+    <div class="meaning-grid">
+      <div class="meaning-card"><div class="meaning-label">พลังงาน</div><div class="meaning-val">เด่นดัง มีอำนาจ</div></div>
+      <div class="meaning-card"><div class="meaning-label">สีมงคล</div><div class="meaning-val"><span class="color-dot" style="background:#CC0000"></span>แดง, ส้มแดง</div></div>
+      <div class="meaning-card"><div class="meaning-label">ดาวนพเคราะห์</div><div class="meaning-val">พระอาทิตย์</div></div>
+      <div class="meaning-card"><div class="meaning-label">ช่วงเวลาเด่น</div><div class="meaning-val">เช้า–เที่ยง</div></div>
+    </div>
+    <div class="hot-label">เลข 2 ตัวแนะนำ</div>
+    <div class="pill-row">
+      <span class="pill hot">10</span><span class="pill hot">01</span><span class="pill hot">19</span>
+      <span class="pill med">91</span><span class="pill med">11</span><span class="pill med">41</span>
+      <span class="pill">14</span><span class="pill">81</span>
+    </div>
+    <div class="hot-label">เลข 3 ตัวแนะนำ</div>
+    <div class="pill-row">
+      <span class="pill hot">100</span><span class="pill hot">119</span><span class="pill med">411</span><span class="pill med">910</span><span class="pill">191</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-title"><i class="ti ti-sun" style="font-size:13px"></i> พลังงานวันอาทิตย์</div>
+      <div class="tip-body">เลขที่มี <strong>1 หรือ 0</strong> มักเด่นในวันนี้ วันอาทิตย์พลังงานสูงสุดช่วงเช้า–เที่ยง คนเกิดวันอาทิตย์ได้เปรียบเป็นพิเศษหากซื้อตรงกับวันเกิดของตัวเอง</div>
+    </div>
+  </div>
+
+  <!-- ═══ จันทร์ ═══ -->
+  <div class="day-section" id="sec-1">
+    <div class="day-hero" style="background:linear-gradient(135deg,#9E7B00,#C9A000)">
+      <div class="hero-icon">🌙</div>
+      <div>
+        <div class="hero-name">วันจันทร์</div>
+        <div class="hero-sub">พระจันทร์ · สีเหลือง · เลขคำลัง 2</div>
+        <div class="hero-nums">2 · 20 · 29 · 72</div>
+      </div>
+    </div>
+    <div class="meaning-grid">
+      <div class="meaning-card"><div class="meaning-label">พลังงาน</div><div class="meaning-val">อ่อนโยน ไหลลื่น</div></div>
+      <div class="meaning-card"><div class="meaning-label">สีมงคล</div><div class="meaning-val"><span class="color-dot" style="background:#FFD700"></span>เหลือง, ครีม</div></div>
+      <div class="meaning-card"><div class="meaning-label">ดาวนพเคราะห์</div><div class="meaning-val">พระจันทร์</div></div>
+      <div class="meaning-card"><div class="meaning-label">ช่วงเวลาเด่น</div><div class="meaning-val">กลางคืน</div></div>
+    </div>
+    <div class="hot-label">เลข 2 ตัวแนะนำ</div>
+    <div class="pill-row">
+      <span class="pill hot">20</span><span class="pill hot">02</span><span class="pill hot">29</span>
+      <span class="pill med">92</span><span class="pill med">22</span><span class="pill med">72</span>
+      <span class="pill">52</span><span class="pill">25</span>
+    </div>
+    <div class="hot-label">เลข 3 ตัวแนะนำ</div>
+    <div class="pill-row">
+      <span class="pill hot">200</span><span class="pill hot">229</span><span class="pill med">722</span><span class="pill med">920</span><span class="pill">292</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-title"><i class="ti ti-moon" style="font-size:13px"></i> พลังงานวันจันทร์</div>
+      <div class="tip-body">วันพระจันทร์ พลังงานขึ้นลงตามข้างขึ้นข้างแรม ข้างขึ้นโชคดีกว่า เลข <strong>2 และ 9</strong> มักมีพลังในวันนี้ โชคดีช่วงค่ำถึงกลางคืน</div>
+    </div>
+  </div>
+
+  <!-- ═══ อังคาร ═══ -->
+  <div class="day-section" id="sec-2">
+    <div class="day-hero" style="background:linear-gradient(135deg,#99003a,#CC0050)">
+      <div class="hero-icon">🔴</div>
+      <div>
+        <div class="hero-name">วันอังคาร</div>
+        <div class="hero-sub">พระอังคาร · สีชมพู-แดง · เลขคำลัง 9</div>
+        <div class="hero-nums">9 · 19 · 90 · 39</div>
+      </div>
+    </div>
+    <div class="meaning-grid">
+      <div class="meaning-card"><div class="meaning-label">พลังงาน</div><div class="meaning-val">กล้าหาญ เร่าร้อน</div></div>
+      <div class="meaning-card"><div class="meaning-label">สีมงคล</div><div class="meaning-val"><span class="color-dot" style="background:#CC2266"></span>ชมพู, แดงเข้ม</div></div>
+      <div class="meaning-card"><div class="meaning-label">ดาวนพเคราะห์</div><div class="meaning-val">พระอังคาร</div></div>
+      <div class="meaning-card"><div class="meaning-label">ช่วงเวลาเด่น</div><div class="meaning-val">เช้าตรู่</div></div>
+    </div>
+    <div class="hot-label">เลข 2 ตัวแนะนำ</div>
+    <div class="pill-row">
+      <span class="pill hot">90</span><span class="pill hot">09</span><span class="pill hot">19</span>
+      <span class="pill med">91</span><span class="pill med">99</span><span class="pill med">39</span>
+      <span class="pill">69</span><span class="pill">96</span>
+    </div>
+    <div class="hot-label">เลข 3 ตัวแนะนำ</div>
+    <div class="pill-row">
+      <span class="pill hot">900</span><span class="pill hot">919</span><span class="pill med">399</span><span class="pill med">099</span><span class="pill">969</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-title"><i class="ti ti-flame" style="font-size:13px"></i> พลังงานวันอังคาร</div>
+      <div class="tip-body">พลังงานแรงและเร่าร้อนที่สุดในสัปดาห์ เลข <strong>9</strong> เป็นเจ้าวันนี้ พลังงานแรงตั้งแต่เช้าตรู่ ใครที่เกิดวันอังคารซื้อวันนี้ได้เปรียบเป็นพิเศษ</div>
+    </div>
+  </div>
+
+  <!-- ═══ พุธ ═══ -->
+  <div class="day-section" id="sec-3">
+    <div class="day-hero" style="background:linear-gradient(135deg,#006622,#009933)">
+      <div class="hero-icon">🌿</div>
+      <div>
+        <div class="hero-name">วันพุธ</div>
+        <div class="hero-sub">พระพุธ · สีเขียว · เลขคำลัง 17</div>
+        <div class="hero-nums">17 · 7 · 70 · 47</div>
+      </div>
+    </div>
+    <div class="meaning-grid">
+      <div class="meaning-card"><div class="meaning-label">พลังงาน</div><div class="meaning-val">ฉลาด รอบคอบ</div></div>
+      <div class="meaning-card"><div class="meaning-label">สีมงคล</div><div class="meaning-val"><span class="color-dot" style="background:#00AA44"></span>เขียว, เขียวอ่อน</div></div>
+      <div class="meaning-card"><div class="meaning-label">ดาวนพเคราะห์</div><div class="meaning-val">พระพุธ</div></div>
+      <div class="meaning-card"><div class="meaning-label">ช่วงเวลาเด่น</div><div class="meaning-val">ช่วงสาย</div></div>
+    </div>
+    <div class="hot-label">เลข 2 ตัวแนะนำ</div>
+    <div class="pill-row">
+      <span class="pill hot">17</span><span class="pill hot">71</span><span class="pill hot">07</span>
+      <span class="pill med">70</span><span class="pill med">77</span><span class="pill med">47</span>
+      <span class="pill">37</span><span class="pill">74</span>
+    </div>
+    <div class="hot-label">เลข 3 ตัวแนะนำ</div>
+    <div class="pill-row">
+      <span class="pill hot">170</span><span class="pill hot">177</span><span class="pill med">471</span><span class="pill med">707</span><span class="pill">717</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-title"><i class="ti ti-leaf" style="font-size:13px"></i> พลังงานวันพุธ</div>
+      <div class="tip-body">วันแห่งปัญญาและการสื่อสาร เลข <strong>17 และ 7</strong> เด่นมากในวันนี้ ตำราว่าวันพุธมีพลังพิเศษที่ช่วยให้ "เห็น" เลขที่ถูกต้องได้ชัดเจนขึ้น</div>
+    </div>
+  </div>
+
+  <!-- ═══ พฤหัส ═══ -->
+  <div class="day-section" id="sec-4">
+    <div class="day-hero" style="background:linear-gradient(135deg,#883300,#BB5500)">
+      <div class="hero-icon">🟠</div>
+      <div>
+        <div class="hero-name">วันพฤหัสบดี</div>
+        <div class="hero-sub">พระพฤหัส · สีส้ม · เลขคำลัง 3</div>
+        <div class="hero-nums">3 · 30 · 39 · 83</div>
+      </div>
+    </div>
+    <div class="meaning-grid">
+      <div class="meaning-card"><div class="meaning-label">พลังงาน</div><div class="meaning-val">ขยาย มั่งคั่ง</div></div>
+      <div class="meaning-card"><div class="meaning-label">สีมงคล</div><div class="meaning-val"><span class="color-dot" style="background:#FF8800"></span>ส้ม, ทอง</div></div>
+      <div class="meaning-card"><div class="meaning-label">ดาวนพเคราะห์</div><div class="meaning-val">พระพฤหัส</div></div>
+      <div class="meaning-card"><div class="meaning-label">ช่วงเวลาเด่น</div><div class="meaning-val">ตลอดวัน</div></div>
+    </div>
+    <div class="hot-label">เลข 2 ตัวแนะนำ</div>
+    <div class="pill-row">
+      <span class="pill hot">30</span><span class="pill hot">03</span><span class="pill hot">39</span>
+      <span class="pill med">93</span><span class="pill med">33</span><span class="pill med">83</span>
+      <span class="pill">13</span><span class="pill">38</span>
+    </div>
+    <div class="hot-label">เลข 3 ตัวแนะนำ</div>
+    <div class="pill-row">
+      <span class="pill hot">300</span><span class="pill hot">339</span><span class="pill med">833</span><span class="pill med">093</span><span class="pill">393</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-title"><i class="ti ti-coin" style="font-size:13px"></i> พลังงานวันพฤหัส</div>
+      <div class="tip-body">ถือเป็น <strong>วันมงคลที่สุดในสัปดาห์</strong> สำหรับเรื่องเงินทองตามตำราไทย เลข 3 และ 8 เป็นเลขมงคลคู่ที่แข็งแกร่งมากในวันนี้ โชคดีตลอดทั้งวัน</div>
+    </div>
+  </div>
+
+  <!-- ═══ ศุกร์ ═══ -->
+  <div class="day-section" id="sec-5">
+    <div class="day-hero" style="background:linear-gradient(135deg,#005588,#0077BB)">
+      <div class="hero-icon">💙</div>
+      <div>
+        <div class="hero-name">วันศุกร์</div>
+        <div class="hero-sub">พระศุกร์ · สีฟ้า · เลขคำลัง 6</div>
+        <div class="hero-nums">6 · 16 · 60 · 56</div>
+      </div>
+    </div>
+    <div class="meaning-grid">
+      <div class="meaning-card"><div class="meaning-label">พลังงาน</div><div class="meaning-val">เสน่ห์ สมหวัง</div></div>
+      <div class="meaning-card"><div class="meaning-label">สีมงคล</div><div class="meaning-val"><span class="color-dot" style="background:#0088CC"></span>ฟ้า, น้ำเงิน</div></div>
+      <div class="meaning-card"><div class="meaning-label">ดาวนพเคราะห์</div><div class="meaning-val">พระศุกร์</div></div>
+      <div class="meaning-card"><div class="meaning-label">ช่วงเวลาเด่น</div><div class="meaning-val">บ่าย–เย็น</div></div>
+    </div>
+    <div class="hot-label">เลข 2 ตัวแนะนำ</div>
+    <div class="pill-row">
+      <span class="pill hot">60</span><span class="pill hot">06</span><span class="pill hot">16</span>
+      <span class="pill med">61</span><span class="pill med">66</span><span class="pill med">56</span>
+      <span class="pill">26</span><span class="pill">62</span>
+    </div>
+    <div class="hot-label">เลข 3 ตัวแนะนำ</div>
+    <div class="pill-row">
+      <span class="pill hot">600</span><span class="pill hot">616</span><span class="pill med">566</span><span class="pill med">066</span><span class="pill">606</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-title"><i class="ti ti-heart" style="font-size:13px"></i> พลังงานวันศุกร์</div>
+      <div class="tip-body">วันแห่งความงามและความสมหวัง เลข 6 เป็นเลขแห่งความสมดุล ซื้อช่วง <strong>บ่ายถึงเย็น</strong> มักได้โชคจากคนรักหรือคนใกล้ชิด</div>
+    </div>
+  </div>
+
+  <!-- ═══ เสาร์ ═══ -->
+  <div class="day-section" id="sec-6">
+    <div class="day-hero" style="background:linear-gradient(135deg,#330066,#550099)">
+      <div class="hero-icon">🔮</div>
+      <div>
+        <div class="hero-name">วันเสาร์</div>
+        <div class="hero-sub">พระเสาร์ · สีม่วง-ดำ · เลขคำลัง 8</div>
+        <div class="hero-nums">8 · 18 · 80 · 48</div>
+      </div>
+    </div>
+    <div class="meaning-grid">
+      <div class="meaning-card"><div class="meaning-label">พลังงาน</div><div class="meaning-val">มั่นคง สะสม</div></div>
+      <div class="meaning-card"><div class="meaning-label">สีมงคล</div><div class="meaning-val"><span class="color-dot" style="background:#6633AA"></span>ม่วง, ดำ</div></div>
+      <div class="meaning-card"><div class="meaning-label">ดาวนพเคราะห์</div><div class="meaning-val">พระเสาร์</div></div>
+      <div class="meaning-card"><div class="meaning-label">ช่วงเวลาเด่น</div><div class="meaning-val">ค่ำ–ดึก</div></div>
+    </div>
+    <div class="hot-label">เลข 2 ตัวแนะนำ</div>
+    <div class="pill-row">
+      <span class="pill hot">80</span><span class="pill hot">08</span><span class="pill hot">18</span>
+      <span class="pill med">81</span><span class="pill med">88</span><span class="pill med">48</span>
+      <span class="pill">38</span><span class="pill">84</span>
+    </div>
+    <div class="hot-label">เลข 3 ตัวแนะนำ</div>
+    <div class="pill-row">
+      <span class="pill hot">800</span><span class="pill hot">818</span><span class="pill med">488</span><span class="pill med">088</span><span class="pill">808</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-title"><i class="ti ti-diamond" style="font-size:13px"></i> พลังงานวันเสาร์</div>
+      <div class="tip-body">เลข 8 ในตำราจีนและไทยหมายถึง <strong>ความมั่งคั่ง</strong> วันเสาร์เป็นวันสะสมโชค เมื่อโชคมาจะมามาก ยิ่ง 8 ซ้ำยิ่งดี เช่น 88, 888</div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="sum-card">
+    <div class="sum-head">ตารางสรุปเลขทุกวัน</div>
+    <div class="sum-row"><div class="sum-day">☀️ อาทิตย์</div><div class="sum-nums">10, 01, 19, 91</div><div class="sum-dot" style="background:#CC0000"></div></div>
+    <div class="sum-row"><div class="sum-day">🌙 จันทร์</div><div class="sum-nums">20, 02, 29, 72</div><div class="sum-dot" style="background:#FFD700"></div></div>
+    <div class="sum-row"><div class="sum-day">🔴 อังคาร</div><div class="sum-nums">90, 09, 19, 39</div><div class="sum-dot" style="background:#CC2266"></div></div>
+    <div class="sum-row"><div class="sum-day">🌿 พุธ</div><div class="sum-nums">17, 71, 07, 47</div><div class="sum-dot" style="background:#00AA44"></div></div>
+    <div class="sum-row"><div class="sum-day">🟠 พฤหัส</div><div class="sum-nums">30, 03, 39, 83</div><div class="sum-dot" style="background:#FF8800"></div></div>
+    <div class="sum-row"><div class="sum-day">💙 ศุกร์</div><div class="sum-nums">60, 06, 16, 56</div><div class="sum-dot" style="background:#0088CC"></div></div>
+    <div class="sum-row"><div class="sum-day">🔮 เสาร์</div><div class="sum-nums">80, 08, 18, 48</div><div class="sum-dot" style="background:#6633AA"></div></div>
+  </div>
+
+  <button class="share-btn" onclick="shareArticle()">
+    <i class="ti ti-share" style="font-size:16px"></i> แชร์บทความนี้
+  </button>
+
+  <div class="cta-box">
+    <div class="cta-title">ดูเลขตามวันเกิดด้วย</div>
+    <div class="cta-sub">เลขมงคลเฉพาะตัวคุณ ตามวันที่คุณเกิด</div>
+    <a href="/article-lucky-birthday.html" class="cta-btn">ดูเลขตามวันเกิด</a>
+  </div>
+
+  <div class="related-title">บทความที่เกี่ยวข้อง</div>
+  <a href="/article-lucky-birthday.html" class="related-card">
+    <i class="ti ti-cake" style="font-size:22px;color:var(--red);flex-shrink:0"></i>
+    <div>
+      <div class="related-text">เลขมงคลตามวันเกิด ทั้ง 7 วัน</div>
+      <div class="related-sub">โหราศาสตร์ไทย · เลขประจำตัว</div>
+    </div>
+    <i class="ti ti-chevron-right" style="font-size:14px;color:#ccc;margin-left:auto;flex-shrink:0"></i>
+  </a>
+  <a href="/article-dream-snake.html" class="related-card">
+    <i class="ti ti-moon" style="font-size:22px;color:var(--red);flex-shrink:0"></i>
+    <div>
+      <div class="related-text">ฝันเห็นงู งูใหญ่ งูรัด เลขเด็ดคืออะไร</div>
+      <div class="related-sub">ตำราฝัน · นิมิตแห่งงู</div>
+    </div>
+    <i class="ti ti-chevron-right" style="font-size:14px;color:#ccc;margin-left:auto;flex-shrink:0"></i>
+  </a>
+
+  <div class="disclaimer">เนื้อหารวบรวมจากตำราโหราศาสตร์ไทยและความเชื่อพื้นบ้าน เพื่อความบันเทิงเท่านั้น ไม่ใช่คำแนะนำการพนันหรือการลงทุน</div>
+</div>
+
+<script>
+var DAY_DATA = [
+  {name:'วันอาทิตย์', nums:'1 · 10 · 19'},
+  {name:'วันจันทร์',  nums:'2 · 20 · 29'},
+  {name:'วันอังคาร', nums:'9 · 19 · 90'},
+  {name:'วันพุธ',    nums:'17 · 7 · 70'},
+  {name:'วันพฤหัส',  nums:'3 · 30 · 39'},
+  {name:'วันศุกร์',  nums:'6 · 16 · 60'},
+  {name:'วันเสาร์',  nums:'8 · 18 · 80'},
+];
+function switchDay(idx, btn) {
+  document.querySelectorAll('.day-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.day-section').forEach(s => s.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('sec-' + idx).classList.add('active');
+}
+function shareArticle() {
+  var url = window.location.href;
+  var title = 'เลขเด็ดตามวันในสัปดาห์ — ตีเลขเด็ด';
+  if (navigator.share) {
+    navigator.share({title: title, url: url});
+  } else {
+    navigator.clipboard.writeText(url).then(function() {
+      alert('คัดลอกลิงก์แล้ว!');
+    });
+  }
+}
+(function init() {
+  var today = new Date().getDay();
+  var d = DAY_DATA[today];
+  document.getElementById('todayName').textContent = d.name;
+  document.getElementById('todayNums').textContent = d.nums;
+  var btn = document.getElementById('btn-' + today);
+  if (btn) { btn.classList.add('today-mark'); switchDay(today, btn); }
+})();
+</script>
+</body>
+</html>
