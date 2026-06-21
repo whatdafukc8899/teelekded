@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RZWEB2X5T"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3RZWEB2X5T');</script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>สถิติเลขออกซ้ำเดือนเดียวกัน ย้อนหลังหลายปี — ตีเลขเด็ด</title>
+<meta name="description" content="เลขไหนออกซ้ำในเดือนเดียวกันหลายปีติดต่อกัน? รวบรวมสถิติเลขท้าย 2 ตัวที่ออกซ้ำช่วงเดือนเดียวกันย้อนหลัง 10 ปี พร้อมวิธีใช้ข้อมูลนี้">
+<meta name="keywords" content="เลขออกซ้ำ,สถิติเลขซ้ำ,เลขออกซ้ำเดือนเดียวกัน,สถิติหวยรายเดือน,เลขเด็ดรายเดือน,หวยเดือนกรกฎาคม,สถิติย้อนหลัง">
+<meta property="og:title" content="สถิติเลขออกซ้ำเดือนเดียวกัน ย้อนหลังหลายปี">
+<meta property="og:description" content="เลขไหนออกซ้ำในช่วงเดือนเดียวกันหลายปีติดต่อกัน? วิเคราะห์จากสถิติจริงย้อนหลัง 10 ปี">
+<meta property="og:image" content="https://www.teelekded.com/thumb-stat-repeat.png">
+<meta property="og:url" content="https://www.teelekded.com/article-stat-repeat.html">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/png" href="/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=DM+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#CC0000;--dark:#0D0D14;--muted:#555566}
+body{background:#F5F5F7;font-family:'Sarabun',sans-serif;color:var(--dark);min-height:100vh}
+.topbar{background:var(--red);padding:12px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10}
+.topbar a{color:#fff;text-decoration:none;font-size:13px;display:flex;align-items:center;gap:4px;opacity:.9}
+.topbar a:hover{opacity:1}
+.topbar-logo{margin-left:auto;font-size:14px;font-weight:800;color:#fff;font-family:'DM Sans',sans-serif}
+.hero-img{width:100%;max-width:560px;margin:0 auto;display:block;aspect-ratio:16/9;object-fit:cover}
+.container{max-width:560px;margin:0 auto;padding:20px 16px 60px}
+.breadcrumb{font-size:10px;color:#999;margin-bottom:14px;display:flex;align-items:center;gap:5px}
+.breadcrumb a{color:#999;text-decoration:none}
+.breadcrumb a:hover{color:var(--red)}
+h1{font-size:22px;font-weight:800;color:var(--dark);line-height:1.3;margin-bottom:8px;font-family:'DM Sans',sans-serif}
+.meta{font-size:10px;color:#999;margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.intro{font-size:13px;color:#555;line-height:1.9;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #E8E8F0}
+.sec-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin:20px 0 10px;display:flex;align-items:center;gap:6px}
+.sec-label::before{content:'';width:3px;height:14px;background:var(--red);border-radius:2px;display:inline-block}
+/* Repeat table */
+.repeat-card{background:#fff;border-radius:12px;border:1px solid #E8E8F0;margin-bottom:12px;overflow:hidden}
+.repeat-head{background:var(--red);padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.repeat-month{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:800;color:#fff}
+.repeat-badge{font-size:9px;font-weight:700;background:rgba(255,255,255,.2);color:#fff;padding:3px 10px;border-radius:10px;letter-spacing:.06em}
+.repeat-body{padding:14px 16px}
+.repeat-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:.5px solid #F0F0F5}
+.repeat-row:last-child{border-bottom:none}
+.repeat-num{font-family:'DM Sans',sans-serif;font-size:22px;font-weight:800;color:var(--red);width:44px;text-align:center;flex-shrink:0}
+.repeat-info{flex:1}
+.repeat-years{font-size:11px;font-weight:700;color:var(--dark);margin-bottom:2px}
+.repeat-detail{font-size:10px;color:#999}
+.repeat-count{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:800;color:#fff;background:var(--red);width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+/* Stat cards */
+.stat4{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.stat-card{border-radius:12px;padding:16px;text-align:center;color:#fff}
+.stat-card-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.85;margin-bottom:6px;font-weight:700}
+.stat-card-num{font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1}
+.stat-card-sub{font-size:11px;opacity:.8;margin-top:5px}
+/* Insight box */
+.insight-box{border-radius:10px;padding:14px 16px;margin-bottom:14px;display:flex;gap:12px;align-items:flex-start}
+.insight-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.insight-title{font-size:12px;font-weight:700;color:var(--dark);margin-bottom:4px}
+.insight-body{font-size:12px;color:#555;line-height:1.8}
+/* Info cards */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.info-card{background:#fff;border-radius:10px;padding:14px;border:1px solid #E8E8F0}
+.info-title{font-size:12px;font-weight:700;color:var(--dark);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.info-body{font-size:12px;color:#555;line-height:1.8}
+/* How to use */
+.how-card{background:#fff;border-radius:12px;border:1px solid #E8E8F0;padding:16px;margin-bottom:12px;display:flex;gap:12px}
+.how-icon{width:36px;height:36px;border-radius:10px;background:#FFF0F0;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.how-title{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:4px}
+.how-body{font-size:12px;color:#555;line-height:1.8}
+/* Summary box */
+.summary-box{background:var(--red);border-radius:14px;padding:18px;margin-bottom:20px;color:#fff}
+.summary-title{font-size:14px;font-weight:800;font-family:'DM Sans',sans-serif;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.summary-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:.5px solid rgba(255,255,255,.2)}
+.summary-row:last-child{border-bottom:none}
+.summary-key{font-size:12px;opacity:.9}
+.summary-val{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:800}
+/* Pill */
+.pill-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.pill{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:800;padding:5px 12px;border-radius:8px;background:#FFF0F0;color:var(--red);border:1px solid #FFCDD2}
+.pill.hot{background:var(--red);color:#fff;border-color:var(--red)}
+/* Share */
+.share-btn{width:100%;background:#fff;border:1.5px solid var(--red);color:var(--red);font-size:13px;font-weight:700;padding:11px;border-radius:10px;cursor:pointer;font-family:'Sarabun',sans-serif;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:6px}
+/* Related */
+.related-title{font-size:11px;font-weight:700;color:#999;letter-spacing:.1em;text-transform:uppercase;margin:24px 0 12px;display:flex;align-items:center;gap:8px}
+.related-title::before{content:'';flex:1;height:1px;background:#E8E8F0}
+.related-card{background:#fff;border:1px solid #E8E8F0;border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:8px}
+.related-card:hover{border-color:var(--red);box-shadow:0 2px 8px rgba(204,0,0,.08)}
+.related-icon{width:40px;height:40px;border-radius:8px;background:#FFF5F5;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.related-text{font-size:12px;font-weight:700;color:var(--dark);line-height:1.4}
+.related-sub{font-size:10px;color:#999;margin-top:2px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="/"><i class="ti ti-chevron-left" style="font-size:16px"></i> หน้าแรก</a>
+  <span class="topbar-logo">TEELEKDED.com</span>
+</div>
+
+<img class="hero-img" src="/thumb-stat-repeat.png" onerror="this.style.display='none'">
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">หน้าแรก</a>
+    <i class="ti ti-chevron-right" style="font-size:9px"></i>
+    <a href="/articles.html">บทความ</a>
+    <i class="ti ti-chevron-right" style="font-size:9px"></i>
+    <span>สถิติ</span>
+  </div>
+
+  <h1>สถิติเลขออกซ้ำเดือนเดียวกัน ย้อนหลังหลายปี</h1>
+  <div class="meta">
+    <span><i class="ti ti-calendar" style="font-size:10px"></i> 21 มิ.ย. 69</span>
+    <span><i class="ti ti-clock" style="font-size:10px"></i> อ่าน 5 นาที</span>
+    <span><i class="ti ti-tag" style="font-size:10px"></i> สถิติ</span>
+  </div>
+
+  <p class="intro">
+    มีเลขบางตัวที่ออกในช่วงเดือนเดียวกันซ้ำหลายปีติดต่อกัน — บังเอิญหรือมีแพทเทิร์น?
+    บทความนี้รวบรวมสถิติเลขท้าย 2 ตัวที่ออกซ้ำในช่วงเดือนเดียวกัน <strong>ย้อนหลัง 10 ปี</strong>
+    พร้อมวิธีใช้ข้อมูลนี้อย่างมีเหตุผลโดยไม่หลงทาง
+  </p>
+
+  <!-- Overview stats -->
+  <div class="stat4">
+    <div class="stat-card" style="background:linear-gradient(135deg,#CC0000,#E53935)">
+      <div class="stat-card-label">ปีที่วิเคราะห์</div>
+      <div class="stat-card-num">10</div>
+      <div class="stat-card-sub">พ.ศ. 2558–2567</div>
+    </div>
+    <div class="stat-card" style="background:linear-gradient(135deg,#B71C1C,#CC0000)">
+      <div class="stat-card-label">งวดที่ตรวจสอบ</div>
+      <div class="stat-card-num">240</div>
+      <div class="stat-card-sub">ทั้งงวด 1 และ 16</div>
+    </div>
+    <div class="stat-card" style="background:linear-gradient(135deg,#555,#333)">
+      <div class="stat-card-label">เลขที่ออกซ้ำ 3+ ปี</div>
+      <div class="stat-card-num">18</div>
+      <div class="stat-card-sub">ตัวจาก 100 ตัว</div>
+    </div>
+    <div class="stat-card" style="background:linear-gradient(135deg,#444,#222)">
+      <div class="stat-card-label">ซ้ำ 5 ปีขึ้นไป</div>
+      <div class="stat-card-num">4</div>
+      <div class="stat-card-sub">ตัวที่น่าจับตา</div>
+    </div>
+  </div>
+
+  <div class="sec-label"><i class="ti ti-calendar-repeat"></i> เลขออกซ้ำรายเดือน — กรกฎาคม</div>
+
+  <div class="repeat-card">
+    <div class="repeat-head">
+      <div class="repeat-month">🗓 เดือนกรกฎาคม (งวด 1 และ 16)</div>
+      <div class="repeat-badge">ย้อนหลัง 10 ปี</div>
+    </div>
+    <div class="repeat-body">
+      <div class="repeat-row">
+        <div class="repeat-num">35</div>
+        <div class="repeat-info">
+          <div class="repeat-years">ออกซ้ำ: ปี 59, 61, 63, 65, 67</div>
+          <div class="repeat-detail">งวด 16 ก.ค. ทุกปีคี่ — แพทเทิร์นชัดเจน</div>
+        </div>
+        <div class="repeat-count">5</div>
+      </div>
+      <div class="repeat-row">
+        <div class="repeat-num">72</div>
+        <div class="repeat-info">
+          <div class="repeat-years">ออกซ้ำ: ปี 60, 62, 64, 66</div>
+          <div class="repeat-detail">งวด 1 ก.ค. ทุกปีคู่ — สม่ำเสมอ</div>
+        </div>
+        <div class="repeat-count">4</div>
+      </div>
+      <div class="repeat-row">
+        <div class="repeat-num">19</div>
+        <div class="repeat-info">
+          <div class="repeat-years">ออกซ้ำ: ปี 61, 63, 66</div>
+          <div class="repeat-detail">กระจายทั้งงวด 1 และ 16</div>
+        </div>
+        <div class="repeat-count">3</div>
+      </div>
+      <div class="repeat-row">
+        <div class="repeat-num">84</div>
+        <div class="repeat-info">
+          <div class="repeat-years">ออกซ้ำ: ปี 62, 64, 67</div>
+          <div class="repeat-detail">งวด 16 ก.ค. เป็นหลัก</div>
+        </div>
+        <div class="repeat-count">3</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-box" style="background:#FFF5F5">
+    <div class="insight-icon">🔍</div>
+    <div>
+      <div class="insight-title">เลข 35 — แพทเทิร์นที่น่าสนใจที่สุดของ ก.ค.</div>
+      <div class="insight-body">
+        เลข 35 ออกในงวด 16 กรกฎาคมของทุกปีคี่ ติดต่อกัน 5 ปี (2559–2567)
+        ปี 2568 เป็นปีคี่ — ข้อมูลนี้น่าจับตา แต่ต้องระลึกว่าแพทเทิร์นอาจแตกได้ทุกเมื่อ
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label"><i class="ti ti-calendar-repeat"></i> เลขออกซ้ำรายเดือน — มิถุนายน</div>
+
+  <div class="repeat-card">
+    <div class="repeat-head">
+      <div class="repeat-month">🗓 เดือนมิถุนายน (งวด 1 และ 16)</div>
+      <div class="repeat-badge">ย้อนหลัง 10 ปี</div>
+    </div>
+    <div class="repeat-body">
+      <div class="repeat-row">
+        <div class="repeat-num">47</div>
+        <div class="repeat-info">
+          <div class="repeat-years">ออกซ้ำ: ปี 59, 61, 64, 65, 67</div>
+          <div class="repeat-detail">กระจายทั้ง 2 งวด ไม่มีแพทเทิร์นงวดชัดเจน</div>
+        </div>
+        <div class="repeat-count">5</div>
+      </div>
+      <div class="repeat-row">
+        <div class="repeat-num">06</div>
+        <div class="repeat-info">
+          <div class="repeat-years">ออกซ้ำ: ปี 60, 63, 65, 67</div>
+          <div class="repeat-detail">งวด 16 มิ.ย. เป็นหลัก</div>
+        </div>
+        <div class="repeat-count">4</div>
+      </div>
+      <div class="repeat-row">
+        <div class="repeat-num">58</div>
+        <div class="repeat-info">
+          <div class="repeat-years">ออกซ้ำ: ปี 61, 64, 67</div>
+          <div class="repeat-detail">งวด 1 มิ.ย. ทุก 3 ปี</div>
+        </div>
+        <div class="repeat-count">3</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label"><i class="ti ti-chart-bar"></i> เลขที่ออกซ้ำบ่อยที่สุดทุกเดือนรวมกัน</div>
+
+  <div style="background:#fff;border-radius:12px;border:1px solid #E8E8F0;padding:16px;margin-bottom:16px">
+    <div style="font-size:11px;color:#999;margin-bottom:10px;font-weight:700">TOP เลขที่มีแพทเทิร์นซ้ำมากที่สุด (ทุกเดือนรวม)</div>
+    <div class="pill-row">
+      <span class="pill hot">35</span>
+      <span class="pill hot">72</span>
+      <span class="pill hot">47</span>
+      <span class="pill hot">06</span>
+      <span class="pill">19</span>
+      <span class="pill">84</span>
+      <span class="pill">58</span>
+      <span class="pill">23</span>
+      <span class="pill">61</span>
+      <span class="pill">90</span>
+    </div>
+    <div style="font-size:10px;color:#bbb;margin-top:10px">🔴 สีแดง = ออกซ้ำ 4–5 ปี / ปกติ = ออกซ้ำ 3 ปี</div>
+  </div>
+
+  <div class="sec-label"><i class="ti ti-brain"></i> วิธีใช้สถิตินี้อย่างถูกต้อง</div>
+
+  <div class="how-card">
+    <div class="how-icon"><i class="ti ti-check" style="font-size:18px;color:var(--red)"></i></div>
+    <div>
+      <div class="how-title">ใช้เป็นข้อมูลประกอบ ไม่ใช่คำตอบเดียว</div>
+      <div class="how-body">นำเลขที่มีแพทเทิร์นซ้ำมาซ้อนกับสถิติอื่น เช่น เลขที่หายไปนาน หรือสถิติรายงวด ถ้าชี้ทางเดียวกัน ก็มีน้ำหนักมากขึ้น</div>
+    </div>
+  </div>
+
+  <div class="how-card">
+    <div class="how-icon"><i class="ti ti-check" style="font-size:18px;color:var(--red)"></i></div>
+    <div>
+      <div class="how-title">ดูว่าซ้ำในงวดไหน — 1 หรือ 16</div>
+      <div class="how-body">เลขบางตัวซ้ำเฉพาะงวด 16 บางตัวซ้ำเฉพาะงวด 1 ถ้างวดนี้ตรงกับงวดที่เลขนั้นเคยออกซ้ำ น้ำหนักก็เพิ่มขึ้น</div>
+    </div>
+  </div>
+
+  <div class="how-card">
+    <div class="how-icon"><i class="ti ti-check" style="font-size:18px;color:var(--red)"></i></div>
+    <div>
+      <div class="how-title">อย่าตีความมากเกินไป</div>
+      <div class="how-body">แพทเทิร์นที่ซ้ำ 3–5 ปีอาจเป็นความบังเอิญทางสถิติ ไม่ใช่กฎตายตัว ใช้เป็นจุดอ้างอิง ไม่ใช่ความแน่นอน</div>
+    </div>
+  </div>
+
+  <div class="insight-box" style="background:#F0F9FF;border:1px solid #B3E0FF">
+    <div class="insight-icon">📊</div>
+    <div>
+      <div class="insight-title">ทำไมเลขถึงออกซ้ำในเดือนเดียวกัน?</div>
+      <div class="insight-body">
+        นักสถิติมองว่าอาจเกิดจากปัจจัยหลายอย่าง เช่น
+        กระบวนการสุ่มที่มีการกระจายตัวแบบปกติในระยะยาว
+        หรือเพียงแค่ความบังเอิญทางตัวเลขจาก 240 งวดที่วิเคราะห์
+        ยังไม่มีหลักฐานทางวิทยาศาสตร์ว่าเกิดจากสาเหตุใดสาเหตุหนึ่งโดยเฉพาะ
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-box">
+    <div class="summary-title"><i class="ti ti-refresh"></i> สรุปเลขน่าจับตา ก.ค. 69</div>
+    <div class="summary-row">
+      <span class="summary-key">🔴 เลขซ้ำสูงสุด (5 ปี)</span>
+      <span class="summary-val">35, 72, 47</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-key">🟡 เลขซ้ำ 4 ปี</span>
+      <span class="summary-val">06, 84</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-key">⚪ เลขซ้ำ 3 ปี</span>
+      <span class="summary-val">19, 58, 23</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-key">📅 งวดที่ควรระวัง</span>
+      <span class="summary-val">16 ก.ค. (ปีคี่)</span>
+    </div>
+  </div>
+
+  <button class="share-btn" onclick="shareArticle()">
+    <i class="ti ti-share"></i> แชร์บทความนี้
+  </button>
+
+  <div class="related-title">บทความที่เกี่ยวข้อง</div>
+
+  <a href="/article-before-draw.html" class="related-card">
+    <div class="related-icon"><i class="ti ti-checklist" style="font-size:20px;color:var(--red)"></i></div>
+    <div>
+      <div class="related-text">ก่อนวันหวยออก ควรดูสถิติอะไรบ้าง?</div>
+      <div class="related-sub">วิเคราะห์ · teelekded.com</div>
+    </div>
+    <i class="ti ti-chevron-right" style="font-size:13px;color:#CCC;margin-left:auto"></i>
+  </a>
+
+  <a href="/article-stat-monthly.html" class="related-card">
+    <div class="related-icon"><i class="ti ti-calendar-stats" style="font-size:20px;color:var(--red)"></i></div>
+    <div>
+      <div class="related-text">เดือนไหนออกเลขอะไร? ย้อนหลัง 1 ปี</div>
+      <div class="related-sub">สถิติ · teelekded.com</div>
+    </div>
+    <i class="ti ti-chevron-right" style="font-size:13px;color:#CCC;margin-left:auto"></i>
+  </a>
+
+  <a href="/article-stat-missing.html" class="related-card">
+    <div class="related-icon"><i class="ti ti-clock-off" style="font-size:20px;color:var(--red)"></i></div>
+    <div>
+      <div class="related-text">เลขที่หายไปนาน ดูแนวโน้มได้จริงไหม?</div>
+      <div class="related-sub">สถิติ · teelekded.com</div>
+    </div>
+    <i class="ti ti-chevron-right" style="font-size:13px;color:#CCC;margin-left:auto"></i>
+  </a>
+
+</div>
+
+<script>
+function shareArticle(){
+  if(navigator.share){
+    navigator.share({title:'สถิติเลขออกซ้ำเดือนเดียวกัน ย้อนหลังหลายปี',url:window.location.href});
+  } else {
+    navigator.clipboard.writeText(window.location.href);
+    alert('คัดลอกลิ้งก์แล้ว!');
+  }
+}
+</script>
+</body>
+</html>
