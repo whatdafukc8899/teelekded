@@ -65,6 +65,27 @@ h1{font-size:22px;font-weight:800;color:var(--dark);line-height:1.3;margin-botto
 .summary-row:last-child{border-bottom:none}
 .summary-key{font-size:12px;opacity:.9}
 .summary-val{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:800;text-align:right;max-width:55%}
+/* Social Hot Numbers */
+.social-banner{background:linear-gradient(135deg,#1A0000 0%,#2D0000 100%);border-radius:16px;padding:20px;margin-bottom:20px;border:1.5px solid var(--red)}
+.social-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.social-title{font-size:15px;font-weight:800;color:#fff;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:8px}
+.social-badge{font-size:9px;font-weight:700;background:var(--red);color:#fff;padding:3px 8px;border-radius:20px;letter-spacing:.06em}
+.social-period{font-size:10px;color:rgba(255,255,255,.5);margin-bottom:16px}
+.social-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.social-num-card{background:rgba(255,255,255,.06);border:1px solid rgba(204,0,0,.4);border-radius:12px;padding:12px 8px;text-align:center}
+.social-num-card.hot{background:rgba(204,0,0,.18);border-color:var(--red)}
+.social-num-digit{font-family:'DM Sans',sans-serif;font-size:32px;font-weight:800;color:#fff;line-height:1;margin-bottom:4px}
+.social-num-card.hot .social-num-digit{color:#FF6B6B}
+.social-num-label{font-size:9px;color:rgba(255,255,255,.5);letter-spacing:.04em}
+.social-num-src{display:flex;gap:4px;justify-content:center;margin-top:5px;flex-wrap:wrap}
+.social-src-tag{font-size:8px;font-weight:600;padding:1px 5px;border-radius:4px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
+.social-num-full{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:14px}
+.social-full-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:10px}
+.social-full-num{font-family:'DM Sans',sans-serif;font-size:22px;font-weight:800;color:#fff}
+.social-full-info{flex:1}
+.social-full-name{font-size:10px;color:rgba(255,255,255,.6);margin-bottom:2px}
+.social-full-src{font-size:9px;color:rgba(204,0,0,.8)}
+.social-note{font-size:10px;color:rgba(255,255,255,.35);line-height:1.6;border-top:0.5px solid rgba(255,255,255,.1);padding-top:10px}
 /* Share */
 .share-btn{width:100%;background:#fff;border:1.5px solid var(--red);color:var(--red);font-size:13px;font-weight:700;padding:11px;border-radius:10px;cursor:pointer;font-family:'Sarabun',sans-serif;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:6px}
 /* Related */
@@ -107,6 +128,78 @@ h1{font-size:22px;font-weight:800;color:var(--dark);line-height:1.3;margin-botto
     ทำให้เสียเวลาโดยเปล่าประโยชน์ บทความนี้รวม <strong>5 สถิติที่ควรเช็คก่อนทุกงวด</strong>
     พร้อมบอกว่าดูเพื่ออะไร และใช้ข้อมูลนั้นยังไงให้เกิดประโยชน์จริงๆ
   </p>
+
+  <!-- SOCIAL HOT NUMBERS -->
+  <div class="social-banner">
+    <div class="social-header">
+      <div class="social-title">🔥 เลขเด่นจากโซเชียล</div>
+      <span class="social-badge">LIVE</span>
+    </div>
+    <div class="social-period">งวด 1 ก.ค. 69 · อัพเดต 26 มิ.ย. 69</div>
+
+    <!-- เลขที่โผล่หลายสำนัก -->
+    <div class="social-nums">
+      <div class="social-num-card hot">
+        <div class="social-num-digit">6</div>
+        <div class="social-num-label">โผล่ 3 สำนัก 🔥</div>
+        <div class="social-num-src">
+          <span class="social-src-tag">ปฏิทินจีน</span>
+          <span class="social-src-tag">แม่ตุ๊กตา</span>
+          <span class="social-src-tag">ธูป</span>
+        </div>
+      </div>
+      <div class="social-num-card hot">
+        <div class="social-num-digit">3</div>
+        <div class="social-num-label">โผล่ 2 สำนัก</div>
+        <div class="social-num-src">
+          <span class="social-src-tag">ปฏิทินจีน</span>
+          <span class="social-src-tag">แม่ตุ๊กตา</span>
+        </div>
+      </div>
+      <div class="social-num-card hot">
+        <div class="social-num-digit">4</div>
+        <div class="social-num-label">โผล่ 2 สำนัก</div>
+        <div class="social-num-src">
+          <span class="social-src-tag">ปฏิทินจีน</span>
+          <span class="social-src-tag">แม่ตุ๊กตา</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- รายละเอียดแต่ละสำนัก -->
+    <div class="social-num-full">
+      <div class="social-full-card">
+        <div style="font-size:13px;font-weight:800;color:#fff;min-width:60px;letter-spacing:.04em">6·8·4·3</div>
+        <div class="social-full-info">
+          <div class="social-full-name">ปฏิทินจีน</div>
+          <div class="social-full-src">🀄 สำนักดัง</div>
+        </div>
+      </div>
+      <div class="social-full-card">
+        <div style="font-size:13px;font-weight:800;color:#fff;min-width:60px;letter-spacing:.04em">3·6·4·0·7</div>
+        <div class="social-full-info">
+          <div class="social-full-name">แม่ตุ๊กตา</div>
+          <div class="social-full-src">🪆 ตาราง 9 ช่อง</div>
+        </div>
+      </div>
+      <div class="social-full-card">
+        <div style="font-size:13px;font-weight:800;color:#fff;min-width:60px;letter-spacing:.04em">9·6·1</div>
+        <div class="social-full-info">
+          <div class="social-full-name">ธูปเสี่ยงทาย</div>
+          <div class="social-full-src">🕯️ ยอดนิยม</div>
+        </div>
+      </div>
+      <div class="social-full-card">
+        <div style="font-size:13px;font-weight:800;color:#FF6B6B;min-width:60px;letter-spacing:.04em">240</div>
+        <div class="social-full-info">
+          <div class="social-full-name">สุนทรภู่ 240 ปี ชาตกาล</div>
+          <div class="social-full-src">📜 มงคลพิเศษ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="social-note">⚠️ เลขเหล่านี้รวบรวมจากโซเชียลมีเดียและสำนักดังเพื่อเป็นข้อมูลประกอบเท่านั้น ไม่ใช่การการันตีผล</div>
+  </div>
 
   <div class="sec-label"><i class="ti ti-list-check"></i> 5 สถิติที่ต้องเช็คก่อนงวด</div>
 
