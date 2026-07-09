@@ -1535,12 +1535,23 @@ async function loadSheets() {
     const gRes = await fetch(csvUrl('guide'));
     const gRows = parseCSV(await gRes.text()).filter(r => r[0] === today);
     const guideEl = document.getElementById('guide-list');
+    const flagFor = (name) => {
+      const map = [
+        ['มาเลย์','🇲🇾'], ['ลาว','🇱🇦'], ['ฮานอย','🇻🇳'], ['ยี่กี','🇹🇭'],
+        ['เกาหลี','🇰🇷'], ['เยอรมัน','🇩🇪'], ['อังกฤษ','🇬🇧'], ['รัสเซีย','🇷🇺'],
+        ['ไต้หวัน','🇹🇼'], ['นิเคอิ','🇯🇵'], ['จีน','🇨🇳'], ['ฮั่งเส็ง','🇭🇰'],
+        ['สิงคโปร์','🇸🇬'], ['อินเดีย','🇮🇳'], ['อียิปต์','🇪🇬'], ['ดาวโจนส์','🇺🇸'],
+        ['ไทย','🇹🇭']
+      ];
+      const hit = map.find(([kw]) => name.includes(kw));
+      return hit ? hit[1] : '';
+    };
     if (guideEl) {
       guideEl.innerHTML = gRows.length
         ? gRows.map(r => {
             const hots = (r[3]||'').split('|').filter(Boolean).map(n=>`<span class="gnn gnn-hot">${n}</span>`).join('');
             const secs = (r[4]||'').split('|').filter(Boolean).map(n=>`<span class="gnn gnn-sec">${n}</span>`).join('');
-            return `<div class="guide-row"><div><div class="g-name">${r[1]}</div><div class="g-time">${r[2]}</div></div><div class="g-nums">${hots}${secs}</div></div>`;
+            return `<div class="guide-row"><div><div class="g-name">${flagFor(r[1])} ${r[1]}</div><div class="g-time">${r[2]}</div></div><div class="g-nums">${hots}${secs}</div></div>`;
           }).join('')
         : '<div style="text-align:center;padding:16px;color:rgba(0,0,0,0.3)">ยังไม่มีข้อมูลวันนี้</div>';
     }
