@@ -1537,21 +1537,21 @@ async function loadSheets() {
     const guideEl = document.getElementById('guide-list');
     const flagFor = (name) => {
       const map = [
-        ['มาเลย์','🇲🇾'], ['ลาว','🇱🇦'], ['ฮานอย','🇻🇳'], ['ยี่กี','🇹🇭'],
-        ['เกาหลี','🇰🇷'], ['เยอรมัน','🇩🇪'], ['อังกฤษ','🇬🇧'], ['รัสเซีย','🇷🇺'],
-        ['ไต้หวัน','🇹🇼'], ['นิเคอิ','🇯🇵'], ['จีน','🇨🇳'], ['ฮั่งเส็ง','🇭🇰'],
-        ['สิงคโปร์','🇸🇬'], ['อินเดีย','🇮🇳'], ['อียิปต์','🇪🇬'], ['ดาวโจนส์','🇺🇸'],
-        ['ไทย','🇹🇭']
+        ['มาเลย์','my'], ['ลาว','la'], ['ฮานอย','vn'], ['ยี่กี','th'],
+        ['เกาหลี','kr'], ['เยอรมัน','de'], ['อังกฤษ','gb'], ['รัสเซีย','ru'],
+        ['ไต้หวัน','tw'], ['นิเคอิ','jp'], ['จีน','cn'], ['ฮั่งเส็ง','hk'],
+        ['สิงคโปร์','sg'], ['อินเดีย','in'], ['อียิปต์','eg'], ['ดาวโจนส์','us'],
+        ['ไทย','th']
       ];
       const hit = map.find(([kw]) => name.includes(kw));
-      return hit ? hit[1] : '';
+      return hit ? `<img src="https://flagcdn.com/20x15/${hit[1]}.png" width="20" height="15" alt="" style="border-radius:2px;vertical-align:middle;margin-right:5px">` : '';
     };
     if (guideEl) {
       guideEl.innerHTML = gRows.length
         ? gRows.map(r => {
             const hots = (r[3]||'').split('|').filter(Boolean).map(n=>`<span class="gnn gnn-hot">${n}</span>`).join('');
             const secs = (r[4]||'').split('|').filter(Boolean).map(n=>`<span class="gnn gnn-sec">${n}</span>`).join('');
-            return `<div class="guide-row"><div><div class="g-name">${flagFor(r[1])} ${r[1]}</div><div class="g-time">${r[2]}</div></div><div class="g-nums">${hots}${secs}</div></div>`;
+            return `<div class="guide-row"><div><div class="g-name">${flagFor(r[1])}${r[1]}</div><div class="g-time">${r[2]}</div></div><div class="g-nums">${hots}${secs}</div></div>`;
           }).join('')
         : '<div style="text-align:center;padding:16px;color:rgba(0,0,0,0.3)">ยังไม่มีข้อมูลวันนี้</div>';
     }
