@@ -1131,63 +1131,51 @@ function renderHomeArticles(){
 document.addEventListener('DOMContentLoaded', renderHomeArticles);
 
 // ── DAILY NUMBERS FROM GOOGLE SHEET ─────
-var DAILY_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT8jLwns22k_6jK1zJFaWKj3YsUrlIV5vrmepsH1h76vwx7fV-GDv4WapQXx7L5MgspaNLCyx5kG08h/pub?output=csv';
+var DAILY_TSV='https://docs.google.com/spreadsheets/d/e/2PACX-1vT8jLwns22k_6jK1zJFaWKj3YsUrlIV5vrmepsH1h76vwx7fV-GDv4WapQXx7L5MgspaNLCyx5kG08h/pub?gid=886751551&single=true&output=tsv';
+var SHOW_ONLY=['หุ้นไทยเย็น','ลาวสตาร์','หุ้นอินเดีย','หุ้นฮั่งเส็ง เช้า','หุ้นฮั่งเส็ง บ่าย','ฮานอยพิเศษ','ฮานอย VIP'];
+var LOTTERY_FLAGS={'หุ้นไทยเย็น':'th','ลาวสตาร์':'la','หุ้นอินเดีย':'in','หุ้นฮั่งเส็ง เช้า':'hk','หุ้นฮั่งเส็ง บ่าย':'hk','ฮานอยพิเศษ':'vn','ฮานอย VIP':'vn'};
+var LOTTERY_COLORS={'หุ้นไทยเย็น':'#003087','ลาวสตาร์':'#C0392B','หุ้นอินเดีย':'#FF6B00','หุ้นฮั่งเส็ง เช้า':'#DE2910','หุ้นฮั่งเส็ง บ่าย':'#DE2910','ฮานอยพิเศษ':'#C0392B','ฮานอย VIP':'#C0392B'};
 
 function getTodayStr(){
-  var d = new Date();
+  var d=new Date();
   return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 }
 
-function parseCSVRow(row){
-  var result = [], cur = '', inQ = false;
-  for(var i=0;i<row.length;i++){
-    var c = row[i];
-    if(c==='"'){ inQ=!inQ; }
-    else if(c===','&&!inQ){ result.push(cur.trim()); cur=''; }
-    else { cur+=c; }
-  }
-  result.push(cur.trim());
-  return result;
-}
-
 function loadDailyNumbers(){
-  var el = document.getElementById('daily-numbers-widget');
-  if(!el) return;
-  fetch(DAILY_CSV)
-    .then(function(r){ return r.text(); })
-    .then(function(text){
-      var lines = text.split('\n');
-      var today = getTodayStr();
-      var rows = [];
-      for(var i=1;i<lines.length;i++){
-        if(!lines[i].trim()) continue;
-        var r = parseCSVRow(lines[i]);
-        if(r[0] && r[0].replace(/"/g,'').trim() === today) rows.push(r);
-      }
-      if(rows.length===0){
-        el.innerHTML='<div style="text-align:center;color:#999;font-size:12px;padding:8px">ยังไม่มีข้อมูลวันนี้</div>';
-        return;
-      }
-      var html='';
-      rows.forEach(function(r,i){
-        var name = (r[1]||'').replace(/"/g,'');
-        var time = (r[2]||'').replace(/"/g,'');
-        var nums = (r[3]||'').replace(/"/g,'').split('|').filter(Boolean);
-        var num2 = (r[4]||'').replace(/"/g,'').trim();
-        if(num2) nums.push(num2);
-        var border = i<rows.length-1 ? 'border-bottom:1px solid #F5F5F5;' : '';
-        html+='<div style="display:flex;align-items:center;gap:10px;padding:9px 0;'+border+'">';
-        html+='<div style="flex:1"><div style="font-size:13px;font-weight:700;color:#111;line-height:1.3">'+name+'</div>';
-        html+='<div style="font-size:10px;color:#999;margin-top:2px">'+time+'</div></div>';
-        html+='<div style="display:flex;gap:5px">';
-        nums.forEach(function(n){ html+='<span style="background:#CC0000;color:#FFF;font-size:13px;font-weight:800;padding:4px 9px;border-radius:6px;letter-spacing:.03em">'+n+'</span>'; });
-        html+='</div></div>';
-      });
-      el.innerHTML=html;
-    })
-    .catch(function(){ el.innerHTML='<div style="text-align:center;color:#999;font-size:12px;padding:8px">โหลดข้อมูลไม่สำเร็จ</div>'; });
+  var el=document.getElementById('daily-numbers-widget');
+  if(!el)return;
+  fetch(DAILY_TSV).then(function(r){return r.text();}).then(function(text){
+    var lines=text.split('\n'),today=getTodayStr(),rows=[];
+    for(var i=1;i<lines.length;i++){
+      if(!lines[i].trim())continue;
+      var r=lines[i].split('\t');
+      var rname=(r[1]||'').trim();
+      if(r[0]&&r[0].trim()===today&&SHOW_ONLY.indexOf(rname)!==-1)rows.push(r);
+    }
+    if(rows.length===0){el.innerHTML='<div style="text-align:center;color:#aaa;font-size:12px;padding:12px">ยังไม่มีข้อมูลวันนี้</div>';return;}
+    var html='<div style="display:flex;flex-direction:column;gap:8px">';
+    rows.forEach(function(r){
+      var name=(r[1]||'').trim();
+      var time=(r[2]||'').trim();
+      var nums=(r[3]||'').trim().split('|').filter(Boolean);
+      var num2=(r[4]||'').trim();
+      if(num2)nums.push(num2);
+      var code=LOTTERY_FLAGS[name]||'';
+      var color=LOTTERY_COLORS[name]||'#CC0000';
+      var flagHtml=code?'<img src="https://flagcdn.com/24x18/'+code+'.png" width="24" height="18" style="border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,.2);flex-shrink:0" alt="">':'';
+      html+='<div style="display:flex;align-items:center;gap:8px;background:#FAFAFA;border:1px solid #F0EBE3;border-radius:10px;padding:8px 10px">';
+      html+=flagHtml;
+      html+='<div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:800;color:#111;line-height:1.3">'+name+'</div>';
+      html+='<div style="font-size:10px;color:#999;margin-top:1px">⏰ '+time+'</div></div>';
+      html+='<div style="display:flex;gap:4px;flex-shrink:0">';
+      nums.forEach(function(n){html+='<div style="background:'+color+';color:#FFF;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 4px rgba(0,0,0,.2)">'+n+'</div>';});
+      html+='</div></div>';
+    });
+    html+='</div>';
+    el.innerHTML=html;
+  }).catch(function(){el.innerHTML='<div style="text-align:center;color:#aaa;font-size:12px;padding:12px">โหลดข้อมูลไม่สำเร็จ</div>';});
 }
-document.addEventListener('DOMContentLoaded', loadDailyNumbers);
+document.addEventListener('DOMContentLoaded',loadDailyNumbers);
 
 // ── TAB SWITCH ──────────────────────────
 function switchTab(tab){
