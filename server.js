@@ -2,16 +2,34 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { readFile } from 'fs/promises';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
-app.get('/sitemap.xml', (req, res) => {
-  res.setHeader('Content-Type', 'application/xml; charset=UTF-8');
-  res.sendFile(join(__dirname, 'public', 'sitemap.xml'));
+app.use((req, res, next) => {
+  const host = req.headers.host || '';
+  if (!host.startsWith('www.') && !host.includes('localhost') && !host.includes('railway')) {
+    return res.redirect(301, 'https://www.' + host + req.url);
+  }
+  next();
 });
+
+app.use(express.json());
+
+app.get('/sitemap.xml', async (req, res) => {
+  try {
+    const data = await readFile(join(__dirname, 'public', 'sitemap.xml'), 'utf8');
+    res.setHeader('Content-Type', 'application/xml; charset=UTF-8');
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.send(data);
+  } catch (e) {
+    console.error('sitemap error:', e);
+    res.status(500).send('error');
+  }
+});
+
 app.use(express.static(join(__dirname, 'public')));
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
