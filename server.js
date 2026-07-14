@@ -8,6 +8,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+app.get('/sitemap.xml', (req, res) => {
+  res.setHeader('Content-Type', 'application/xml; charset=UTF-8');
+  res.sendFile(join(__dirname, 'public', 'sitemap.xml'));
+});
 app.use(express.static(join(__dirname, 'public')));
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
