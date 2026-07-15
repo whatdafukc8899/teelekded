@@ -20,7 +20,7 @@ app.use(express.json());
 
 app.get('/sitemap.xml', async (req, res) => {
   try {
-    const data = await readFile(join(__dirname, 'public', 'sitemap.xml'), 'utf8');
+    const data = await readFile(join(__dirname, 'sitemap.xml'), 'utf8');
     res.setHeader('Content-Type', 'application/xml; charset=UTF-8');
     res.setHeader('Cache-Control', 'public, max-age=3600');
     res.send(data);
