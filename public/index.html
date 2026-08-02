@@ -1231,7 +1231,7 @@ function renderHomeArticles(){
 document.addEventListener('DOMContentLoaded', renderHomeArticles);
 
 // ── DAILY NUMBERS FROM GOOGLE SHEET ─────
-var DAILY_TSV='https://docs.google.com/spreadsheets/d/e/2PACX-1vT8jLwns22k_6jK1zJFaWKj3YsUrlIV5vrmepsH1h76vwx7fV-GDv4WapQXx7L5MgspaNLCyx5kG08h/pub?gid=886751551&single=true&output=tsv';
+var DAILY_TSV='https://docs.google.com/spreadsheets/d/1tHROjy4NPo-znXBhMxCCCyR531r4RgKpRBiMitQdYBg/gviz/tq?tqx=out:csv&sheet=daily';
 var SHOW_ONLY=['หุ้นไทยเย็น','ลาวสตาร์','หุ้นอินเดีย','หุ้นฮั่งเส็ง เช้า','หุ้นฮั่งเส็ง บ่าย','ฮานอยพิเศษ','ฮานอย VIP'];
 var LOTTERY_FLAGS={'หุ้นไทยเย็น':'th','ลาวสตาร์':'la','หุ้นอินเดีย':'in','หุ้นฮั่งเส็ง เช้า':'hk','หุ้นฮั่งเส็ง บ่าย':'hk','ฮานอยพิเศษ':'vn','ฮานอย VIP':'vn'};
 var LOTTERY_COLORS={'หุ้นไทยเย็น':'#003087','ลาวสตาร์':'#C0392B','หุ้นอินเดีย':'#FF6B00','หุ้นฮั่งเส็ง เช้า':'#DE2910','หุ้นฮั่งเส็ง บ่าย':'#DE2910','ฮานอยพิเศษ':'#C0392B','ฮานอย VIP':'#C0392B'};
@@ -1245,13 +1245,8 @@ function loadDailyNumbers(){
   var el=document.getElementById('daily-numbers-widget');
   if(!el)return;
   fetch(DAILY_TSV).then(function(r){return r.text();}).then(function(text){
-    var lines=text.split('\n'),today=getTodayStr(),rows=[];
-    for(var i=1;i<lines.length;i++){
-      if(!lines[i].trim())continue;
-      var r=lines[i].split('\t');
-      var rname=(r[1]||'').trim();
-      if(r[0]&&r[0].trim()===today&&SHOW_ONLY.indexOf(rname)!==-1)rows.push(r);
-    }
+    var today=getTodayStr();
+    var rows=parseCSV(text).filter(function(r){return r[0]===today&&SHOW_ONLY.indexOf(r[1])!==-1;});
     if(rows.length===0){el.innerHTML='<div style="text-align:center;color:#aaa;font-size:12px;padding:12px">ยังไม่มีข้อมูลวันนี้</div>';return;}
     var html='<div style="display:flex;flex-direction:column;gap:8px">';
     rows.forEach(function(r){
