@@ -1632,12 +1632,17 @@ async function loadSheets() {
     // ── guide: กรองเฉพาะวันนี้ ──
     // columns: วันที่(YYYY-MM-DD), ชื่อหวย, เวลา, เลขหลัก(คั่น|), เลขรอง(คั่น|)
     const gRes = await fetch(csvUrl('guide'));
-    const gRows = parseCSV(await gRes.text()).filter(r => r[0] === today && !r[1].includes('ยี่กี'));
-    // ดึง หุ้นไทยเย็น จาก daily sheet มาแทน ยี่กี
+    const gRows = parseCSV(await gRes.text()).filter(r => r[0] === today && !r[1].includes('ยี่กี') && !r[1].includes('สามเหลี่ยม'));
+    // ดึง หุ้นไทยเย็น + ฮั่งเส็ง จาก daily sheet มาแทน
     try {
       const dRes = await fetch(DAILY_TSV);
-      const dRow = parseCSV(await dRes.text()).find(r => r[0]===today && r[1]==='หุ้นไทยเย็น');
-      if(dRow) gRows.push([today,'หุ้นไทยเย็น','16.30 น.',dRow[3],dRow[4]]);
+      const dAll = parseCSV(await dRes.text()).filter(r => r[0]===today);
+      const thaiRow = dAll.find(r => r[1]==='หุ้นไทยเย็น');
+      const hangMorn = dAll.find(r => r[1]==='หุ้นฮั่งเส็ง เช้า');
+      const hangAft  = dAll.find(r => r[1]==='หุ้นฮั่งเส็ง บ่าย');
+      if(hangMorn) gRows.push([today,'หุ้นฮั่งเส็ง เช้า','12.00 น.',hangMorn[3],hangMorn[4]]);
+      if(hangAft)  gRows.push([today,'หุ้นฮั่งเส็ง บ่าย','16.30 น.',hangAft[3],hangAft[4]]);
+      if(thaiRow)  gRows.push([today,'หุ้นไทยเย็น','16.30 น.',thaiRow[3],thaiRow[4]]);
     } catch(e){};
     // เพิ่มลาวพัฒนา random อัตโนมัติ
     (function(){
