@@ -1632,7 +1632,13 @@ async function loadSheets() {
     // ── guide: กรองเฉพาะวันนี้ ──
     // columns: วันที่(YYYY-MM-DD), ชื่อหวย, เวลา, เลขหลัก(คั่น|), เลขรอง(คั่น|)
     const gRes = await fetch(csvUrl('guide'));
-    const gRows = parseCSV(await gRes.text()).filter(r => r[0] === today);
+    const gRows = parseCSV(await gRes.text()).filter(r => r[0] === today && !r[1].includes('ยี่กี'));
+    // ดึง หุ้นไทยเย็น จาก daily sheet มาแทน ยี่กี
+    try {
+      const dRes = await fetch(DAILY_TSV);
+      const dRow = parseCSV(await dRes.text()).find(r => r[0]===today && r[1]==='หุ้นไทยเย็น');
+      if(dRow) gRows.push([today,'หุ้นไทยเย็น','16.30 น.',dRow[3],dRow[4]]);
+    } catch(e){};
     // เพิ่มลาวพัฒนา random อัตโนมัติ
     (function(){
       const rnd2=()=>String(Math.floor(Math.random()*100)).padStart(2,'0');
